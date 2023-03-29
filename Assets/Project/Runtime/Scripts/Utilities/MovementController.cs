@@ -84,7 +84,6 @@ public class MovementController : MonoBehaviour
         {
             Jump();
         }
-
         if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
         {
             animationController.SetBool("movingLeft", false);
@@ -164,13 +163,24 @@ public class MovementController : MonoBehaviour
             rigidBody.velocity = rigidBody.velocity.normalized * maxSpeed;
         }
 
-        if (rigidBody.velocity.magnitude < 2)
+        if (rigidBody.velocity.magnitude < 1)
         {
             animationController.SetFloat("walkingSpeed", 0);
+            animationController.SetBool("isMoving", false);
         }
         else
         {
-            animationController.SetFloat("walkingSpeed", (rigidBody.velocity.magnitude / 5));
+            if (Vector3.Dot(transform.forward, Vector3.Normalize(rigidBody.velocity)) > 0)
+            {
+                animationController.SetBool("isMoving", true);
+                if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) animationController.SetFloat("walkingSpeed", (rigidBody.velocity.magnitude / 5));
+                else animationController.SetFloat("walkingSpeed", -(rigidBody.velocity.magnitude / 5));
+            }
+            else
+            {
+                animationController.SetBool("isMoving", true);
+                animationController.SetFloat("walkingSpeed", (rigidBody.velocity.magnitude / 5));
+            }
         }
     }
 
