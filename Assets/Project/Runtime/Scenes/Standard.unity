@@ -162,7 +162,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-44612
+  m_Name: pb_Mesh22658
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1058,7 +1058,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b1a65e41abdd61a41ba087b2c950fdbe,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.9221686
+      value: -1.95
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b1a65e41abdd61a41ba087b2c950fdbe,
         type: 3}
@@ -1100,10 +1100,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: b1a65e41abdd61a41ba087b2c950fdbe,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -1018664272722485354, guid: b1a65e41abdd61a41ba087b2c950fdbe,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: b1a65e41abdd61a41ba087b2c950fdbe,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -391268320553695201, guid: b1a65e41abdd61a41ba087b2c950fdbe,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b1a65e41abdd61a41ba087b2c950fdbe,
         type: 3}
       propertyPath: m_Name
       value: StartRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b1a65e41abdd61a41ba087b2c950fdbe,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1a65e41abdd61a41ba087b2c950fdbe, type: 3}
@@ -1749,6 +1774,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1590001761 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8665381790299350359, guid: b05580a507acab44d847297c9158ad09,
+    type: 3}
+  m_PrefabInstance: {fileID: 9208497494207386545}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1602354078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b1a65e41abdd61a41ba087b2c950fdbe,
@@ -1893,8 +1924,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 19.054432, y: 14.697056, z: 0.2}
-  m_Center: {x: 0.06916618, y: 0, z: 5.8}
+  m_Size: {x: 19.054432, y: 14.697056, z: 0.27625602}
+  m_Center: {x: 0.06916618, y: 2.5037711e-14, z: 5.7618713}
 --- !u!65 &1890828312
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2071,6 +2102,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1254993584, guid: b05580a507acab44d847297c9158ad09, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1590001761}
+    - target: {fileID: 1254993584, guid: b05580a507acab44d847297c9158ad09, type: 3}
+      propertyPath: RayTrace.Thickness
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254993584, guid: b05580a507acab44d847297c9158ad09, type: 3}
+      propertyPath: RayTrace.CollisionMask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132147712814175, guid: b05580a507acab44d847297c9158ad09,
         type: 3}
       propertyPath: camShake
