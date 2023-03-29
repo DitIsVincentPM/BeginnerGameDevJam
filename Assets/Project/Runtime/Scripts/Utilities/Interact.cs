@@ -10,10 +10,19 @@ public class Interact : MonoBehaviour
 
     [Header("Text")]
     [SerializeField] private TMP_Text _interactText;
+    [SerializeField] private string textValue;
+    
+    [Header("ProgressBar")]
+    [SerializeField] private HackingProgress _hackingProgress;
 
     private void Start()
     {
         _camera = Camera.main;
+        _hackingProgress = GameObject.FindGameObjectWithTag("HackingProgress").GetComponent<HackingProgress>();
+    }
+
+    private void Awake() {
+        _interactText.text = textValue;
     }
 
     void Update()
@@ -23,10 +32,11 @@ public class Interact : MonoBehaviour
 
         Debug.DrawRay(ray.origin, ray.direction * _raycastDistance);
 
-        if (Physics.Raycast(ray, out hit, _raycastDistance, _layerMask))
+        _interactText.enabled = Physics.Raycast(ray, out hit, _raycastDistance, _layerMask);    
+        if(Input.GetKeyDown(KeyCode.E) && Physics.Raycast(ray, out hit, _raycastDistance, _layerMask))
         {
-            _interactText.text = "Press [E] to read the note.";
-            Debug.Log("Hit");
+            _hackingProgress.slider.gameObject.SetActive(true);
+            _hackingProgress.enableSlider = true;
         }
     }
 }
