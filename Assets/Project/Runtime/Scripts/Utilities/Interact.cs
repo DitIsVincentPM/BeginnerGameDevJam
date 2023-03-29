@@ -1,30 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class Interact : MonoBehaviour
 {
+    [Header("Raycast")]
+    [SerializeField] private float _raycastDistance = 10f;
+    [SerializeField] private LayerMask _layerMask;
+    private Camera _camera;
 
-    public float raycastDistance = 10f;
+    [Header("Text")]
+    [SerializeField] private TMP_Text _interactText;
 
-    public TMP_Text interactText;
+    private void Start()
+    {
+        _camera = Camera.main;
+    }
 
     void Update()
     {
-        //Raycast waar muis richt
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = new Ray(_camera.transform.position, _camera.transform.forward);
         RaycastHit hit;
 
-        //Draws ray
-        Vector3 forward = transform.TransformDirection(Vector3.forward) * raycastDistance;
-        Debug.DrawRay(transform.position, forward, Color.green);
+        Debug.DrawRay(ray.origin, ray.direction * _raycastDistance);
 
-        //checked of de ray object met tag Interact raakt
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.NameToLayer("Interact")))
+        if (Physics.Raycast(ray, out hit, _raycastDistance, _layerMask))
         {
-            interactText.text = "Press [E] to read the note.";
+            _interactText.text = "Press [E] to read the note.";
             Debug.Log("Hit");
         }
     }
