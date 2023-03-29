@@ -85,6 +85,27 @@ public class MovementController : MonoBehaviour
             Jump();
         }
 
+        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
+        {
+            animationController.SetBool("movingLeft", false);
+            animationController.SetBool("movingRight", false);
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            animationController.SetBool("movingLeft", true);
+            animationController.SetBool("movingRight", false);
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            animationController.SetBool("movingLeft", false);
+            animationController.SetBool("movingRight", true);
+        }
+        else
+        {
+            animationController.SetBool("movingLeft", false);
+            animationController.SetBool("movingRight", false);
+        }
+
         //Crouching
         if (Input.GetKeyDown(KeyCode.LeftControl))
             StartCrouch();
