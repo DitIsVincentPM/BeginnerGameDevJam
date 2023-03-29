@@ -6,6 +6,8 @@ public class MovementController : MonoBehaviour
 {
     public CameraEffects camEffects;
     public Animator animationController;
+    public GameObject groundParticle;
+
     Rigidbody rigidBody;
 
     //Assingables
@@ -199,7 +201,8 @@ public class MovementController : MonoBehaviour
         {
             grounded = false;
             animationController.SetBool("isGrounded", false);
-            if(camEffects.inEffect == false) camEffects.PlayImpact(new Vector3(0, 0.3f, 0));
+            if (camEffects.inEffect == false)
+                camEffects.PlayImpact(new Vector3(0, 0.3f, 0));
             rigidBody.AddForce(normalVector * jumpForce);
         }
     }
@@ -258,6 +261,29 @@ public class MovementController : MonoBehaviour
     /// <summary>
     /// Handle ground detection
     /// </summary>
+    void OnCollisionEnter(Collision other)
+    {
+        int layer = other.gameObject.layer;
+        int ground = LayerMask.NameToLayer("Ground");
+        if (layer != ground)
+            return;
+
+        //Iterate through every collision in a physics update
+        for (int i = 0; i < other.contactCount; i++)
+        {
+            Vector3 normal = other.contacts[i].normal;
+            if (IsFloorAngle(normal))
+            {
+                if (camEffects.inEffect == false && animationController.GetBool("isGrounded") == false)
+                {
+                    camEffects.PlayImpact(new Vector3(0, -0.3f, 0));
+                    Instantiate(groundParticle, other.contacts[i].point + new Vector3(0, 0.3f, 0), Quaternion.identity);
+                }
+                break;
+            }
+        }
+    }
+
     void OnCollisionStay(Collision other)
     {
         int layer = other.gameObject.layer;
@@ -284,25 +310,6 @@ public class MovementController : MonoBehaviour
         {
             cancellingGrounded = true;
             Invoke(nameof(StopGrounded), Time.deltaTime);
-        }
-    }
-
-    void OnCollisionEnter(Collision other)
-    {
-        int layer = other.gameObject.layer;
-        int ground = LayerMask.NameToLayer("Ground");
-        if (layer != ground)
-            return;
-
-        //Iterate through every collision in a physics update
-        for (int i = 0; i < other.contactCount; i++)
-        {
-            Vector3 normal = other.contacts[i].normal;
-            if (IsFloorAngle(normal))
-            {
-                if(camEffects.inEffect == false) camEffects.PlayImpact(new Vector3(0, -0.3f, 0));
-                break;
-            }
         }
     }
 
