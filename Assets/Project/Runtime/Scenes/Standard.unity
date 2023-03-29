@@ -236,6 +236,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &961739749 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 961739749, guid: b05580a507acab44d847297c9158ad09,
     type: 3}
@@ -289,7 +292,7 @@ MonoBehaviour:
   duration: 0.6
   distance: 2
   inEffect: 0
-
+--- !u!1 &1059870193
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
