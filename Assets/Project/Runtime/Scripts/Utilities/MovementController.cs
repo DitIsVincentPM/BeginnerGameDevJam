@@ -2,8 +2,9 @@
 
 using UnityEngine;
 
-public class MovementController : MonoBehaviour {
-
+public class MovementController : MonoBehaviour
+{
+    public Animator animationController;
     Rigidbody rigidBody;
 
     //Assingables
@@ -41,26 +42,31 @@ public class MovementController : MonoBehaviour {
     //Sliding
     Vector3 normalVector = Vector3.up;
 
-    void Awake() {
+    void Awake()
+    {
         feet = GetComponent<BoxCollider>();
         rigidBody = GetComponent<Rigidbody>();
     }
 
-    void Start() {
-        playerScale =  transform.localScale;
+    void Start()
+    {
+        playerScale = transform.localScale;
         LockCursor();
     }
 
-    void LockCursor() {
+    void LockCursor()
+    {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
         Movement();
     }
 
-    void Update() {
+    void Update()
+    {
         MyInput();
         Look();
     }
@@ -68,11 +74,11 @@ public class MovementController : MonoBehaviour {
     /// <summary>
     /// Find user input. Should put this in its own class but im lazy
     /// </summary>
-    void MyInput() {
+    void MyInput()
+    {
         inputDirection.x = Input.GetAxisRaw("Horizontal");
         inputDirection.y = Input.GetAxisRaw("Vertical");
         inputDirection.Normalize();
-
 
         if (Input.GetButton("Jump"))
         {
@@ -88,31 +94,18 @@ public class MovementController : MonoBehaviour {
         feet.enabled = inputDirection.magnitude == 0 && !crouching;
     }
 
-    void StartCrouch() {
+    void StartCrouch()
+    {
         crouching = true;
-        // squash the player
-        transform.localScale = crouchScale;
-        // move them up
-        transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
-        // if player is moving at a fast enough speed
-        if (rigidBody.velocity.magnitude > 0.5f) {
-            // and on the ground
-            if (grounded) {
-                // slide boost forward
-                rigidBody.AddForce(orientation.transform.forward * slideForce);
-            }
-        }
     }
 
-    void StopCrouch() {
+    void StopCrouch()
+    {
         crouching = false;
-        // reset scale
-        transform.localScale = playerScale;
-        // move down
-        transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
     }
 
-    void Movement() {
+    void Movement()
+    {
         rigidBody.AddForce(Vector3.down * 10 * Time.deltaTime);
 
         ApplyFriction();
@@ -120,31 +113,43 @@ public class MovementController : MonoBehaviour {
         //Set max speed
         float maxSpeed = this.maxSpeed;
 
-        //If sliding down a ramp, add force down so player stays grounded and also builds speed
-        if (crouching && grounded) {
-            rigidBody.AddForce(Vector3.down * Time.deltaTime * 3000);
-            return;
-        }
-
         //Some multipliers
-        float multiplier = 1f, multiplierV = 1f;
+        float multiplier = 1f,
+            multiplierV = 1f;
 
         // Movement in air
-        if (!grounded) {
+        if (!grounded)
+        {
             multiplier = 0.5f;
             multiplierV = 0.5f;
         }
 
-        // Movement while sliding
-        if (grounded && crouching) multiplierV = 0f;
-
         //Apply forces to move player
         // more easily adjust left/right while in the air than forward/back
-        rigidBody.AddForce(orientation.transform.right * inputDirection.x * moveSpeed * Time.deltaTime * multiplier);
-        rigidBody.AddForce(orientation.transform.forward * inputDirection.y * moveSpeed * Time.deltaTime * multiplier * multiplierV);
+        rigidBody.AddForce(
+            orientation.transform.right * inputDirection.x * moveSpeed * Time.deltaTime * multiplier
+        );
+        rigidBody.AddForce(
+            orientation.transform.forward
+                * inputDirection.y
+                * moveSpeed
+                * Time.deltaTime
+                * multiplier
+                * multiplierV
+        );
 
-        if (rigidBody.velocity.magnitude > maxSpeed) {
+        if (rigidBody.velocity.magnitude > maxSpeed)
+        {
             rigidBody.velocity = rigidBody.velocity.normalized * maxSpeed;
+        }
+
+        if (rigidBody.velocity.magnitude < 2)
+        {
+            animationController.SetFloat("walkingSpeed", 0);
+        }
+        else
+        {
+            animationController.SetFloat("walkingSpeed", (rigidBody.velocity.magnitude / 5));
         }
     }
 
@@ -153,33 +158,27 @@ public class MovementController : MonoBehaviour {
         if (grounded)
         {
             grounded = false;
+            animationController.SetBool("isGrounded", false);
             rigidBody.AddForce(normalVector * jumpForce);
         }
     }
 
-    void Look() {
-        float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.fixedDeltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.fixedDeltaTime;
-
-        //Find current look rotation
-        Vector3 rot = playerCam.transform.localRotation.eulerAngles;
-        float desiredY = rot.y + mouseX;
-
-        //Rotate, and also make sure we dont over- or under-rotate.
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-
-        //Perform the rotations
-        playerCam.transform.localRotation = Quaternion.Euler(xRotation, desiredY, 0);
-        orientation.transform.localRotation = Quaternion.Euler(0, desiredY, 0);
+    void Look()
+    {
+        orientation.transform.eulerAngles = new Vector3(0, playerCam.transform.eulerAngles.y, 0);
     }
 
-    void ApplyFriction() {
-        if (!grounded) return;
+    void ApplyFriction()
+    {
+        if (!grounded)
+            return;
 
         //Slow down sliding
-        if (crouching) {
-            rigidBody.AddForce(moveSpeed * Time.deltaTime * -rigidBody.velocity.normalized * slideFriction);
+        if (crouching)
+        {
+            rigidBody.AddForce(
+                moveSpeed * Time.deltaTime * -rigidBody.velocity.normalized * slideFriction
+            );
             return;
         }
 
@@ -187,15 +186,28 @@ public class MovementController : MonoBehaviour {
 
         if (inputDirection.x == 0)
         {
-            rigidBody.AddForce(inverseVelocity.x * orientation.transform.right * moveSpeed * friction * Time.deltaTime);
+            rigidBody.AddForce(
+                inverseVelocity.x
+                    * orientation.transform.right
+                    * moveSpeed
+                    * friction
+                    * Time.deltaTime
+            );
         }
         if (inputDirection.y == 0)
         {
-            rigidBody.AddForce(inverseVelocity.z * orientation.transform.forward * moveSpeed * friction * Time.deltaTime);
+            rigidBody.AddForce(
+                inverseVelocity.z
+                    * orientation.transform.forward
+                    * moveSpeed
+                    * friction
+                    * Time.deltaTime
+            );
         }
     }
 
-    bool IsFloorAngle(Vector3 v) {
+    bool IsFloorAngle(Vector3 v)
+    {
         float angle = Vector3.Angle(Vector3.up, v);
         return angle < maxSlopeAngle;
     }
@@ -209,7 +221,8 @@ public class MovementController : MonoBehaviour {
     {
         int layer = other.gameObject.layer;
         int ground = LayerMask.NameToLayer("Ground");
-        if (layer != ground) return;
+        if (layer != ground)
+            return;
 
         //Iterate through every collision in a physics update
         for (int i = 0; i < other.contactCount; i++)
@@ -217,6 +230,7 @@ public class MovementController : MonoBehaviour {
             Vector3 normal = other.contacts[i].normal;
             if (IsFloorAngle(normal))
             {
+                animationController.SetBool("isGrounded", true);
                 grounded = true;
                 normalVector = normal;
                 cancellingGrounded = false;
