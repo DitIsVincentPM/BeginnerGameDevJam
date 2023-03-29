@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
+    public CameraEffects camEffects;
     public Animator animationController;
     Rigidbody rigidBody;
 
@@ -173,8 +174,16 @@ public class MovementController : MonoBehaviour
             if (Vector3.Dot(transform.forward, Vector3.Normalize(rigidBody.velocity)) > 0)
             {
                 animationController.SetBool("isMoving", true);
-                if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) animationController.SetFloat("walkingSpeed", (rigidBody.velocity.magnitude / 5));
-                else animationController.SetFloat("walkingSpeed", -(rigidBody.velocity.magnitude / 5));
+                if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
+                    animationController.SetFloat(
+                        "walkingSpeed",
+                        (rigidBody.velocity.magnitude / 5)
+                    );
+                else
+                    animationController.SetFloat(
+                        "walkingSpeed",
+                        -(rigidBody.velocity.magnitude / 5)
+                    );
             }
             else
             {
@@ -190,6 +199,7 @@ public class MovementController : MonoBehaviour
         {
             grounded = false;
             animationController.SetBool("isGrounded", false);
+            if(camEffects.inEffect == false) camEffects.PlayImpact(new Vector3(0, 0.3f, 0));
             rigidBody.AddForce(normalVector * jumpForce);
         }
     }
@@ -274,6 +284,25 @@ public class MovementController : MonoBehaviour
         {
             cancellingGrounded = true;
             Invoke(nameof(StopGrounded), Time.deltaTime);
+        }
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        int layer = other.gameObject.layer;
+        int ground = LayerMask.NameToLayer("Ground");
+        if (layer != ground)
+            return;
+
+        //Iterate through every collision in a physics update
+        for (int i = 0; i < other.contactCount; i++)
+        {
+            Vector3 normal = other.contacts[i].normal;
+            if (IsFloorAngle(normal))
+            {
+                if(camEffects.inEffect == false) camEffects.PlayImpact(new Vector3(0, -0.3f, 0));
+                break;
+            }
         }
     }
 
