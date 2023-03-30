@@ -5,17 +5,30 @@ using TMPro;
 
 public class NarratorSystem : MonoBehaviour
 {
-    [Header("Voice Lines")]
-    [SerializeField]
-    AudioClip firstVoiceline;
+    [System.Serializable]
+    public class VoiceLine
+    {
+        [SerializeField]
+        public AudioClip audio;
+
+        [SerializeField]
+        public string text;
+
+        public VoiceLine(AudioClip Audio, string Text)
+        {
+            audio = Audio;
+            text = Text;
+        }
+    }
 
     [SerializeField]
-    string firstVoicelineText;
+    public List<VoiceLine> voiceLines;
 
     [Header("Settings")]
     [SerializeField]
     SoundSystem soundSystem;
-    [SerializeField] 
+
+    [SerializeField]
     TMP_Text subtitle;
 
     private float currentLength = 0;
@@ -25,7 +38,7 @@ public class NarratorSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        VoiceLine(firstVoiceline, firstVoicelineText);
+        SayVoiceLine(voiceLines[0]);
     }
 
     void Update()
@@ -33,7 +46,8 @@ public class NarratorSystem : MonoBehaviour
         if (sayingLine == true)
         {
             timer += Time.deltaTime;
-            if (timer > currentLength) { 
+            if (timer > currentLength)
+            {
                 subtitle.text = "";
                 timer = 0;
                 currentLength = 0;
@@ -42,11 +56,11 @@ public class NarratorSystem : MonoBehaviour
         }
     }
 
-    public void VoiceLine(AudioClip voiceline, string voicelineString)
+    public void SayVoiceLine(VoiceLine voiceline)
     {
-        soundSystem.PlayNarrator(voiceline, 1);
-        currentLength = voiceline.length;
-        subtitle.text = voicelineString;
+        soundSystem.PlayNarrator(voiceline.audio, 1);
+        currentLength = voiceline.audio.length;
+        subtitle.text = voiceline.text;
         sayingLine = true;
     }
 }
