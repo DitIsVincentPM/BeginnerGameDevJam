@@ -544,6 +544,7 @@ MonoBehaviour:
   WorldCanvas: {fileID: 2107973288}
   enableSlider: 0
   fillSpeed: 0.2
+  hackingObject: {fileID: 0}
 --- !u!114 &682519927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -639,9 +640,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.05
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -782,6 +783,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RightSpeaker
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769937615131828288, guid: 049dbc8cd80154243b0b41c4354c529e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8769937615131828291, guid: 049dbc8cd80154243b0b41c4354c529e,
         type: 3}
@@ -1094,6 +1100,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f68bfbb6cffa9404dbb58e5605ebcc8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lights: []
+  narratorSystem: {fileID: 1760182705}
+  FirstDoor: {fileID: 1778046141}
+  alarm: {fileID: 0}
 --- !u!4 &1270483841
 Transform:
   m_ObjectHideFlags: 0
@@ -1293,6 +1303,18 @@ MonoBehaviour:
       put it in the disk reader in the labratories kitchen
   soundSystem: {fileID: 2128294779}
   subtitle: {fileID: 328789932}
+--- !u!114 &1778046141 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1509993729923615477, guid: b7ccf347760ab71468d8b3f4f1a43760,
+    type: 3}
+  m_PrefabInstance: {fileID: 1509993729857038010}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 491c9b0e6a852c448b46b9bfdfa5a674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!850595691 &1808917391
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1587,15 +1609,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _narratorSources:
-  - {fileID: 717966277588209147}
-  - {fileID: 717966277588209146}
-  - {fileID: 8469560146684848805}
-  - {fileID: 8469560146684848804}
-  - {fileID: 8469560146684848803}
   - {fileID: 377608985}
+  _alarmSources: []
   _musicSource: {fileID: 920423378}
   _soundSource: {fileID: 8284088235222279635, guid: 79762b64087edd7438e5d3888f934ad1,
     type: 3}
+  mainTheme: {fileID: 8300000, guid: 5526fb13eb66ccc4e86de9898e590273, type: 3}
 --- !u!1001 &717966277588209144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1668,23 +1687,21 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1424416816}
+    - target: {fileID: 5247100027111248515, guid: 342c5db34ee565242870d3e937143164,
+        type: 3}
+      propertyPath: m_TagString
+      value: NarratorSource
+      objectReference: {fileID: 0}
+    - target: {fileID: 8089495504583046555, guid: 342c5db34ee565242870d3e937143164,
+        type: 3}
+      propertyPath: m_TagString
+      value: NarratorSource
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 342c5db34ee565242870d3e937143164, type: 3}
 --- !u!4 &717966277588209145 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 717966277744955743, guid: 342c5db34ee565242870d3e937143164,
-    type: 3}
-  m_PrefabInstance: {fileID: 717966277588209144}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &717966277588209146 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 5247100027111248514, guid: 342c5db34ee565242870d3e937143164,
-    type: 3}
-  m_PrefabInstance: {fileID: 717966277588209144}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &717966277588209147 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 6867337080284815471, guid: 342c5db34ee565242870d3e937143164,
     type: 3}
   m_PrefabInstance: {fileID: 717966277588209144}
   m_PrefabAsset: {fileID: 0}
@@ -1700,6 +1717,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1424416816}
+    - target: {fileID: 1509993729923615477, guid: b7ccf347760ab71468d8b3f4f1a43760,
+        type: 3}
+      propertyPath: activationState
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1509993729929532378, guid: b7ccf347760ab71468d8b3f4f1a43760,
         type: 3}
       propertyPath: m_RootOrder
@@ -1760,6 +1782,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room
       objectReference: {fileID: 0}
+    - target: {fileID: 1509993731013465011, guid: b7ccf347760ab71468d8b3f4f1a43760,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509993731013465011, guid: b7ccf347760ab71468d8b3f4f1a43760,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509993731013465011, guid: b7ccf347760ab71468d8b3f4f1a43760,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1509993731780411517, guid: b7ccf347760ab71468d8b3f4f1a43760,
         type: 3}
       propertyPath: m_Camera
@@ -1790,6 +1827,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 529263304}
     m_Modifications:
+    - target: {fileID: 881860963033025864, guid: 8563fe05d9f5f92409d9368ce586cbf7,
+        type: 3}
+      propertyPath: m_TagString
+      value: NarratorSource
+      objectReference: {fileID: 0}
     - target: {fileID: 8469560145792894990, guid: 8563fe05d9f5f92409d9368ce586cbf7,
         type: 3}
       propertyPath: m_Name
@@ -1860,6 +1902,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8469560146208819465, guid: 8563fe05d9f5f92409d9368ce586cbf7,
+        type: 3}
+      propertyPath: m_TagString
+      value: NarratorSource
+      objectReference: {fileID: 0}
     - target: {fileID: 8469560146326462682, guid: 8563fe05d9f5f92409d9368ce586cbf7,
         type: 3}
       propertyPath: player
@@ -1875,29 +1922,16 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1424416816}
+    - target: {fileID: 8469560146728596736, guid: 8563fe05d9f5f92409d9368ce586cbf7,
+        type: 3}
+      propertyPath: m_TagString
+      value: NarratorSource
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8563fe05d9f5f92409d9368ce586cbf7, type: 3}
 --- !u!4 &8469560146684848802 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8469560145792894993, guid: 8563fe05d9f5f92409d9368ce586cbf7,
-    type: 3}
-  m_PrefabInstance: {fileID: 8469560146684848801}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &8469560146684848803 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 6523441974725583092, guid: 8563fe05d9f5f92409d9368ce586cbf7,
-    type: 3}
-  m_PrefabInstance: {fileID: 8469560146684848801}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &8469560146684848804 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 8469560146208819464, guid: 8563fe05d9f5f92409d9368ce586cbf7,
-    type: 3}
-  m_PrefabInstance: {fileID: 8469560146684848801}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &8469560146684848805 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2536362365598439612, guid: 8563fe05d9f5f92409d9368ce586cbf7,
     type: 3}
   m_PrefabInstance: {fileID: 8469560146684848801}
   m_PrefabAsset: {fileID: 0}

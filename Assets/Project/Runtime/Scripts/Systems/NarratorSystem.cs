@@ -35,12 +35,6 @@ public class NarratorSystem : MonoBehaviour
     private float timer = 0;
     private bool sayingLine = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        SayVoiceLine(voiceLines[0]);
-    }
-
     void Update()
     {
         if (sayingLine == true)

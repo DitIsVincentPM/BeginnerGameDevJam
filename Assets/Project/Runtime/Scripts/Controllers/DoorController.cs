@@ -15,7 +15,7 @@ public class DoorController : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField]
-    DoorActivation activationState;
+    public DoorActivation activationState;
 
     [SerializeField]
     Animator animator;

@@ -4,10 +4,7 @@ public class LichtFlasher : MonoBehaviour
 {
     private Light _light;
     private float _elapsedTime;
-    private bool _isRed;
-    private Color _startColor;
-    private Color _endColor;
-
+    private bool _isPulse;
     public Light lights;
     public Color startColor = new Color(0.78f,0.1945087f,0.1993889f);
     public Color endColor = Color.red;
@@ -17,9 +14,7 @@ public class LichtFlasher : MonoBehaviour
     {
         _light = lights;
         _elapsedTime = 0f;
-        _isRed = false;
-        _startColor = startColor;
-        _endColor = endColor;
+        _isPulse = false;
     }
 
     void Update()
@@ -29,18 +24,18 @@ public class LichtFlasher : MonoBehaviour
 
         if (t > 1f)
         {
-            _isRed = !_isRed;
+            _isPulse = !_isPulse;
             _elapsedTime = 0f;
             t = 0f;
         }
 
-        if (_isRed)
+        if (_isPulse)
         {
-            _light.color = Color.Lerp(_startColor, _endColor, t);
+            _light.color = Color.Lerp(startColor, endColor, t);
         }
         else
         {
-            _light.color = Color.Lerp(_endColor, _startColor, t);
+            _light.color = Color.Lerp(endColor, startColor, t);
         }
     }
 }
