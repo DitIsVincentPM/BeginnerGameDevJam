@@ -7,7 +7,7 @@ public class LookAtCamera : MonoBehaviour
     private Transform _target;
     private void Start() 
     {
-        _target = GameObject.FindWithTag("Player").transform;
+        _target = GameObject.FindWithTag("MainCamera").transform;
     }
     void Update()
     {

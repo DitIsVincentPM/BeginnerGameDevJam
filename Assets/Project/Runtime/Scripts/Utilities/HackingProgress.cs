@@ -7,6 +7,7 @@ public class HackingProgress : MonoBehaviour
 {
 
     public Slider slider;
+    public GameObject WorldCanvas;
     public bool enableSlider = false;
 
     private float targetProgress = 0;
@@ -30,6 +31,7 @@ public class HackingProgress : MonoBehaviour
             if(slider.value == 1)
             {
                 slider.gameObject.SetActive(false);
+                WorldCanvas.gameObject.SetActive(false);
                 
                 //hier code om abilty te krijgen
             }

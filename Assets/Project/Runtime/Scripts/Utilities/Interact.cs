@@ -18,7 +18,6 @@ public class Interact : MonoBehaviour
     private void Start()
     {
         _camera = Camera.main;
-        _hackingProgress = GameObject.FindGameObjectWithTag("HackingProgress").GetComponent<HackingProgress>();
     }
 
     private void Awake() {
@@ -35,7 +34,7 @@ public class Interact : MonoBehaviour
         _interactText.enabled = Physics.Raycast(ray, out hit, _raycastDistance, _layerMask);    
 
         //opent slider en activeert die
-        if(Input.GetKeyDown(KeyCode.E) && Physics.Raycast(ray, out hit, _raycastDistance, _layerMask))
+        if(Input.GetKeyDown(KeyCode.E) && Physics.Raycast(ray, out hit, _raycastDistance, _layerMask) && _hackingProgress.WorldCanvas.gameObject.activeSelf)
         {
             _hackingProgress.slider.gameObject.SetActive(true);
             _hackingProgress.enableSlider = true;
