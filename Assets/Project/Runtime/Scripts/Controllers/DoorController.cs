@@ -23,6 +23,9 @@ public class DoorController : MonoBehaviour
     [SerializeField]
     GameObject player;
 
+    [SerializeField]
+    AudioClip opencloseSound;
+
     [Header("Proximity")]
     [SerializeField]
     float proximityDistance = 5f;
@@ -38,10 +41,28 @@ public class DoorController : MonoBehaviour
                     <= proximityDistance
                 )
                 {
+                    if (animator.GetBool("doorOpen") == false)
+                    {
+                        SoundSystem.singleton.PlaySound(
+                            opencloseSound,
+                            gameObject.transform.position,
+                            0.5f
+                        );
+                    }
                     animator.SetBool("doorOpen", true);
                 }
                 else
+                {
+                    if (animator.GetBool("doorOpen") == true)
+                    {
+                        SoundSystem.singleton.PlaySound(
+                            opencloseSound,
+                            gameObject.transform.position,
+                            0.5f
+                        );
+                    }
                     animator.SetBool("doorOpen", false);
+                }
                 break;
             case DoorActivation.None:
                 break;
