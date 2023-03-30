@@ -36,7 +36,7 @@ public class HackingProgress : MonoBehaviour
                 WorldCanvas.gameObject.SetActive(false);
                 if (hackingObject != null)
                 {
-                    GameplayHandler.CompleteHack(hackingObject);
+                    GameplayHandler.singleton.CompleteHack(hackingObject);
                 }
             }
 
