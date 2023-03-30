@@ -31,7 +31,7 @@ public abstract class EnemyBaseState
         }
     }
 
-    private void SwitchState(EnemyBaseState newState)
+    public void SwitchState(EnemyBaseState newState)
     {
         ExitState();
         newState.EnterState();
@@ -46,12 +46,12 @@ public abstract class EnemyBaseState
         }
     }
 
-    private void SetSuperState(EnemyBaseState newSuperState)
+    public void SetSuperState(EnemyBaseState newSuperState)
     {
         _currentSuperState = newSuperState;
     }
 
-    private void SetSubState(EnemyBaseState newSubState)
+    public void SetSubState(EnemyBaseState newSubState)
     {
         _currentSubState = newSubState;
         newSubState.SetSuperState(this);

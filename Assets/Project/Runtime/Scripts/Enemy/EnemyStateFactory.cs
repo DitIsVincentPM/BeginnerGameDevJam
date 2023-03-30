@@ -9,18 +9,18 @@ public class EnemyStateFactory
         _context = currentContext;
     }
 
-    public EnemyBaseState Idle()
+    public EnemyBaseState Patrolling()
     {
-        return new EnemyIdleState(_context, this);
+        return new EnemyPatrollingState(_context, this);
     }
 
-    public EnemyBaseState Walk()
+    public EnemyBaseState Chase()
     {
-        return new EnemyWalkState(_context, this);
+        return new EnemyChaseState(_context, this);
     }
 
-    public EnemyBaseState Grounded()
+    public EnemyBaseState Attack()
     {
-        return new EnemyGroundedState(_context, this);
+        return new EnemyAttackState(_context, this);
     }
 }
