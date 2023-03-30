@@ -38,6 +38,7 @@ public class Interact : MonoBehaviour
         {
             _hackingProgress.slider.gameObject.SetActive(true);
             _hackingProgress.enableSlider = true;
+            _hackingProgress.hackingObject = hit.collider.gameObject;
         }
     }
 }

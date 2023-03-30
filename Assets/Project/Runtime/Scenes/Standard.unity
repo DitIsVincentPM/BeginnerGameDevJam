@@ -231,7 +231,7 @@ PrefabInstance:
     - target: {fileID: 55405220201267502, guid: 2a93a6bafc74f8c438b8f4915dedf6e7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 55405220201267502, guid: 2a93a6bafc74f8c438b8f4915dedf6e7,
         type: 3}
@@ -385,7 +385,7 @@ Transform:
   - {fileID: 717966277588209145}
   - {fileID: 8469560146684848802}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &618667827
 GameObject:
@@ -481,7 +481,7 @@ RectTransform:
   m_Children:
   - {fileID: 682519925}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1014,7 +1014,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1160234425
 GameObject:
@@ -1064,6 +1064,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1270483839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1270483841}
+  - component: {fileID: 1270483840}
+  m_Layer: 0
+  m_Name: GameplayHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1270483840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270483839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f68bfbb6cffa9404dbb58e5605ebcc8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1270483841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270483839}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.1932693, y: -6.4803615, z: -55.548424}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1370111659
 GameObject:
@@ -1241,9 +1285,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   voiceLines:
-  - audio: {fileID: 8300000, guid: 4c6bb19534e98c643b643e3c9875b500, type: 3}
-    text: It seems that the door is closed hack the computer to open the door. Go
+  - audio: {fileID: 8300000, guid: c0f871e6444d12e4b8587e09954267dc, type: 3}
+    text: It seems that the door is closed, hack the computer to open the door. Go
       to the computer and click E to hack it.
+  - audio: {fileID: 8300000, guid: 7d22e26682305634b9265538cff024ae, type: 3}
+    text: You done it! The door has opened try to find the disk in the servers and
+      put it in the disk reader in the labratories kitchen
   soundSystem: {fileID: 2128294779}
   subtitle: {fileID: 328789932}
 --- !u!850595691 &1808917391
@@ -1352,7 +1399,7 @@ Transform:
   - {fileID: 2128294778}
   - {fileID: 1760182704}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1946907747
 PrefabInstance:
