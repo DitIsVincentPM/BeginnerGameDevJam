@@ -43,9 +43,9 @@ GameObject:
   m_Component:
   - component: {fileID: 961739753}
   - component: {fileID: 961739752}
-  - component: {fileID: 961739751}
   - component: {fileID: 961739750}
   - component: {fileID: 961739754}
+  - component: {fileID: 7913036581431718436}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -111,14 +111,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &961739751
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961739749}
-  m_Enabled: 1
 --- !u!114 &961739750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +145,54 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
 --- !u!114 &961739754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961739749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e62313fb35a5740a292d175678eea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.0013275146
+      value: 1.0070801
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.59728795
+      value: 0.7808771
+      inSlope: -1.2051786
+      outSlope: -1.2051786
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.99702466
+      value: 0.0017095208
+      inSlope: -1.2966009
+      outSlope: -1.2966009
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.09534411
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  duration: 0.6
+  distance: 2
+  inEffect: 0
+--- !u!114 &7913036581431718436
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -252,7 +292,7 @@ MonoBehaviour:
     Thickness: 0.2
     CollisionMask:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 8
   PitchLimits:
     Minimum: -60
     Maximum: 20
@@ -1425,6 +1465,7 @@ GameObject:
   - component: {fileID: 919132147712814174}
   - component: {fileID: 919132147712814176}
   - component: {fileID: 919132147712814175}
+  - component: {fileID: 3526423805934387954}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1491,7 +1532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f042b0df4c8120e4e99cfd1922c6c7b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camEffects: {fileID: 961739754}
+  camEffects: {fileID: 7913036581431718436}
   animationController: {fileID: 8160277321398455026}
   groundParticle: {fileID: 6531370370853945849, guid: c72ee35d8b345ca4a8059c70b48b5d34,
     type: 3}
@@ -1504,6 +1545,14 @@ MonoBehaviour:
   friction: 0.175
   slideFriction: 0.2
   jumpForce: 300
+--- !u!81 &3526423805934387954
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8289524372157120493}
+  m_Enabled: 1
 --- !u!1 &8313353104293325711
 GameObject:
   m_ObjectHideFlags: 0
