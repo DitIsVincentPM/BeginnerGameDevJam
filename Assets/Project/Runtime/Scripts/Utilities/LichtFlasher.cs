@@ -8,15 +8,18 @@ public class LichtFlasher : MonoBehaviour
     private Color _startColor;
     private Color _endColor;
 
+    public Light lights;
+    public Color startColor = new Color(0.78f,0.1945087f,0.1993889f);
+    public Color endColor = Color.red;
     public float FlashDuration = 2f;
 
     void Start()
     {
-        _light = GetComponent<Light>();
+        _light = lights;
         _elapsedTime = 0f;
         _isRed = false;
-        _startColor = new Color(0.78f,0.1945087f,0.1993889f);
-        _endColor = Color.red;
+        _startColor = startColor;
+        _endColor = endColor;
     }
 
     void Update()

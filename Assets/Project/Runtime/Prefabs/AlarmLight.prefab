@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d773bfc140208ed4b87e34ade26908a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lights: {fileID: 0}
   FlashDuration: 0.5
 --- !u!1 &4731943118066789612
 GameObject:

@@ -14,9 +14,7 @@ public class MovementController : MonoBehaviour
     public Transform playerCam;
     public Transform orientation;
     BoxCollider feet;
-
-    //Rotation and look
-    float xRotation = 0;
+    
     const float sensitivity = 50f;
 
     //Movement
