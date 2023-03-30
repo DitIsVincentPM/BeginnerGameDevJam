@@ -40,6 +40,7 @@ public class GameplayHandler : MonoBehaviour
         {
             light.endColor = new Color(1, 1, 1);
             light.startColor = new Color(1, 1, 1);
+            light.transform.GetComponentInChildren<Light>().intensity = 12;
         }
         SoundSystem.singleton.StopAlarm();
     }
@@ -50,6 +51,7 @@ public class GameplayHandler : MonoBehaviour
         {
             light.endColor = Color.red;
             light.startColor = new Color(0.78f, 0.1945087f, 0.1993889f);
+            light.transform.GetComponentInChildren<Light>().intensity = 25;
         }
         SoundSystem.singleton.PlayAlarm(alarm, 0.1f);
     }

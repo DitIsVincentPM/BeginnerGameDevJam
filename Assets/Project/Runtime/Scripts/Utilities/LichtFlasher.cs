@@ -19,6 +19,7 @@ public class LichtFlasher : MonoBehaviour
 
     void Update()
     {
+        if(startColor == endColor) return;
         _elapsedTime += Time.deltaTime;
         float t = _elapsedTime / FlashDuration;
 
