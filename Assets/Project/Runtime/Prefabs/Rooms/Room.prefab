@@ -87,7 +87,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1509993731780411519}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -386,8 +386,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1404606525215423177}
   - {fileID: 1509993730635610509}
+  - {fileID: 1404606525215423177}
   m_Father: {fileID: 1509993729929532378}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1344,6 +1344,7 @@ MonoBehaviour:
   activationState: 0
   animator: {fileID: 1509993729923615476}
   player: {fileID: 0}
+  opencloseSound: {fileID: 0}
   proximityDistance: 5
 --- !u!1 &2267827119950674069 stripped
 GameObject:
@@ -2636,7 +2637,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 9e11e0caaffbd804896b3ed5478b80ef,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9e11e0caaffbd804896b3ed5478b80ef,
         type: 3}
