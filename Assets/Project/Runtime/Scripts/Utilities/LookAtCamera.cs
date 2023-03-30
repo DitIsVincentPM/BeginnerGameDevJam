@@ -11,6 +11,9 @@ public class LookAtCamera : MonoBehaviour
     }
     void Update()
     {
-        transform.rotation = Quaternion.LookRotation(transform.position - _target.position);
+        Vector3 relativePos = _target.position - transform.position;
+        Quaternion LookAtRotation = Quaternion.LookRotation(relativePos);
+        Quaternion LookAtRotationOnly_Y = Quaternion.Euler(transform.rotation.eulerAngles.x, LookAtRotation.eulerAngles.y - 180, transform.rotation.eulerAngles.z);
+        transform.rotation = LookAtRotationOnly_Y;
     }
 }
