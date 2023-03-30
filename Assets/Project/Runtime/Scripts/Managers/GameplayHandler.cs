@@ -6,6 +6,10 @@ public class GameplayHandler : MonoBehaviour
 {
     public static new GameplayHandler singleton { get; set; }
 
+    [Header("Game Value's")]
+    [SerializeField]
+    int currentPuzzle = 0;
+
     [Header("Imports")]
     [SerializeField]
     private List<LichtFlasher> _lights;
@@ -19,6 +23,9 @@ public class GameplayHandler : MonoBehaviour
     [SerializeField]
     private AudioClip alarm;
 
+    [SerializeField]
+    RaycastController raycastController;
+
     void Awake()
     {
         singleton = this;
@@ -26,12 +33,37 @@ public class GameplayHandler : MonoBehaviour
 
     void Start()
     {
+
+        // Give disk to random Server
+        int randomnumber = Random.Range(0, GameObject.FindGameObjectsWithTag("Server").Length);
+        GameObject.FindGameObjectsWithTag("Server")[randomnumber].AddComponent<ServerDiskHandler>();
+
         foreach (GameObject source in GameObject.FindGameObjectsWithTag("AlarmSource"))
         {
             _lights.Add(source.transform.GetComponentInChildren<LichtFlasher>());
         }
         DisarmAlarm();
         narratorSystem.SayVoiceLine(narratorSystem.voiceLines[0]);
+    }
+
+    void Update()
+    {
+        if (currentPuzzle == 1)
+        {
+            RaycastHit hit = raycastController.GetRaycastHit(
+                10f,
+                LayerMask.NameToLayer("Interact")
+            );
+            if (hit.collider.gameObject.tag == "Server")
+            {
+                if (hit.collider.gameObject.GetComponent<ServerDiskHandler>() != null) { 
+                    // Insert UI Downloading Progress
+                }
+                else { 
+                    // Downloading Progress
+                }
+            }
+        }
     }
 
     public void DisarmAlarm()
@@ -64,6 +96,7 @@ public class GameplayHandler : MonoBehaviour
                 narratorSystem.SayVoiceLine(narratorSystem.voiceLines[1]);
                 FirstDoor.activationState = DoorController.DoorActivation.Proximity;
                 ArmAlarm();
+                currentPuzzle = 1;
                 break;
         }
     }
