@@ -33,6 +33,8 @@ public class Interact : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * _raycastDistance);
 
         _interactText.enabled = Physics.Raycast(ray, out hit, _raycastDistance, _layerMask);    
+
+        //opent slider en activeert die
         if(Input.GetKeyDown(KeyCode.E) && Physics.Raycast(ray, out hit, _raycastDistance, _layerMask))
         {
             _hackingProgress.slider.gameObject.SetActive(true);
