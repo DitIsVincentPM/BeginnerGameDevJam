@@ -4,8 +4,8 @@ using System.Collections.Generic;
 public class SoundSystem : MonoBehaviour
 {
     [SerializeField] private List<AudioSource> _narratorSources;
-    [SerializeField] private AudioSource _soundsSource;
     [SerializeField] private AudioSource _musicSource;
+    [SerializeField] private AudioSource _soundSource;
 
     private void Start()
     {
@@ -17,13 +17,9 @@ public class SoundSystem : MonoBehaviour
 
     public void PlaySound(AudioClip clip, Vector3 position, float volume = 1)
     {
-        _soundsSource.transform.position = position;
-        PlaySound(clip, volume);
-    }
-
-    public void PlaySound(AudioClip clip, float volume = 1)
-    {
-        _soundsSource.PlayOneShot(clip, volume);
+        AudioSource audioSource = Instantiate(_soundSource);
+        audioSource.transform.position = position;
+        audioSource.PlayOneShot(clip, volume);
     }
 
     public void PlayNarrator(AudioClip clip, float volume = 1)
