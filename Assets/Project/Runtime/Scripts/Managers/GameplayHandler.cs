@@ -54,6 +54,8 @@ public class GameplayHandler : MonoBehaviour
                 10f,
                 LayerMask.NameToLayer("Interact")
             );
+            if(hit.collider == null) return;
+
             if (hit.collider.gameObject.tag == "Server")
             {
                 if (hit.collider.gameObject.GetComponent<ServerDiskHandler>() != null) { 

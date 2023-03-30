@@ -14,6 +14,7 @@ public class HackingProgress : MonoBehaviour
     [SerializeField]
     private float fillSpeed = 0.2f;
     public GameObject hackingObject;
+    bool sendNotification;
 
     private void Awake()
     {
@@ -25,6 +26,10 @@ public class HackingProgress : MonoBehaviour
     {
         if (enableSlider == true)
         {
+            if(sendNotification == false) {
+                NotificationSystem.singleton.Notification(NotificationSystem.NotificationType.Download);
+                sendNotification = true;
+            }
             if (slider.value <= targetProgress)
             {
                 slider.value += fillSpeed * Time.deltaTime;
@@ -37,6 +42,8 @@ public class HackingProgress : MonoBehaviour
                 if (hackingObject != null)
                 {
                     GameplayHandler.singleton.CompleteHack(hackingObject);
+                    NotificationSystem.singleton.NotificationCallback(NotificationSystem.NotificationType.Download);
+                    sendNotification = false;
                 }
             }
 
