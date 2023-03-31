@@ -109,6 +109,7 @@ public class GameplayHandler : MonoBehaviour
                         NotificationSystem.singleton.Notification(
                             NotificationSystem.NotificationType.Download, "Disk Content"
                         );
+                        GameObject.FindObjectOfType<PlayerController>().inInventory.Add("Disk");
                     }
                     else
                     {
