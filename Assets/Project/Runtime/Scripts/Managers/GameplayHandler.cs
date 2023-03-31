@@ -42,6 +42,7 @@ public class GameplayHandler : MonoBehaviour
 
     [Header("Storage")]
     public GameObject CDReader;
+
     private RaycastHit oldRaycast = default(RaycastHit);
     private float timer;
     private float timerTime;
@@ -128,6 +129,7 @@ public class GameplayHandler : MonoBehaviour
     {
         foreach (LichtFlasher light in _lights)
         {
+            light.GetComponentInChildren<Light>().color = new Color(1,1,1);
             light.endColor = new Color(1, 1, 1);
             light.startColor = new Color(1, 1, 1);
             light.transform.GetComponentInChildren<Light>().intensity = 12;

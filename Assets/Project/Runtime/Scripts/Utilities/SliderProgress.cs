@@ -15,6 +15,8 @@ public class SliderProgress : MonoBehaviour
     [Header("Sound Clips")]
     [SerializeField]
     private AudioClip hackingSound;
+    [SerializeField]
+    private AudioClip uploadSound;
 
     public void SetProgress(GameObject objects, int target)
     {
@@ -25,6 +27,7 @@ public class SliderProgress : MonoBehaviour
     public void StartHacking(GameObject objects)
     {
         SetProgress(objects, 1);
+        Interact.singleton.SetInteractable("Monitor", false);
         NotificationSystem.singleton.Notification(NotificationSystem.NotificationType.Hacking);
         SoundSystem.singleton.PlaySound(
             hackingSound,
@@ -49,8 +52,28 @@ public class SliderProgress : MonoBehaviour
         NarratorSystem.singleton.SayVoiceLine(NarratorSystem.singleton.voiceLines[2]);
         GameplayHandler.singleton.CDReader.GetComponent<Outline>().enabled = true;
         GameObject.FindObjectOfType<PlayerController>().inInventory.Add("Disk");
+        Interact.singleton.SetInteractable("CDReader", true);
         GameplayHandler.singleton.currentPuzzle = 2;
         targetProgress = 0;
+    }
+
+    public void UploadedDisk()
+    {
+        NarratorSystem.singleton.SayVoiceLine(NarratorSystem.singleton.voiceLines[3]);
+        GameplayHandler.singleton.DisarmAlarm();
+        NotificationSystem.singleton.NotificationCallback(NotificationSystem.NotificationType.Upload);
+        targetProgress = 0;
+    }
+
+    public void StartDiskUpload(GameObject objects) {
+        SetProgress(objects, 1);
+        Interact.singleton.SetInteractable("CDReader", false);
+        GameplayHandler.singleton.CDReader.GetComponent<Outline>().enabled = false;
+        NotificationSystem.singleton.Notification(NotificationSystem.NotificationType.Upload, "Disk Content");
+        SoundSystem.singleton.PlaySound(
+            uploadSound,
+            objects.transform.position
+        );
     }
 
     void Update()
@@ -72,6 +95,9 @@ public class SliderProgress : MonoBehaviour
                         break;
                     case "Server":
                         DownloadingDisk();
+                        break;
+                    case "CDReader": 
+                        UploadedDisk();
                         break;
                 }
             }
