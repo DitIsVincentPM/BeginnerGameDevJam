@@ -36,7 +36,7 @@ public class EnemyAttackState : EnemyBaseState
 
         if (!Ctx.AlreadyAttacked)
         {
-            Ctx.TargetEntity.AddHealth(-Ctx.AttackDamage);
+            Ctx.Target.GetComponent<PlayerController>().DrainBattery(Ctx.AttackDamage);
 
             Ctx.AlreadyAttacked = true;
             Ctx.Invoke(nameof(Ctx.ResetAttack), Ctx.AttackCooldown);

@@ -5,21 +5,23 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("Player Value's")]
-    private float Battery = 100;
     public List<string> inInventory;
+    private Entity _playerEntity;
 
-    public float GetBattery() {
-        return Battery;
+    private void Awake()
+    {
+        _playerEntity = GetComponent<Entity>();
     }
 
-    public bool DrainBattery(float drainValue) {
-        if(Battery > drainValue) {
-            Battery -= drainValue;
+    public float GetBattery()
+    {
+        return _playerEntity.Health;
+    }
 
-            UISystem.singleton.BatterySlider.value = Battery;
-            UISystem.singleton.BatteryPrecentage.text = Mathf.RoundToInt(Battery).ToString() + "%";
-            return true;
-        }
-        return false;
+    public void DrainBattery(float drainValue)
+    {
+        _playerEntity.AddHealth(-drainValue);
+        UISystem.singleton.BatterySlider.value = GetBattery();
+        UISystem.singleton.BatteryPrecentage.text = Mathf.RoundToInt(GetBattery()).ToString() + "%";
     }
 }
