@@ -6,38 +6,91 @@ public class EnemyStateMachine : MonoBehaviour
     private EnemyBaseState _currentState;
     private EnemyStateFactory _states;
 
-    [SerializeField] private LayerMask _whatIsGround, _whatIsTarget;
-    [SerializeField] private Transform _target;
+    [SerializeField]
+    private LayerMask _whatIsGround,
+        _whatIsTarget;
+
+    [SerializeField]
+    private Transform _target;
     private Entity _enemyEntity;
     private NavMeshAgent _agent;
 
     private Vector3 _walkPoint;
     private bool _walkPointSet;
-    [SerializeField] private float _walkPointRange;
 
-    [SerializeField] private float _attackCooldown;
-    [SerializeField] private float _attackDamage;
+    [SerializeField]
+    private float _walkPointRange;
+
+    [SerializeField]
+    private float _attackCooldown;
+
+    [SerializeField]
+    private float _attackDamage;
     private bool _alreadyAttacked;
 
-    [SerializeField] private float _sightRange, _attackRange;
-    private bool _targetInSightRange, _targetInAttackRange;
+    [SerializeField]
+    private float _sightRange,
+        _attackRange;
+    private bool _targetInSightRange,
+        _targetInSphereRange,
+        _targetInAttackRange;
 
-    public Transform Target { get { return _target; } }
-    public NavMeshAgent Agent { get { return _agent; } }
-    public LayerMask WhatIsGround { get { return _whatIsGround; } }
+    public Transform Target
+    {
+        get { return _target; }
+    }
+    public NavMeshAgent Agent
+    {
+        get { return _agent; }
+    }
+    public LayerMask WhatIsGround
+    {
+        get { return _whatIsGround; }
+    }
 
-    public Vector3 WalkPoint { get { return _walkPoint; } set { _walkPoint = value; } }
-    public bool WalkPointSet { get { return _walkPointSet; } set { _walkPointSet = value; } }
-    public float WalkPointRange { get { return _walkPointRange; } }
+    public Vector3 WalkPoint
+    {
+        get { return _walkPoint; }
+        set { _walkPoint = value; }
+    }
+    public bool WalkPointSet
+    {
+        get { return _walkPointSet; }
+        set { _walkPointSet = value; }
+    }
+    public float WalkPointRange
+    {
+        get { return _walkPointRange; }
+    }
 
-    public bool TargetInSightRange { get { return _targetInSightRange; } }
-    public bool TargetInAttackRange { get { return _targetInAttackRange; } }
+    public bool TargetInSightRange
+    {
+        get { return _targetInSightRange; }
+    }
+    public bool TargetInAttackRange
+    {
+        get { return _targetInAttackRange; }
+    }
 
-    public float AttackCooldown { get { return _attackCooldown; } }
-    public float AttackDamage { get { return _attackDamage; } }
-    public bool AlreadyAttacked { get { return _alreadyAttacked; } set { _alreadyAttacked = value; } }
+    public float AttackCooldown
+    {
+        get { return _attackCooldown; }
+    }
+    public float AttackDamage
+    {
+        get { return _attackDamage; }
+    }
+    public bool AlreadyAttacked
+    {
+        get { return _alreadyAttacked; }
+        set { _alreadyAttacked = value; }
+    }
 
-    public EnemyBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
+    public EnemyBaseState CurrentState
+    {
+        get { return _currentState; }
+        set { _currentState = value; }
+    }
 
     private void Awake()
     {
@@ -56,7 +109,40 @@ public class EnemyStateMachine : MonoBehaviour
 
     private void Update()
     {
-        _targetInSightRange = Physics.CheckSphere(transform.position, _sightRange, _whatIsTarget);
+        _targetInSphereRange = Physics.CheckSphere(transform.position, _sightRange, _whatIsTarget);
+
+        if (_targetInSphereRange)
+        {
+            // Check if player is visible (i.e., not obstructed by a wall)
+            RaycastHit hit;
+            Ray raycast = new Ray(
+                transform.position + new Vector3(0, 2, 0),
+                _target.position - transform.position
+            );
+            Debug.DrawRay(raycast.origin, raycast.direction * _sightRange, new Color(1, 0, 0));
+
+            if (Physics.Raycast(raycast, out hit, _sightRange))
+            {
+                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Player"))
+                {
+                    _targetInSightRange = true;
+                }
+                else
+                {
+                    _targetInSightRange = false;
+                }
+            }
+            else
+            {
+                _targetInSightRange = false;
+            }
+        }
+        else
+        {
+            _targetInSightRange = false;
+        }
+
+        Debug.Log(_targetInSightRange);
         _targetInAttackRange = Physics.CheckSphere(transform.position, _attackRange, _whatIsTarget);
         _currentState.UpdateState();
     }
