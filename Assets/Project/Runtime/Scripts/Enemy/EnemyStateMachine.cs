@@ -142,7 +142,6 @@ public class EnemyStateMachine : MonoBehaviour
             _targetInSightRange = false;
         }
 
-        Debug.Log(_targetInSightRange);
         _targetInAttackRange = Physics.CheckSphere(transform.position, _attackRange, _whatIsTarget);
         _currentState.UpdateState();
     }
