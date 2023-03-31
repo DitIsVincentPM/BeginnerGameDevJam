@@ -33,6 +33,13 @@ public class EnemyAttackState : EnemyBaseState
     {
         CheckSwitchStates();
         Ctx.Agent.SetDestination(Ctx.transform.position);
-        Ctx.transform.LookAt(Ctx.Target);
+
+        if (!Ctx.AlreadyAttacked)
+        {
+            Ctx.TargetEntity.AddHealth(-Ctx.AttackDamage);
+
+            Ctx.AlreadyAttacked = true;
+            Ctx.Invoke(nameof(Ctx.ResetAttack), Ctx.AttackCooldown);
+        }
     }
 }
