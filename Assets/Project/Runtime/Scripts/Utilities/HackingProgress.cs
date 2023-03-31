@@ -26,8 +26,11 @@ public class HackingProgress : MonoBehaviour
     {
         if (enableSlider == true)
         {
-            if(sendNotification == false) {
-                NotificationSystem.singleton.Notification(NotificationSystem.NotificationType.Download);
+            if (sendNotification == false)
+            {
+                NotificationSystem.singleton.Notification(
+                    NotificationSystem.NotificationType.Hacking
+                );
                 sendNotification = true;
             }
             if (slider.value <= targetProgress)
@@ -37,12 +40,14 @@ public class HackingProgress : MonoBehaviour
 
             if (slider.value == 1)
             {
-                slider.gameObject.SetActive(false);
                 WorldCanvas.gameObject.SetActive(false);
                 if (hackingObject != null)
                 {
                     GameplayHandler.singleton.CompleteHack(hackingObject);
-                    NotificationSystem.singleton.NotificationCallback(NotificationSystem.NotificationType.Download);
+                    NotificationSystem.singleton.NotificationCallback(
+                        NotificationSystem.NotificationType.Hacking
+                    );
+                    slider.gameObject.SetActive(false);
                     sendNotification = false;
                 }
             }

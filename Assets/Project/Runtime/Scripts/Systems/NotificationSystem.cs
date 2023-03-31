@@ -9,6 +9,7 @@ public class NotificationSystem : MonoBehaviour
 
     public enum NotificationType
     {
+        Hacking,
         Upload,
         Download,
         FileNotFound,
@@ -25,7 +26,8 @@ public class NotificationSystem : MonoBehaviour
     Animator animation;
     AnimationClip notificationDone;
 
-    void Awake() {
+    void Awake()
+    {
         singleton = this;
     }
 
@@ -33,6 +35,10 @@ public class NotificationSystem : MonoBehaviour
     {
         switch (type)
         {
+            case NotificationType.Hacking:
+                uploadDownload.GetComponentInChildren<TMP_Text>().text = "Hacking";
+                animation.SetFloat("notification", 1);
+                break;
             case NotificationType.Download:
                 uploadDownload.GetComponentInChildren<TMP_Text>().text = "Downloading";
                 animation.SetFloat("notification", 1);
@@ -56,6 +62,9 @@ public class NotificationSystem : MonoBehaviour
     {
         switch (type)
         {
+            case NotificationType.Hacking:
+                animation.SetFloat("notification", 0);
+                break;
             case NotificationType.Download:
                 animation.SetFloat("notification", 0);
                 break;
