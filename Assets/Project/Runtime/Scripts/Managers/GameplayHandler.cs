@@ -36,6 +36,10 @@ public class GameplayHandler : MonoBehaviour
     [SerializeField]
     private Material outlineMask;
 
+    [Header("Sound Effects")]
+    [SerializeField]
+    private AudioClip failSound;
+
     [Header("Storage")]
     [SerializeField]
     private RaycastHit oldRaycast = default(RaycastHit);
@@ -71,7 +75,9 @@ public class GameplayHandler : MonoBehaviour
         }
         if (timer > timerTime)
         {
-            if (oldRaycast.collider != null) if (oldRaycast.collider.gameObject.GetComponent<Outline>() != null) oldRaycast.collider.gameObject.GetComponent<Outline>().enabled = false;
+            if (oldRaycast.collider != null)
+                if (oldRaycast.collider.gameObject.GetComponent<Outline>() != null)
+                    oldRaycast.collider.gameObject.GetComponent<Outline>().enabled = false;
             timerTime = 0;
             timer = 0;
         }
@@ -95,7 +101,25 @@ public class GameplayHandler : MonoBehaviour
                     var outline = hit.collider.gameObject.GetComponent<Outline>();
                     outline.enabled = true;
                 }
-                if (hit.collider.gameObject.GetComponent<ServerDiskHandler>() != null) { }
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    if (hit.collider.gameObject.GetComponent<ServerDiskHandler>() != null)
+                    {
+                        NotificationSystem.singleton.uploadDownload.transform.GetChild(0).GetComponent<SliderProgress>().SetProgress(hit.collider.gameObject, 1);
+                        NotificationSystem.singleton.Notification(
+                            NotificationSystem.NotificationType.Download, "Disk Content"
+                        );
+                        GameObject.FindObjectOfType<PlayerController>().inInventory.Add("Disk");
+                    }
+                    else
+                    {
+                        SoundSystem.singleton.PlaySound(failSound, hit.collider.gameObject.transform.position, 0.3f);
+                        NotificationSystem.singleton.Notification(
+                            NotificationSystem.NotificationType.Error,
+                            " 404\r\nNo disk found in server"
+                        );
+                    }
+                }
             }
             oldRaycast = hit;
         }
