@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player Value's")]
     private float Battery = 100;
+    public List<string> inInventory;
 
     public float GetBattery() {
         return Battery;

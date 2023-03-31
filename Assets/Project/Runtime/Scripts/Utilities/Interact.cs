@@ -13,7 +13,7 @@ public class Interact : MonoBehaviour
     [SerializeField] private string textValue;
     
     [Header("ProgressBar")]
-    [SerializeField] private HackingProgress _hackingProgress;
+    [SerializeField] private SliderProgress _hackingProgress;
 
     private void Start()
     {
@@ -34,11 +34,9 @@ public class Interact : MonoBehaviour
         _interactText.enabled = Physics.Raycast(ray, out hit, _raycastDistance, _layerMask);    
 
         //opent slider en activeert die
-        if(Input.GetKeyDown(KeyCode.E) && Physics.Raycast(ray, out hit, _raycastDistance, _layerMask) && _hackingProgress.WorldCanvas.gameObject.activeSelf)
+        if(Input.GetKeyDown(KeyCode.E) && Physics.Raycast(ray, out hit, _raycastDistance, _layerMask))
         {
-            _hackingProgress.slider.gameObject.SetActive(true);
-            _hackingProgress.enableSlider = true;
-            _hackingProgress.hackingObject = hit.collider.gameObject;
+            _hackingProgress.StartHacking(hit.collider.gameObject);
         }
     }
 }

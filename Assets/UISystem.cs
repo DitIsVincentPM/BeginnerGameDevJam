@@ -11,6 +11,7 @@ public class UISystem : MonoBehaviour
     [Header("UI Elements")]
     public TMP_Text BatteryPrecentage;
     public Slider BatterySlider;
+    public Slider NotificationSlider;
 
     void Awake() {
         singleton = this;
