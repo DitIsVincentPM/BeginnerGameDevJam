@@ -105,6 +105,7 @@ public class GameplayHandler : MonoBehaviour
                 {
                     if (hit.collider.gameObject.GetComponent<ServerDiskHandler>() != null)
                     {
+                        NotificationSystem.singleton.uploadDownload.transform.GetChild(0).GetComponent<SliderProgress>().SetProgress(hit.collider.gameObject, 1);
                         NotificationSystem.singleton.Notification(
                             NotificationSystem.NotificationType.Download, "Disk Content"
                         );

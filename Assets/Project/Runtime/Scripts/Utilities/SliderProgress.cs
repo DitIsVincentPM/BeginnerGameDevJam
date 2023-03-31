@@ -10,30 +10,39 @@ public class SliderProgress : MonoBehaviour
 
     [SerializeField]
     private float fillSpeed = 0.1f;
-    public GameObject hackingObject;
+    public GameObject obj;
 
     [Header("Sound Clips")]
-
     [SerializeField]
     private AudioClip hackingSound;
 
-    public void StartHacking(GameObject obj)
+    public void SetProgress(GameObject objects, int target) {
+        obj = objects;
+        targetProgress = target;
+    }
+
+    public void StartHacking(GameObject objects)
     {
-        hackingObject = obj;
+        SetProgress(objects, 1);
         NotificationSystem.singleton.Notification(NotificationSystem.NotificationType.Hacking);
-        targetProgress = 1;
         SoundSystem.singleton.PlaySound(
             hackingSound,
             FindFirstObjectByType<PlayerController>().gameObject.transform.position
         );
     }
+
     public void StopHacking()
     {
         NotificationSystem.singleton.NotificationCallback(
             NotificationSystem.NotificationType.Hacking
         );
-        GameplayHandler.singleton.CompleteHack(hackingObject);
+        GameplayHandler.singleton.CompleteHack(obj);
         UISystem.singleton.NotificationSlider.gameObject.SetActive(false);
+    }
+
+    public void DownloadingDisk()
+    {
+        NarratorSystem.singleton.SayVoiceLine(NarratorSystem.singleton.voiceLines[2]);
     }
 
     void Update()
@@ -48,7 +57,15 @@ public class SliderProgress : MonoBehaviour
             if (UISystem.singleton.NotificationSlider.value >= 1)
             {
                 UISystem.singleton.NotificationSlider.value = 0;
-                StopHacking();
+                switch (obj.name)
+                {
+                    case "Monitor":
+                        StopHacking();
+                        break;
+                    case "Server":
+                        DownloadingDisk();
+                        break;
+                }
             }
         }
     }

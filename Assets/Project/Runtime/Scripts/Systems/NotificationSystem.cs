@@ -20,7 +20,7 @@ public class NotificationSystem : MonoBehaviour
 
     [Header("Notification Types")]
     [SerializeField]
-    GameObject uploadDownload;
+    public GameObject uploadDownload;
 
     [SerializeField]
     Animator animation;
