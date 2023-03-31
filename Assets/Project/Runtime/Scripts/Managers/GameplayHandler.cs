@@ -8,7 +8,7 @@ public class GameplayHandler : MonoBehaviour
 
     [Header("Game Value's")]
     [SerializeField]
-    int currentPuzzle = 0;
+    public int currentPuzzle = 0;
 
     [SerializeField]
     private LayerMask _layerMask;
@@ -41,7 +41,7 @@ public class GameplayHandler : MonoBehaviour
     private AudioClip failSound;
 
     [Header("Storage")]
-    [SerializeField]
+    public GameObject CDReader;
     private RaycastHit oldRaycast = default(RaycastHit);
     private float timer;
     private float timerTime;
@@ -109,7 +109,6 @@ public class GameplayHandler : MonoBehaviour
                         NotificationSystem.singleton.Notification(
                             NotificationSystem.NotificationType.Download, "Disk Content"
                         );
-                        GameObject.FindObjectOfType<PlayerController>().inInventory.Add("Disk");
                     }
                     else
                     {

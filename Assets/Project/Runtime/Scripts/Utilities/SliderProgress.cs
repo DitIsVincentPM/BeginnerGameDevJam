@@ -16,7 +16,8 @@ public class SliderProgress : MonoBehaviour
     [SerializeField]
     private AudioClip hackingSound;
 
-    public void SetProgress(GameObject objects, int target) {
+    public void SetProgress(GameObject objects, int target)
+    {
         obj = objects;
         targetProgress = target;
     }
@@ -42,7 +43,14 @@ public class SliderProgress : MonoBehaviour
 
     public void DownloadingDisk()
     {
+        NotificationSystem.singleton.NotificationCallback(
+            NotificationSystem.NotificationType.Download
+        );
         NarratorSystem.singleton.SayVoiceLine(NarratorSystem.singleton.voiceLines[2]);
+        GameplayHandler.singleton.CDReader.GetComponent<Outline>().enabled = true;
+        GameObject.FindObjectOfType<PlayerController>().inInventory.Add("Disk");
+        GameplayHandler.singleton.currentPuzzle = 2;
+        targetProgress = 0;
     }
 
     void Update()
