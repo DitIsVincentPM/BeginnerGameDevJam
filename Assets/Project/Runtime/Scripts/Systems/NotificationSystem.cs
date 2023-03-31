@@ -36,7 +36,6 @@ public class NotificationSystem : MonoBehaviour
             case NotificationType.Download:
                 uploadDownload.GetComponentInChildren<TMP_Text>().text = "Downloading";
                 animation.SetFloat("notification", 1);
-                Debug.Log("Playing Animation");
                 break;
             case NotificationType.Upload:
                 uploadDownload.GetComponentInChildren<TMP_Text>().text = "Uploading";

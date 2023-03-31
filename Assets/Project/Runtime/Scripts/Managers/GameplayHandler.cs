@@ -10,6 +10,9 @@ public class GameplayHandler : MonoBehaviour
     [SerializeField]
     int currentPuzzle = 0;
 
+    [SerializeField]
+    private LayerMask _layerMask;
+
     [Header("Imports")]
     [SerializeField]
     private List<LichtFlasher> _lights;
@@ -26,6 +29,19 @@ public class GameplayHandler : MonoBehaviour
     [SerializeField]
     RaycastController raycastController;
 
+    [Header("Materials")]
+    [SerializeField]
+    private Material outlineMat;
+
+    [SerializeField]
+    private Material outlineMask;
+
+    [Header("Storage")]
+    [SerializeField]
+    private RaycastHit oldRaycast = default(RaycastHit);
+    private float timer;
+    private float timerTime;
+
     void Awake()
     {
         singleton = this;
@@ -33,7 +49,7 @@ public class GameplayHandler : MonoBehaviour
 
     void Start()
     {
-
+        currentPuzzle = 0;
         // Give disk to random Server
         int randomnumber = Random.Range(0, GameObject.FindGameObjectsWithTag("Server").Length);
         GameObject.FindGameObjectsWithTag("Server")[randomnumber].AddComponent<ServerDiskHandler>();
@@ -48,23 +64,40 @@ public class GameplayHandler : MonoBehaviour
 
     void Update()
     {
+        // TimerSystem
+        if (timerTime != 0)
+        {
+            timer += Time.deltaTime;
+        }
+        if (timer > timerTime)
+        {
+            if (oldRaycast.collider != null) if (oldRaycast.collider.gameObject.GetComponent<Outline>() != null) oldRaycast.collider.gameObject.GetComponent<Outline>().enabled = false;
+            timerTime = 0;
+            timer = 0;
+        }
+
+        // Check Server Disk, Outline
         if (currentPuzzle == 1)
         {
-            RaycastHit hit = raycastController.GetRaycastHit(
-                10f,
-                LayerMask.NameToLayer("Interact")
-            );
-            if(hit.collider == null) return;
+            RaycastHit hit = raycastController.GetRaycastHit(10f, _layerMask);
+            if (hit.collider == null)
+                return;
+
+            if (oldRaycast.collider != null && oldRaycast.collider != hit.collider)
+                if (oldRaycast.collider.gameObject.GetComponent<Outline>() != null)
+                    oldRaycast.collider.gameObject.GetComponent<Outline>().enabled = false;
+            timerTime = 0.1f;
 
             if (hit.collider.gameObject.tag == "Server")
             {
-                if (hit.collider.gameObject.GetComponent<ServerDiskHandler>() != null) { 
-                    // Insert UI Downloading Progress
+                if (hit.collider.gameObject.GetComponent<Outline>() != null)
+                {
+                    var outline = hit.collider.gameObject.GetComponent<Outline>();
+                    outline.enabled = true;
                 }
-                else { 
-                    // Downloading Progress
-                }
+                if (hit.collider.gameObject.GetComponent<ServerDiskHandler>() != null) { }
             }
+            oldRaycast = hit;
         }
     }
 
