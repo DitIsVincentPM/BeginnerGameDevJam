@@ -3460,9 +3460,10 @@ MonoBehaviour:
   - audio: {fileID: 8300000, guid: c0f871e6444d12e4b8587e09954267dc, type: 3}
     text: It seems that the door is closed, hack the computer to open the door. Go
       to the computer and click E to hack it.
-  - audio: {fileID: 8300000, guid: 7d22e26682305634b9265538cff024ae, type: 3}
-    text: You done it! The door has opened try to find the disk in the servers and
-      put it in the disk reader in the labratories kitchen
+  - audio: {fileID: 8300000, guid: e01ca916008577244a59c0ea0adc1c52, type: 3}
+    text: You've done it! The door has opened to the main area, try to get the disk
+      content from one of the online servers and upload it to the disk reader in
+      the Labratories Kitchen.
   - audio: {fileID: 8300000, guid: 674cc97ebbcdb3841bf1b4891dfe6f2e, type: 3}
     text: You have downloaded the disk's contents, Now go to the labratory and insert
       it into the disk reader.
