@@ -8,7 +8,6 @@ public class EnemyStateMachine : MonoBehaviour
 
     [SerializeField] private LayerMask _whatIsGround, _whatIsTarget;
     [SerializeField] private Transform _target;
-    private Entity _targetEntity;
     private Entity _enemyEntity;
     private NavMeshAgent _agent;
 
@@ -24,7 +23,6 @@ public class EnemyStateMachine : MonoBehaviour
     private bool _targetInSightRange, _targetInAttackRange;
 
     public Transform Target { get { return _target; } }
-    public Entity TargetEntity { get { return _targetEntity; } }
     public NavMeshAgent Agent { get { return _agent; } }
     public LayerMask WhatIsGround { get { return _whatIsGround; } }
 
@@ -54,7 +52,6 @@ public class EnemyStateMachine : MonoBehaviour
     private void Start()
     {
         _target = GameObject.FindGameObjectWithTag("Player").transform;
-        _targetEntity = _target.gameObject.GetComponent<Entity>();
     }
 
     private void Update()
