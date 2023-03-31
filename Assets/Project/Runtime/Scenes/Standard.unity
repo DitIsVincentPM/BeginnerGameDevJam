@@ -5875,6 +5875,10 @@ PrefabInstance:
       propertyPath: intractables.Array.data[1].interactText
       value: 
       objectReference: {fileID: 75374055}
+    - target: {fileID: 1254993584, guid: b05580a507acab44d847297c9158ad09, type: 3}
+      propertyPath: PitchLimits.Maximum
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 8289524372157120493, guid: b05580a507acab44d847297c9158ad09,
         type: 3}
       propertyPath: m_Name
