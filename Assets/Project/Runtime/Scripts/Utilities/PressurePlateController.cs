@@ -3,27 +3,46 @@ using UnityEngine;
 public class PressurePlateController : MonoBehaviour
 {
     [Header("Activated Object")]
-    [SerializeField] private GameObject _objectToActivate;
-    [SerializeField] private bool _isObjectActiveOnStart = false;
+    [SerializeField]
+    private GameObject _objectToActivate;
+
+    [SerializeField]
+    private bool _isObjectActiveOnStart = false;
+
+    [Header("Animation")]
+    [SerializeField]
+    public Animator animator;
 
     private void Start()
     {
-        _objectToActivate.SetActive(_isObjectActiveOnStart);
+        if (_objectToActivate != null)
+            _objectToActivate.SetActive(_isObjectActiveOnStart);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("PressureBox"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            _objectToActivate.SetActive(true);
+            if (_objectToActivate != null)
+                _objectToActivate.SetActive(true);
+
+            animator.SetBool("pressed", true);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("PressureBox"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            _objectToActivate.SetActive(false);
+            if (_objectToActivate != null)
+                _objectToActivate.SetActive(false);
+
+            Invoke("ResetAnimation", 0.5f);
         }
+    }
+
+    private void ResetAnimation()
+    {
+        animator.SetBool("pressed", false);
     }
 }

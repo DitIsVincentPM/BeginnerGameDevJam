@@ -13,7 +13,7 @@ public class MovementController : MonoBehaviour
     //Assingables
     public Transform playerCam;
     public Transform orientation;
-    BoxCollider feet;
+    CapsuleCollider feet;
     
     const float sensitivity = 50f;
 
@@ -45,7 +45,7 @@ public class MovementController : MonoBehaviour
 
     void Awake()
     {
-        feet = GetComponent<BoxCollider>();
+        feet = transform.GetChild(0).GetChild(0).GetComponent<CapsuleCollider>();
         rigidBody = GetComponent<Rigidbody>();
     }
 

@@ -30,6 +30,10 @@ public class DoorController : MonoBehaviour
     [SerializeField]
     float proximityDistance = 5f;
 
+    void Start() {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
     // Update is called once per frame
     void Update()
     {

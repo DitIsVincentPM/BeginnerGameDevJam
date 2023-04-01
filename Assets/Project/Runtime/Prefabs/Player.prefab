@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 700818967}
   m_Layer: 8
   m_Name: Orientation
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -258,9 +258,16 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 64
-  _interactText: {fileID: 0}
-  textValue: Press [E] to hack
-  _hackingProgress: {fileID: 0}
+  intractables:
+  - name: Monitor
+    interactText: {fileID: 0}
+    textValue: Press [E] to Hack
+    isEnabled: 1
+  - name: CDReader
+    interactText: {fileID: 0}
+    textValue: Press [E] to Upload Disk
+    isEnabled: 0
+  _progress: {fileID: 0}
 --- !u!114 &961739767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,7 +335,7 @@ MonoBehaviour:
       m_Bits: 8
   PitchLimits:
     Minimum: -60
-    Maximum: 20
+    Maximum: 40
   InputAxes:
     Horizontal:
       Name: Mouse X
@@ -347,7 +354,7 @@ GameObject:
   - component: {fileID: 257129918148383818}
   m_Layer: 8
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -776,7 +783,7 @@ GameObject:
   - component: {fileID: 8160277321398455026}
   m_Layer: 8
   m_Name: metarig
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1496,7 +1503,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8665381790299350359}
   - component: {fileID: 919132147712814174}
-  - component: {fileID: 919132147712814176}
   - component: {fileID: 7019115800466494450}
   - component: {fileID: 919132147712814175}
   - component: {fileID: 8120467353089139008}
@@ -1542,19 +1548,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &919132147712814176
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8289524372157120493}
-  m_Material: {fileID: 13400000, guid: a2b7fadc3e5266349987fc19dc4fd21a, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.7319531, y: 1, z: 1}
-  m_Center: {x: 0.0003964454, y: 0, z: 0}
 --- !u!114 &7019115800466494450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1658,9 +1651,10 @@ GameObject:
   - component: {fileID: 5489949800576286258}
   - component: {fileID: 800336858880870178}
   - component: {fileID: 8417361360109786260}
+  - component: {fileID: 1105237362}
   m_Layer: 8
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1774,6 +1768,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 1e880e9ceda6d2f408098abd8a1c9409, type: 3}
+--- !u!136 &1105237362
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8378740547901272280}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.012742522
+  m_Height: 0.07305685
+  m_Direction: 1
+  m_Center: {x: -0.0041682175, y: 0.000146693, z: -0.0024145052}
 --- !u!1 &8805428494262783141
 GameObject:
   m_ObjectHideFlags: 0
