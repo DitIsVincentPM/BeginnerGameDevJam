@@ -22,7 +22,7 @@ public class EnemyAttackState : EnemyBaseState
 
     public override void EnterState()
     {
-        Debug.Log("Attacking");
+       // Enter state
     }
 
     public override void ExitState() { }

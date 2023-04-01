@@ -13,6 +13,9 @@ public class PressurePlateController : MonoBehaviour
     [SerializeField]
     public Animator animator;
 
+    [Header("Settings")]
+    [SerializeField] private string compareTag;
+
     private void Start()
     {
         if (_objectToActivate != null)
@@ -21,7 +24,7 @@ public class PressurePlateController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag(compareTag))
         {
             if (_objectToActivate != null)
                 _objectToActivate.SetActive(true);
@@ -32,7 +35,7 @@ public class PressurePlateController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag(compareTag))
         {
             if (_objectToActivate != null)
                 _objectToActivate.SetActive(false);

@@ -22,7 +22,7 @@ public class EnemyPatrollingState : EnemyBaseState
 
     public override void EnterState()
     {
-        Debug.Log("Patrolling");
+        // Patrol state
     }
 
     public override void ExitState() { }

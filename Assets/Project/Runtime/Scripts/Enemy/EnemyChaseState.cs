@@ -22,7 +22,7 @@ public class EnemyChaseState : EnemyBaseState
 
     public override void EnterState()
     {
-        Debug.Log("Chasing");
+        // Chasing State
     }
 
     public override void ExitState() { }
