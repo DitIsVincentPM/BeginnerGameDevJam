@@ -22,12 +22,14 @@ public class EnemyAttackState : EnemyBaseState
 
     public override void EnterState()
     {
-        Ctx.animator.SetBool("walking", false);
+        Ctx.animator.SetBool("walking", true);
+        Ctx.animator.SetBool("attack", true);
     }
 
     public override void ExitState()
     {
         Ctx.animator.SetBool("walking", false);
+        Ctx.animator.SetBool("attack", false);
     }
 
     public override void InitializeSubState() { }
@@ -40,7 +42,7 @@ public class EnemyAttackState : EnemyBaseState
         if (!Ctx.AlreadyAttacked)
         {
             Ctx.Target.GetComponent<PlayerController>().DrainBattery(Ctx.AttackDamage);
-
+            Ctx.animator.SetTrigger("punch");
             Ctx.AlreadyAttacked = true;
             Ctx.Invoke(nameof(Ctx.ResetAttack), Ctx.AttackCooldown);
         }

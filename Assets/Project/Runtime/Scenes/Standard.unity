@@ -16845,6 +16845,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 700818966, guid: b05580a507acab44d847297c9158ad09, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 961739763, guid: b05580a507acab44d847297c9158ad09, type: 3}
       propertyPath: _progress
       value: 
@@ -16857,6 +16861,15 @@ PrefabInstance:
       propertyPath: intractables.Array.data[1].interactText
       value: 
       objectReference: {fileID: 75374055}
+    - target: {fileID: 1254993582, guid: b05580a507acab44d847297c9158ad09, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 328720101850469033, guid: b05580a507acab44d847297c9158ad09,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132147712814175, guid: b05580a507acab44d847297c9158ad09,
         type: 3}
       propertyPath: maxSpeed

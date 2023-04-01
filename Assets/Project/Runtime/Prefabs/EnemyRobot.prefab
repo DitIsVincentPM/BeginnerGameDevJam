@@ -439,7 +439,7 @@ MonoBehaviour:
     m_Bits: 256
   _target: {fileID: 0}
   _walkPointRange: 20
-  _attackCooldown: 0.5
+  _attackCooldown: 2
   _attackDamage: 10
   _sightRange: 20
   _attackRange: 2
