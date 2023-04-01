@@ -4,10 +4,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class NotificationSystem : MonoBehaviour
+public class NotificationSystem : StaticInstance<NotificationSystem>
 {
-    public static new NotificationSystem singleton { get; set; }
-
     public enum NotificationType
     {
         Hacking,
@@ -23,16 +21,11 @@ public class NotificationSystem : MonoBehaviour
     public GameObject uploadDownload;
 
     [SerializeField]
-    Animator animation;
+    Animator animator;
     AnimationClip notificationDone;
 
     float timer;
     float waitTime;
-
-    void Awake()
-    {
-        singleton = this;
-    }
 
     void Update()
     {
@@ -56,29 +49,29 @@ public class NotificationSystem : MonoBehaviour
                     value != null ? "Hacking " + value : "Hacking";
                 uploadDownload.transform.GetChild(0).gameObject.SetActive(true);
                 uploadDownload.GetComponent<Image>().color = new Color(0, 0, 0, 0.4039216f);
-                animation.SetFloat("notification", 1);
+                animator.SetFloat("notification", 1);
                 break;
             case NotificationType.Download:
                 uploadDownload.GetComponentInChildren<TMP_Text>().text =
                     value != null ? "Downloading " + value : "Downloading";
                 uploadDownload.transform.GetChild(0).gameObject.SetActive(true);
                 uploadDownload.GetComponent<Image>().color = new Color(0, 0, 0, 0.4039216f);
-                animation.SetFloat("notification", 1);
+                animator.SetFloat("notification", 1);
                 break;
             case NotificationType.Upload:
                 uploadDownload.GetComponentInChildren<TMP_Text>().text =
                     value != null ? "Uploading " + value : "Uploading";
                 uploadDownload.transform.GetChild(0).gameObject.SetActive(true);
                 uploadDownload.GetComponent<Image>().color = new Color(0, 0, 0, 0.4039216f);
-                animation.SetFloat("notification", 1);
+                animator.SetFloat("notification", 1);
                 break;
             case NotificationType.Error:
                 uploadDownload.GetComponentInChildren<TMP_Text>().text =
                     value != null ? "\r\nError " + value : "Error";
                 uploadDownload.transform.GetChild(0).gameObject.SetActive(false);
                 uploadDownload.GetComponent<Image>().color = new Color(0.8773585f, 0, 0, 0.4039216f);
-                animation.SetFloat("animSpeed", 5);
-                animation.SetFloat("notification", 1);
+                animator.SetFloat("animSpeed", 5);
+                animator.SetFloat("notification", 1);
                 waitTime = 0.2f;
                 break;
             case NotificationType.Complete:
@@ -93,17 +86,17 @@ public class NotificationSystem : MonoBehaviour
         switch (type)
         {
             case NotificationType.Hacking:
-                animation.SetFloat("notification", 0);
+                animator.SetFloat("notification", 0);
                 break;
             case NotificationType.Download:
-                animation.SetFloat("notification", 0);
+                animator.SetFloat("notification", 0);
                 break;
             case NotificationType.Upload:
-                animation.SetFloat("notification", 0);
+                animator.SetFloat("notification", 0);
                 break;
             case NotificationType.Error:
-                animation.SetFloat("notification", 0);
-                animation.SetFloat("animSpeed", 1);
+                animator.SetFloat("notification", 0);
+                animator.SetFloat("animSpeed", 1);
                 break;
         }
     }

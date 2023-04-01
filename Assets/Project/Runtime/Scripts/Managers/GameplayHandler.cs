@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameplayHandler : MonoBehaviour
+public class GameplayHandler : StaticInstance<GameplayHandler>
 {
-    public static new GameplayHandler singleton { get; set; }
-
     [Header("Game Value's")]
     [SerializeField]
     public int currentPuzzle = 0;
@@ -46,11 +44,6 @@ public class GameplayHandler : MonoBehaviour
     private RaycastHit oldRaycast = default(RaycastHit);
     private float timer;
     private float timerTime;
-
-    void Awake()
-    {
-        singleton = this;
-    }
 
     void Start()
     {
@@ -106,15 +99,15 @@ public class GameplayHandler : MonoBehaviour
                 {
                     if (hit.collider.gameObject.GetComponent<ServerDiskHandler>() != null)
                     {
-                        NotificationSystem.singleton.uploadDownload.transform.GetChild(0).GetComponent<SliderProgress>().SetProgress(hit.collider.gameObject, 1);
-                        NotificationSystem.singleton.Notification(
+                        NotificationSystem.Instance.uploadDownload.transform.GetChild(0).GetComponent<SliderProgress>().SetProgress(hit.collider.gameObject, 1);
+                        NotificationSystem.Instance.Notification(
                             NotificationSystem.NotificationType.Download, "Disk Content"
                         );
                     }
                     else
                     {
-                        SoundSystem.singleton.PlaySound(failSound, hit.collider.gameObject.transform.position, 0.3f);
-                        NotificationSystem.singleton.Notification(
+                        SoundSystem.Instance.PlaySound(failSound, hit.collider.gameObject.transform.position, 0.3f);
+                        NotificationSystem.Instance.Notification(
                             NotificationSystem.NotificationType.Error,
                             " 404\r\nNo disk found in server"
                         );
@@ -134,7 +127,7 @@ public class GameplayHandler : MonoBehaviour
             light.startColor = new Color(1, 1, 1);
             light.transform.GetComponentInChildren<Light>().intensity = 12;
         }
-        SoundSystem.singleton.StopAlarm();
+        SoundSystem.Instance.StopAlarm();
     }
 
     public void ArmAlarm()
@@ -145,7 +138,7 @@ public class GameplayHandler : MonoBehaviour
             light.startColor = new Color(0.78f, 0.1945087f, 0.1993889f);
             light.transform.GetComponentInChildren<Light>().intensity = 25;
         }
-        SoundSystem.singleton.PlayAlarm(alarm, 0.1f);
+        SoundSystem.Instance.PlayAlarm(alarm, 0.1f);
     }
 
     public void CompleteHack(GameObject hackingObject)

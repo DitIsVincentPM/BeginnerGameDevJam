@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class NarratorSystem : MonoBehaviour
+public class NarratorSystem : StaticInstance<NarratorSystem>
 {
-    public static new NarratorSystem singleton { get; set; }
-
     [System.Serializable]
     public class VoiceLine
     {
@@ -36,10 +34,6 @@ public class NarratorSystem : MonoBehaviour
     private float currentLength = 0;
     private float timer = 0;
     private bool sayingLine = false;
-
-    void Awake() {
-        singleton = this;
-    }
 
     void Update()
     {

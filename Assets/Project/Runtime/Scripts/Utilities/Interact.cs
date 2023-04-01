@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Collections;
 using TMPro;
 
-public class Interact : MonoBehaviour
+public class Interact : StaticInstance<Interact>
 {
-    public static new Interact singleton { get; set; }
-
     [Header("Raycast")]
     [SerializeField]
     private float _raycastDistance = 10f;
@@ -41,17 +39,11 @@ public class Interact : MonoBehaviour
 
     private void Start()
     {
-        _camera = Camera.main;
-    }
-
-    private void Awake()
-    {
-        singleton = this;
-
         foreach (Interactable interact in intractables)
         {
             interact.interactText.text = interact.textValue;
         }
+        _camera = Camera.main;
     }
 
     public bool SetInteractable(string name, bool state = false)

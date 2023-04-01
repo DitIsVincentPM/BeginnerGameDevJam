@@ -43,7 +43,7 @@ public class DoorController : MonoBehaviour
                 {
                     if (animator.GetBool("doorOpen") == false)
                     {
-                        SoundSystem.singleton.PlaySound(
+                        SoundSystem.Instance.PlaySound(
                             opencloseSound,
                             gameObject.transform.position,
                             0.5f
@@ -55,7 +55,7 @@ public class DoorController : MonoBehaviour
                 {
                     if (animator.GetBool("doorOpen") == true)
                     {
-                        SoundSystem.singleton.PlaySound(
+                        SoundSystem.Instance.PlaySound(
                             opencloseSound,
                             gameObject.transform.position,
                             0.5f

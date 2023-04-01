@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     public void DrainBattery(float drainValue)
     {
         _playerEntity.AddHealth(-drainValue);
-        UISystem.singleton.BatterySlider.value = GetBattery();
-        UISystem.singleton.BatteryPrecentage.text = Mathf.RoundToInt(GetBattery()).ToString() + "%";
+        UISystem.Instance.BatterySlider.value = GetBattery();
+        UISystem.Instance.BatteryPrecentage.text = Mathf.RoundToInt(GetBattery()).ToString() + "%";
     }
 }

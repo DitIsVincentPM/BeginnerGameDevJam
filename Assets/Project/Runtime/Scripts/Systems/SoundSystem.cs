@@ -1,10 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class SoundSystem : MonoBehaviour
+public class SoundSystem : StaticInstance<SoundSystem>
 {
-    public static new SoundSystem singleton { get; set; }
-
     [SerializeField]
     private List<AudioSource> _narratorSources;
 
@@ -19,12 +17,7 @@ public class SoundSystem : MonoBehaviour
 
     [SerializeField]
     private AudioClip mainTheme;
-
-    void Awake()
-    {
-        singleton = this;
-    }
-
+    
     private void Start()
     {
         foreach (GameObject audioSource in GameObject.FindGameObjectsWithTag("NarratorSource"))
