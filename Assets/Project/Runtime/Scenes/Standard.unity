@@ -16723,12 +16723,18 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 9208497493784701017}
+    - target: {fileID: 6722997100742659915, guid: 342c5db34ee565242870d3e937143164,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7188305088239230179, guid: 342c5db34ee565242870d3e937143164,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 9208497493784701017}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7665581340694106288, guid: 342c5db34ee565242870d3e937143164, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 342c5db34ee565242870d3e937143164, type: 3}
 --- !u!4 &717966277588209145 stripped
 Transform:
@@ -16851,6 +16857,16 @@ PrefabInstance:
       propertyPath: intractables.Array.data[1].interactText
       value: 
       objectReference: {fileID: 75374055}
+    - target: {fileID: 919132147712814175, guid: b05580a507acab44d847297c9158ad09,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132147712814175, guid: b05580a507acab44d847297c9158ad09,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 2000
+      objectReference: {fileID: 0}
     - target: {fileID: 8289524372157120493, guid: b05580a507acab44d847297c9158ad09,
         type: 3}
       propertyPath: m_Name

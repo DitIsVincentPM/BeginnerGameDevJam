@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyChaseState : EnemyBaseState
 {
     public EnemyChaseState(EnemyStateMachine currentContext, EnemyStateFactory enemyStateFactory)
-    : base(currentContext, enemyStateFactory)
+        : base(currentContext, enemyStateFactory)
     {
         IsRootState = true;
     }
@@ -22,10 +22,13 @@ public class EnemyChaseState : EnemyBaseState
 
     public override void EnterState()
     {
-        // Chasing State
+        Ctx.animator.SetBool("walking", true);
     }
 
-    public override void ExitState() { }
+    public override void ExitState()
+    {
+        Ctx.animator.SetBool("walking", false);
+    }
 
     public override void InitializeSubState() { }
 
@@ -35,4 +38,3 @@ public class EnemyChaseState : EnemyBaseState
         Ctx.Agent.SetDestination(Ctx.Target.position);
     }
 }
-

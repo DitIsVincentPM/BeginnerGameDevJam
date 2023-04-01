@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyAttackState : EnemyBaseState
 {
     public EnemyAttackState(EnemyStateMachine currentContext, EnemyStateFactory enemyStateFactory)
-    : base(currentContext, enemyStateFactory)
+        : base(currentContext, enemyStateFactory)
     {
         IsRootState = true;
     }
@@ -22,10 +22,13 @@ public class EnemyAttackState : EnemyBaseState
 
     public override void EnterState()
     {
-       // Enter state
+        Ctx.animator.SetBool("walking", false);
     }
 
-    public override void ExitState() { }
+    public override void ExitState()
+    {
+        Ctx.animator.SetBool("walking", false);
+    }
 
     public override void InitializeSubState() { }
 

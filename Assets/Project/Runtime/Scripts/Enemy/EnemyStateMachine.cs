@@ -35,6 +35,9 @@ public class EnemyStateMachine : MonoBehaviour
         _targetInSphereRange,
         _targetInAttackRange;
 
+    [SerializeField]
+    public Animator animator;
+
     public Transform Target
     {
         get { return _target; }
@@ -94,6 +97,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     private void Awake()
     {
+        animator = transform.GetChild(1).GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
         _enemyEntity = GetComponent<Entity>();
 
@@ -109,6 +113,15 @@ public class EnemyStateMachine : MonoBehaviour
 
     private void Update()
     {
+        if (_currentState.ToString() == "EnemyPatrollingState" && _agent.velocity.magnitude < 0.1f)
+        {
+            animator.SetBool("walking", false);
+        }
+        else
+        {
+            animator.SetBool("walking", true);
+        }
+
         _targetInSphereRange = Physics.CheckSphere(transform.position, _sightRange, _whatIsTarget);
 
         if (_targetInSphereRange)

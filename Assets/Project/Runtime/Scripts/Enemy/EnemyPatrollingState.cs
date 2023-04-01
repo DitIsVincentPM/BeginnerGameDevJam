@@ -22,10 +22,12 @@ public class EnemyPatrollingState : EnemyBaseState
 
     public override void EnterState()
     {
-        // Patrol state
+        Ctx.animator.SetBool("walking", true);
     }
 
-    public override void ExitState() { }
+    public override void ExitState() { 
+        Ctx.animator.SetBool("walking", false);
+    }
 
     public override void InitializeSubState() { }
 
