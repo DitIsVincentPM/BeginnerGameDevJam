@@ -1,19 +1,28 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
+using UnityEngine.UI;
+using TMPro;
 
 public class MenuController : MonoBehaviour
 {
-    [Header("StartBtn")]
+    [Header("Gameobjects")]
     [SerializeField] private GameObject canvasObject;
     [SerializeField] private GameObject playerObject;
     [SerializeField] private GameObject camPlayer;
 
-    
+    [Header("Resolution")]
+    public List<resItem> resolutions = new List<resItem>();
+    private int selectedResolution;
+    public TMP_Text resolutionLabel;
+    public Toggle fullscreenToggle;
 
 
     // Method to disable all child objects of the player
     void Start()
     {
         DisableComponentsOnTarget();
+        fullscreenToggle.isOn = Screen.fullScreen;
     }
 
     void Update()
@@ -71,9 +80,47 @@ public class MenuController : MonoBehaviour
             }
         }
     }
-    
+
     public void QuitGameBtn()
     {
         Application.Quit();
+    }
+
+    public void UpdateResLabel()
+    {
+        resolutionLabel.text = resolutions[selectedResolution].horizontal.ToString() + " x " + resolutions[selectedResolution].vertical.ToString();
+    }
+    public void ResLeft()
+    {
+        selectedResolution--;
+        if(selectedResolution < 0)
+        {
+            selectedResolution = 0;
+        }
+
+        UpdateResLabel();
+    }
+
+    public void ResRight()
+    {
+        selectedResolution++;
+        if (selectedResolution > resolutions.Count - 1)
+        {
+            selectedResolution = resolutions.Count - 1;
+        }
+
+        UpdateResLabel();
+        
+    }
+
+    public void ApplyGraphics()
+    {
+        Screen.SetResolution(resolutions[selectedResolution].horizontal, resolutions[selectedResolution].vertical, fullscreenToggle.isOn);
+    }
+
+    [System.Serializable]
+    public class resItem
+    {
+        public int horizontal, vertical;
     }
 }
