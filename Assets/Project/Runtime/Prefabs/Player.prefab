@@ -1631,13 +1631,16 @@ MonoBehaviour:
     type: 3}
   playerCam: {fileID: 1254993583}
   orientation: {fileID: 700818967}
-  moveSpeed: 750
-  maxSpeed: 8
+  moveSpeed: 2000
+  maxSpeed: 10
   maxSlopeAngle: 45
   slideForce: 400
   friction: 0.175
   slideFriction: 0.2
-  jumpForce: 300
+  jumpForce: 180
+  attackCooldown: 2
+  attackDamage: -10
+  attackRange: 2
 --- !u!114 &8120467353089139008
 MonoBehaviour:
   m_ObjectHideFlags: 0

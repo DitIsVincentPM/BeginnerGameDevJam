@@ -120,7 +120,7 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
                     var outline = hit.collider.gameObject.GetComponent<Outline>();
                     outline.enabled = true;
                 }
-                if (Input.GetKeyDown(KeyCode.Mouse0))
+                if (Input.GetKeyDown(KeyCode.E))
                 {
                     if (hit.collider.gameObject.GetComponent<ServerDiskHandler>() != null)
                     {

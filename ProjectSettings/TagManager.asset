@@ -11,6 +11,7 @@ TagManager:
   - Server
   - PressureBox
   - canPickUp
+  - Enemy
   layers:
   - Default
   - TransparentFX

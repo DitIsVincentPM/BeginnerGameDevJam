@@ -14,7 +14,7 @@ public class MovementController : MonoBehaviour
     public Transform playerCam;
     public Transform orientation;
     CapsuleCollider feet;
-    
+
     const float sensitivity = 50f;
 
     //Movement
@@ -42,6 +42,11 @@ public class MovementController : MonoBehaviour
 
     //Sliding
     Vector3 normalVector = Vector3.up;
+    bool canAttack;
+    public float attackCooldown = 2;
+    float attackCooldownTimer;
+    public float attackDamage = -10f;
+    public int attackRange = 2;
 
     void Awake()
     {
@@ -191,6 +196,34 @@ public class MovementController : MonoBehaviour
                 animationController.SetFloat("walkingSpeed", (rigidBody.velocity.magnitude / 5));
             }
         }
+
+        // Handle Attack Cooldown
+        if (!canAttack)
+        {
+            attackCooldownTimer += Time.deltaTime;
+            if (attackCooldownTimer > 0.5)
+                animationController.ResetTrigger("Attack");
+            if (attackCooldownTimer >= attackCooldown)
+            {
+                canAttack = true;
+                attackCooldownTimer = 0;
+            }
+        }
+
+        // Handle Attack
+        if (canAttack && grounded && Input.GetKey(KeyCode.Mouse0))
+        {
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
+            canAttack = false;
+            animationController.SetTrigger("Attack");
+
+            for (int i = 0; i < hitColliders.Length; i++)
+            {
+                if(hitColliders[i].gameObject.CompareTag("Enemy")) {
+                    hitColliders[i].gameObject.GetComponent<Entity>().AddHealth(attackDamage);
+                }
+            }
+        }
     }
 
     void Jump()
@@ -272,10 +305,17 @@ public class MovementController : MonoBehaviour
             Vector3 normal = other.contacts[i].normal;
             if (IsFloorAngle(normal))
             {
-                if (camEffects.inEffect == false && animationController.GetBool("isGrounded") == false)
+                if (
+                    camEffects.inEffect == false
+                    && animationController.GetBool("isGrounded") == false
+                )
                 {
                     camEffects.PlayImpact(new Vector3(0, -0.3f, 0));
-                    Instantiate(groundParticle, other.contacts[i].point + new Vector3(0, 0.3f, 0), Quaternion.identity);
+                    Instantiate(
+                        groundParticle,
+                        other.contacts[i].point + new Vector3(0, 0.3f, 0),
+                        Quaternion.identity
+                    );
                 }
                 break;
             }
