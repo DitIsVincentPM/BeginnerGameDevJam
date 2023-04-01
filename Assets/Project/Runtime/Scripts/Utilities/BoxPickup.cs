@@ -8,8 +8,7 @@ public class BoxPickup : MonoBehaviour
     [SerializeField] private float distanceFromPlayer;
     private Camera mainCamera;
     private Rigidbody heldBox;
-    private bool canPickupBox;
-    private bool isHoldingBox = false;
+    private bool isHoldingBox;
 
     private void Start()
     {
@@ -23,7 +22,7 @@ public class BoxPickup : MonoBehaviour
         if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, pickupDistance, boxLayerMask))
         {
             Rigidbody boxRigidbody = hit.collider.GetComponent<Rigidbody>();
-            if (boxRigidbody != null && !boxRigidbody.isKinematic)
+            if (boxRigidbody != null && (!boxRigidbody.isKinematic || isHoldingBox))
             {
                 // Enable the world canvas
                 worldCanvas.SetActive(true);
@@ -31,7 +30,7 @@ public class BoxPickup : MonoBehaviour
                 // Pick up or drop the box
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    if (!isHoldingBox)
+                    if (heldBox == null)
                     {
                         // Pick up the box
                         heldBox = boxRigidbody;
@@ -40,7 +39,7 @@ public class BoxPickup : MonoBehaviour
                         heldBox.transform.localPosition = Vector3.forward * distanceFromPlayer;
                         isHoldingBox = true;
                     }
-                    else if (isHoldingBox)
+                    else
                     {
                         // Drop the box
                         heldBox.isKinematic = false;
