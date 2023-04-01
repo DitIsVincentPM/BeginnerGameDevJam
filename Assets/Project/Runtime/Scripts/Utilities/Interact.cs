@@ -84,10 +84,10 @@ public class Interact : StaticInstance<Interact>
                         switch (hit.collider.gameObject.name)
                         {
                             case "Monitor":
-                                _progress.StartHacking(hit.collider.gameObject);
+                                GameplayHandler.Instance.StartHacking(hit.collider.gameObject);
                                 break;
                             case "CDReader":
-                                _progress.StartDiskUpload(hit.collider.gameObject);
+                                GameplayHandler.Instance.StartDiskUpload(hit.collider.gameObject);
                                 break;
                         }
                     }

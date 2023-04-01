@@ -4,28 +4,22 @@ using UnityEngine;
 
 public class GameplayHandler : StaticInstance<GameplayHandler>
 {
+    [Header("Map Parts")]
+    [SerializeField]
+    GameObject mapPuzzle1;
+
+    [SerializeField]
+    GameObject mapPuzzle2;
+
+    [SerializeField]
+    GameObject mapPuzzle3;
+
     [Header("Game Value's")]
     [SerializeField]
     public int currentPuzzle = 0;
 
     [SerializeField]
     private LayerMask _layerMask;
-
-    [Header("Imports")]
-    [SerializeField]
-    private List<LichtFlasher> _lights;
-
-    [SerializeField]
-    NarratorSystem narratorSystem;
-
-    [SerializeField]
-    DoorController FirstDoor;
-
-    [SerializeField]
-    private AudioClip alarm;
-
-    [SerializeField]
-    RaycastController raycastController;
 
     [Header("Materials")]
     [SerializeField]
@@ -38,8 +32,33 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
     [SerializeField]
     private AudioClip failSound;
 
+    [SerializeField]
+    private AudioClip hackingSound;
+
+    [SerializeField]
+    private AudioClip uploadSound;
+
+    [SerializeField]
+    private AudioClip alarm;
+
     [Header("Storage")]
+    [SerializeField]
+    NarratorSystem narratorSystem;
+
+    [SerializeField]
+    RaycastController raycastController;
     public GameObject CDReader;
+
+    [Space(10)]
+    [SerializeField]
+    DoorController FirstDoor;
+
+    [SerializeField]
+    DoorController HallwayDoor;
+
+    [Space(10)]
+    [SerializeField]
+    private List<LichtFlasher> _lights;
 
     private RaycastHit oldRaycast = default(RaycastHit);
     private float timer;
@@ -47,7 +66,13 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
 
     void Start()
     {
+
+        // Disable Map Parts that are not visible
+        mapPuzzle2.SetActive(false);
+        mapPuzzle3.SetActive(false);
         currentPuzzle = 0;
+
+
         // Give disk to random Server
         int randomnumber = Random.Range(0, GameObject.FindGameObjectsWithTag("Server").Length);
         GameObject.FindGameObjectsWithTag("Server")[randomnumber].AddComponent<ServerDiskHandler>();
@@ -99,14 +124,22 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
                 {
                     if (hit.collider.gameObject.GetComponent<ServerDiskHandler>() != null)
                     {
-                        NotificationSystem.Instance.uploadDownload.transform.GetChild(0).GetComponent<SliderProgress>().SetProgress(hit.collider.gameObject, 1);
+                        NotificationSystem.Instance.uploadDownload.transform
+                            .GetChild(0)
+                            .GetComponent<SliderProgress>()
+                            .SetProgress(hit.collider.gameObject, 1);
                         NotificationSystem.Instance.Notification(
-                            NotificationSystem.NotificationType.Download, "Disk Content"
+                            NotificationSystem.NotificationType.Download,
+                            "Disk Content"
                         );
                     }
                     else
                     {
-                        SoundSystem.Instance.PlaySound(failSound, hit.collider.gameObject.transform.position, 0.3f);
+                        SoundSystem.Instance.PlaySound(
+                            failSound,
+                            hit.collider.gameObject.transform.position,
+                            0.3f
+                        );
                         NotificationSystem.Instance.Notification(
                             NotificationSystem.NotificationType.Error,
                             " 404\r\nNo disk found in server"
@@ -118,11 +151,129 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
         }
     }
 
+    //-------------------------------------------------------------//
+    // Gameplay Functions (Volgorde)
+    //-------------------------------------------------------------//
+
+    // Activate's when clicking E on Monitor
+    public void StartHacking(GameObject objects)
+    {
+        NotificationSystem.Instance.uploadDownload.transform
+            .GetChild(0)
+            .GetComponent<SliderProgress>()
+            .SetProgress(objects, 1);
+        Interact.Instance.SetInteractable("Monitor", false);
+        NotificationSystem.Instance.Notification(NotificationSystem.NotificationType.Hacking);
+        SoundSystem.Instance.PlaySound(
+            hackingSound,
+            FindFirstObjectByType<PlayerController>().gameObject.transform.position
+        );
+    }
+
+    // Gets called on the callback when hacking of the Monitor is done
+    public void StopHacking(GameObject objects)
+    {
+        NotificationSystem.Instance.NotificationCallback(
+            NotificationSystem.NotificationType.Hacking
+        );
+        narratorSystem.SayVoiceLine(narratorSystem.voiceLines[1]);
+        FirstDoor.activationState = DoorController.DoorActivation.Proximity;
+        ArmAlarm();
+        currentPuzzle = 1;
+        UISystem.Instance.NotificationSlider.gameObject.SetActive(false);
+    }
+
+    // Gets called when you found the right server
+    public void DownloadingDisk(GameObject objects)
+    {
+        NotificationSystem.Instance.NotificationCallback(
+            NotificationSystem.NotificationType.Download
+        );
+        NarratorSystem.Instance.SayVoiceLine(NarratorSystem.Instance.voiceLines[2]);
+        GameplayHandler.Instance.CDReader.GetComponent<Outline>().enabled = true;
+        GameObject.FindObjectOfType<PlayerController>().inInventory.Add("Disk");
+        Interact.Instance.SetInteractable("CDReader", true);
+        GameplayHandler.Instance.currentPuzzle = 2;
+        NotificationSystem.Instance.uploadDownload.transform
+            .GetChild(0)
+            .GetComponent<SliderProgress>()
+            .SetProgress(objects, 1);
+    }
+
+    // This gets called when disk is uploading to the disk reader
+    public void StartDiskUpload(GameObject objects)
+    {
+        NotificationSystem.Instance.uploadDownload.transform
+            .GetChild(0)
+            .GetComponent<SliderProgress>()
+            .SetProgress(objects, 1);
+        Interact.Instance.SetInteractable("CDReader", false);
+        GameplayHandler.Instance.CDReader.GetComponent<Outline>().enabled = false;
+        NotificationSystem.Instance.Notification(
+            NotificationSystem.NotificationType.Upload,
+            "Disk Content"
+        );
+        SoundSystem.Instance.PlaySound(uploadSound, objects.transform.position);
+    }
+
+    // Gets called when Disk is uploaded to the disk reader
+    public void UploadedDisk(GameObject objects)
+    {
+        NarratorSystem.Instance.SayVoiceLine(NarratorSystem.Instance.voiceLines[3]);
+        GameplayHandler.Instance.DisarmAlarm();
+        NotificationSystem.Instance.NotificationCallback(
+            NotificationSystem.NotificationType.Upload
+        );
+        NotificationSystem.Instance.uploadDownload.transform
+            .GetChild(0)
+            .GetComponent<SliderProgress>()
+            .SetProgress(objects, 0);
+        mapPuzzle2.SetActive(true);
+        HallwayDoor.activationState = DoorController.DoorActivation.Proximity;
+    }
+
+    //-------------------------------------------------------------//
+    // Other Functions
+    //-------------------------------------------------------------//
+    public void CloseMapPart(string map)
+    {
+        switch (map)
+        {
+            case "Puzzle1":
+                HallwayDoor.transform.parent = mapPuzzle2.transform;
+                HallwayDoor.activationState = DoorController.DoorActivation.StayClosed;
+                mapPuzzle1.SetActive(false);
+                break;
+            case "Puzzle2":
+                mapPuzzle2.SetActive(false);
+                break;
+            case "Puzzle3":
+                mapPuzzle3.SetActive(false);
+                break;
+        }
+    }
+
+    public void OpenMapPart(string map)
+    {
+        switch (map)
+        {
+            case "Puzzle1":
+                mapPuzzle1.SetActive(true);
+                break;
+            case "Puzzle2":
+                mapPuzzle2.SetActive(true);
+                break;
+            case "Puzzle3":
+                mapPuzzle3.SetActive(true);
+                break;
+        }
+    }
+
     public void DisarmAlarm()
     {
         foreach (LichtFlasher light in _lights)
         {
-            light.GetComponentInChildren<Light>().color = new Color(1,1,1);
+            light.GetComponentInChildren<Light>().color = new Color(1, 1, 1);
             light.endColor = new Color(1, 1, 1);
             light.startColor = new Color(1, 1, 1);
             light.transform.GetComponentInChildren<Light>().intensity = 12;
@@ -139,18 +290,5 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
             light.transform.GetComponentInChildren<Light>().intensity = 25;
         }
         SoundSystem.Instance.PlayAlarm(alarm, 0.1f);
-    }
-
-    public void CompleteHack(GameObject hackingObject)
-    {
-        switch (hackingObject.name)
-        {
-            case "Monitor":
-                narratorSystem.SayVoiceLine(narratorSystem.voiceLines[1]);
-                FirstDoor.activationState = DoorController.DoorActivation.Proximity;
-                ArmAlarm();
-                currentPuzzle = 1;
-                break;
-        }
     }
 }
