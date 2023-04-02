@@ -71,6 +71,9 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
     [SerializeField]
     DoorController HallwayDoor;
 
+    [SerializeField]
+    DoorController LiftDoor;
+
     [Space(10)]
     [SerializeField]
     private List<LichtFlasher> _lights;
@@ -281,6 +284,7 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
         );
         GameplayHandler.Instance.currentPuzzle = 4;
         NarratorSystem.Instance.SayVoiceLine(NarratorSystem.Instance.voiceLines[4]);
+        LiftDoor.activationState = DoorController.DoorActivation.Proximity;
     }
 
     //-------------------------------------------------------------//

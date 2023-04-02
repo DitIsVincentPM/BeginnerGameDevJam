@@ -1,0 +1,52 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ElevatorController : MonoBehaviour
+{
+    [SerializeField] private DoorController doorController;
+    [SerializeField] bool canMove;
+    [SerializeField] private float speed;
+    [SerializeField] private int startPoint;
+    [SerializeField] private Transform[] points;
+    private int i;
+    private bool lastPointReached;
+
+    private void Awake() 
+    {
+        doorController.activationState = DoorController.DoorActivation.StayClosed;
+        transform.position = points[startPoint].position;
+        i = startPoint;    
+    }
+
+    void Update()
+    {
+        if(Vector3.Distance(transform.position, points[i].position) < 0.01f)
+        {
+            if(i == points.Length - 1)
+            {
+                canMove = false;
+                doorController.activationState = DoorController.DoorActivation.StayOpen;
+            }
+            else
+            {
+                i++;
+            }
+        }
+
+        if(canMove && i < points.Length)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, points[i].position, speed * Time.deltaTime);
+            doorController.activationState = DoorController.DoorActivation.StayClosed;
+        }
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            canMove = true;
+        }
+    }
+}
