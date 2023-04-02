@@ -12,6 +12,7 @@ TagManager:
   - PressureBox
   - canPickUp
   - Enemy
+  - SoundSource
   layers:
   - Default
   - TransparentFX

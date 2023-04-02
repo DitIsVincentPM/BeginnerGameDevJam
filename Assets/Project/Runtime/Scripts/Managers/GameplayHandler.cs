@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameplayHandler : StaticInstance<GameplayHandler>
 {
+
     [Header("Map Parts")]
     [SerializeField]
     GameObject mapPuzzle1;

@@ -33,6 +33,38 @@ public class SoundSystem : StaticInstance<SoundSystem>
         PlayMusic(Robot);
     }
 
+    public void PauseAudio()
+    {
+        foreach (AudioSource narratorSource in _narratorSources)
+        {
+            narratorSource.Pause();
+        }
+        foreach (AudioSource alarmSource in _alarmSources)
+        {
+            alarmSource.Pause();
+        }
+        foreach (GameObject soundSource in GameObject.FindGameObjectsWithTag("SoundSource"))
+        {
+            soundSource.GetComponent<AudioSource>().Pause();
+        }
+    }
+
+    public void UnPauseAudio()
+    {
+        foreach (AudioSource narratorSource in _narratorSources)
+        {
+            narratorSource.Play();
+        }
+        foreach (AudioSource alarmSource in _alarmSources)
+        {
+            alarmSource.Play();
+        }
+        foreach (GameObject soundSource in GameObject.FindGameObjectsWithTag("SoundSource"))
+        {
+            soundSource.GetComponent<AudioSource>().Play();
+        }
+    }
+
     public void RefreshNarratorSource()
     {
         _narratorSources.Clear();
@@ -46,7 +78,9 @@ public class SoundSystem : StaticInstance<SoundSystem>
     {
         AudioSource audioSource = Instantiate(_soundSource);
         audioSource.transform.position = position;
-        audioSource.PlayOneShot(clip, volume);
+        audioSource.volume = volume;
+        audioSource.clip = clip;
+        audioSource.Play();
     }
 
     public void PlayAlarm(AudioClip clip, float volume = 1)
@@ -71,7 +105,10 @@ public class SoundSystem : StaticInstance<SoundSystem>
     {
         foreach (AudioSource narratorSource in _narratorSources)
         {
-            narratorSource.PlayOneShot(clip, volume);
+            narratorSource.volume = volume;
+            narratorSource.clip = clip;
+            narratorSource.loop = false;
+            narratorSource.Play();
         }
     }
 
