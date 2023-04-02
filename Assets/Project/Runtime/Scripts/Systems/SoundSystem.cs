@@ -16,7 +16,7 @@ public class SoundSystem : StaticInstance<SoundSystem>
     private AudioSource _soundSource;
 
     [SerializeField]
-    private AudioClip mainTheme;
+    private AudioClip Robot;
 
     private void Start()
     {
@@ -30,7 +30,7 @@ public class SoundSystem : StaticInstance<SoundSystem>
             _alarmSources.Add(audioSource.GetComponent<AudioSource>());
         }
 
-        PlayMusic(mainTheme);
+        PlayMusic(Robot);
     }
 
     public void RefreshNarratorSource()

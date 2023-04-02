@@ -55,6 +55,9 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
     private AudioClip Chasing;
 
     [SerializeField]
+    private AudioClip Robot;
+
+    [SerializeField]
     NarratorSystem narratorSystem;
 
     [SerializeField]

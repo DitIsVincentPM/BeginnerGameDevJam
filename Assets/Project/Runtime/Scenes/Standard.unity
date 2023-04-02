@@ -14398,9 +14398,10 @@ MonoBehaviour:
   hackingSound: {fileID: 8300000, guid: 25d7135f41ac6ad4ea163ab210f979a8, type: 3}
   uploadSound: {fileID: 8300000, guid: d77757c4ee106874ca7f2ee226c513b7, type: 3}
   alarm: {fileID: 8300000, guid: 87de160536bdc154083aa82bed078329, type: 3}
-  MainTheme: {fileID: 8300000, guid: eaa309f7bb27d09429129911c2552125, type: 3}
+  MainTheme: {fileID: 8300000, guid: 8a698bd8bc9bebf47a8492c081158a64, type: 3}
   HighAlert: {fileID: 8300000, guid: fa8ceb3b335fa434a98af7294eba6f26, type: 3}
   Chasing: {fileID: 8300000, guid: a5b4bf618b8597645b8ab004bd3c0cdd, type: 3}
+  Robot: {fileID: 8300000, guid: eaa309f7bb27d09429129911c2552125, type: 3}
   narratorSystem: {fileID: 1760182705}
   raycastController: {fileID: 9208497493784700998}
   CDReader: {fileID: 991438516}
@@ -17625,7 +17626,7 @@ PrefabInstance:
     - target: {fileID: 4468508465054027007, guid: 4aab90d270d1acf478ec1ba823543089,
         type: 3}
       propertyPath: m_text
-      value: '[Redacted]'
+      value: Storage
       objectReference: {fileID: 0}
     - target: {fileID: 4468508465054027007, guid: 4aab90d270d1acf478ec1ba823543089,
         type: 3}
@@ -21767,7 +21768,7 @@ PrefabInstance:
     - target: {fileID: 4468508465054027007, guid: 4aab90d270d1acf478ec1ba823543089,
         type: 3}
       propertyPath: m_text
-      value: '[Redacted]'
+      value: Elevator
       objectReference: {fileID: 0}
     - target: {fileID: 5425826775106183282, guid: 4aab90d270d1acf478ec1ba823543089,
         type: 3}
@@ -25736,7 +25737,7 @@ MonoBehaviour:
   _musicSource: {fileID: 920423378}
   _soundSource: {fileID: 8284088235222279635, guid: 79762b64087edd7438e5d3888f934ad1,
     type: 3}
-  mainTheme: {fileID: 8300000, guid: eaa309f7bb27d09429129911c2552125, type: 3}
+  Robot: {fileID: 8300000, guid: eaa309f7bb27d09429129911c2552125, type: 3}
 --- !u!4 &2134324956 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2108493775832610358, guid: f11dc418c17c91e4d85cc7a490c2afdf,
@@ -26812,12 +26813,12 @@ PrefabInstance:
     - target: {fileID: 4468508465054027007, guid: 4aab90d270d1acf478ec1ba823543089,
         type: 3}
       propertyPath: m_text
-      value: '[Redacted]'
+      value: Server Room
       objectReference: {fileID: 0}
     - target: {fileID: 4468508465054027007, guid: 4aab90d270d1acf478ec1ba823543089,
         type: 3}
       propertyPath: m_fontSize
-      value: 16
+      value: 15.35
       objectReference: {fileID: 0}
     - target: {fileID: 5425826775106183282, guid: 4aab90d270d1acf478ec1ba823543089,
         type: 3}
