@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6595952066261289067}
   m_Layer: 3
   m_Name: Package
-  m_TagString: Untagged
+  m_TagString: canPickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 448768d50e36a9b4fadf70ef97004d61,
+        type: 3}
+      propertyPath: m_TagString
+      value: canPickUp
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 448768d50e36a9b4fadf70ef97004d61,
         type: 3}
       propertyPath: m_Name
@@ -109,10 +114,20 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 448768d50e36a9b4fadf70ef97004d61,
+        type: 3}
+      propertyPath: m_TagString
+      value: canPickUp
+      objectReference: {fileID: 0}
     - target: {fileID: 6824746026288583490, guid: 448768d50e36a9b4fadf70ef97004d61,
         type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824746026288583490, guid: 448768d50e36a9b4fadf70ef97004d61,
+        type: 3}
+      propertyPath: m_TagString
+      value: canPickUp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 448768d50e36a9b4fadf70ef97004d61, type: 3}
