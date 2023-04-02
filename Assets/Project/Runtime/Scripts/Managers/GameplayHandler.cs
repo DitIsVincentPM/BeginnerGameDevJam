@@ -30,6 +30,8 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
 
     [Header("Sound Effects")]
     [SerializeField]
+    private AudioClip powerUpGrid;
+    [SerializeField]
     private AudioClip failSound;
 
     [SerializeField]
@@ -59,6 +61,8 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
     [Space(10)]
     [SerializeField]
     private List<LichtFlasher> _lights;
+    [SerializeField]
+    private List<GameObject> ServersRoom;
 
     private RaycastHit oldRaycast = default(RaycastHit);
     private float timer;
@@ -230,6 +234,17 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
             .SetProgress(objects, 0);
         mapPuzzle2.SetActive(true);
         HallwayDoor.activationState = DoorController.DoorActivation.Proximity;
+    }
+
+    public void ServersPowerdOn() {
+        foreach(GameObject server in ServersRoom) {
+            server.GetComponent<Renderer>().material.color = new Color(0.08220265f, 1f, 0);
+        }
+        SoundSystem.Instance.PlaySound(
+            powerUpGrid,
+            FindFirstObjectByType<PlayerController>().gameObject.transform.position
+        );
+        NarratorSystem.Instance.SayVoiceLine(NarratorSystem.Instance.voiceLines[4]);
     }
 
     //-------------------------------------------------------------//

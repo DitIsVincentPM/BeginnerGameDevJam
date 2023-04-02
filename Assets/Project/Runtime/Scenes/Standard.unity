@@ -13845,6 +13845,7 @@ MonoBehaviour:
     m_Bits: 64
   outlineMat: {fileID: 2100000, guid: 311313efa011949e98b6761d652ad13c, type: 2}
   outlineMask: {fileID: 2100000, guid: 106f3ff43a17d4967a2b64c7a92e49ec, type: 2}
+  powerUpGrid: {fileID: 8300000, guid: 98356a28935a84e41a5f49f1533647fb, type: 3}
   failSound: {fileID: 8300000, guid: d6f9fa6bef155bd469d8ee96f8d25ce3, type: 3}
   hackingSound: {fileID: 8300000, guid: 25d7135f41ac6ad4ea163ab210f979a8, type: 3}
   uploadSound: {fileID: 8300000, guid: d77757c4ee106874ca7f2ee226c513b7, type: 3}
@@ -13855,6 +13856,91 @@ MonoBehaviour:
   FirstDoor: {fileID: 1778046141}
   HallwayDoor: {fileID: 2036299544}
   _lights: []
+  ServersRoom:
+  - {fileID: 943165997}
+  - {fileID: 943165996}
+  - {fileID: 943165995}
+  - {fileID: 943165994}
+  - {fileID: 943165993}
+  - {fileID: 943165992}
+  - {fileID: 1515194578}
+  - {fileID: 1515194577}
+  - {fileID: 1515194576}
+  - {fileID: 1515194575}
+  - {fileID: 1515194574}
+  - {fileID: 1515194573}
+  - {fileID: 225300721}
+  - {fileID: 225300720}
+  - {fileID: 225300719}
+  - {fileID: 225300718}
+  - {fileID: 225300717}
+  - {fileID: 225300716}
+  - {fileID: 996745292}
+  - {fileID: 996745291}
+  - {fileID: 996745290}
+  - {fileID: 996745289}
+  - {fileID: 996745288}
+  - {fileID: 996745287}
+  - {fileID: 1061888947}
+  - {fileID: 1061888946}
+  - {fileID: 1061888945}
+  - {fileID: 1061888944}
+  - {fileID: 1061888943}
+  - {fileID: 1061888942}
+  - {fileID: 1703375589}
+  - {fileID: 1703375588}
+  - {fileID: 1703375587}
+  - {fileID: 1703375586}
+  - {fileID: 1703375585}
+  - {fileID: 1703375584}
+  - {fileID: 101585931}
+  - {fileID: 101585930}
+  - {fileID: 101585929}
+  - {fileID: 101585928}
+  - {fileID: 101585927}
+  - {fileID: 101585926}
+  - {fileID: 1947694991}
+  - {fileID: 1947694990}
+  - {fileID: 1947694989}
+  - {fileID: 1947694988}
+  - {fileID: 1947694987}
+  - {fileID: 1947694986}
+  - {fileID: 312962284}
+  - {fileID: 312962283}
+  - {fileID: 312962282}
+  - {fileID: 312962281}
+  - {fileID: 312962280}
+  - {fileID: 312962279}
+  - {fileID: 1290333684}
+  - {fileID: 1290333683}
+  - {fileID: 1290333682}
+  - {fileID: 1290333681}
+  - {fileID: 1290333680}
+  - {fileID: 1290333679}
+  - {fileID: 976252487}
+  - {fileID: 976252486}
+  - {fileID: 976252485}
+  - {fileID: 976252484}
+  - {fileID: 976252483}
+  - {fileID: 976252482}
+  - {fileID: 1968498112}
+  - {fileID: 1968498111}
+  - {fileID: 1968498110}
+  - {fileID: 1968498109}
+  - {fileID: 1968498108}
+  - {fileID: 1968498107}
+  - {fileID: 1547530169}
+  - {fileID: 1547530168}
+  - {fileID: 1547530167}
+  - {fileID: 1547530166}
+  - {fileID: 1547530165}
+  - {fileID: 1547530164}
+  - {fileID: 1462859364}
+  - {fileID: 1462859363}
+  - {fileID: 1462859362}
+  - {fileID: 1462859361}
+  - {fileID: 1462859360}
+  - {fileID: 1462859359}
 --- !u!4 &1270483841
 Transform:
   m_ObjectHideFlags: 0
@@ -20721,6 +20807,9 @@ MonoBehaviour:
     text: You uploaded the disk's content to the disk reader, It disarmed the alarm
       and opened the door to the Hallway. Try to turn on the servers in the Server
       Room to open the next area.
+  - audio: {fileID: 8300000, guid: f6109a3de954a2b4f881ed6c0e5bc41b, type: 3}
+    text: Good job! The servers turned on the Elevator, use it to go to the second
+      floor.
   soundSystem: {fileID: 2128294779}
   subtitle: {fileID: 328789932}
 --- !u!4 &1770548658 stripped

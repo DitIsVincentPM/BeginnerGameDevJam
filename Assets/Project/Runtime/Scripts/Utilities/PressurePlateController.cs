@@ -29,6 +29,7 @@ public class PressurePlateController : MonoBehaviour
             if (_objectToActivate != null)
                 _objectToActivate.SetActive(true);
 
+            GameplayHandler.Instance.ServersPowerdOn();
             animator.SetBool("pressed", true);
         }
     }
