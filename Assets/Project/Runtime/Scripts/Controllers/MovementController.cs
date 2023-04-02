@@ -1,6 +1,8 @@
 // Some stupid rigidbody based movement by Dani
 
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MovementController : MonoBehaviour
 {
@@ -47,6 +49,24 @@ public class MovementController : MonoBehaviour
     float attackCooldownTimer;
     public float attackDamage = -10f;
     public int attackRange = 2;
+    
+    [SerializeField] 
+    private InputActionReference move, jump;
+
+    private void OnEnable() 
+    {
+        jump.action.performed += JumpPerformed;  
+    }
+
+    private void OnDisable() 
+    {
+        jump.action.performed -= JumpPerformed;  
+    }
+
+    private void JumpPerformed(InputAction.CallbackContext obj)
+    {
+        Jump();
+    }
 
     void Awake()
     {
@@ -81,12 +101,8 @@ public class MovementController : MonoBehaviour
     {
         inputDirection.x = Input.GetAxisRaw("Horizontal");
         inputDirection.y = Input.GetAxisRaw("Vertical");
-        inputDirection.Normalize();
+        inputDirection = move.action.ReadValue<Vector2>();
 
-        if (Input.GetButton("Jump"))
-        {
-            Jump();
-        }
         if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
         {
             animationController.SetBool("movingLeft", false);
