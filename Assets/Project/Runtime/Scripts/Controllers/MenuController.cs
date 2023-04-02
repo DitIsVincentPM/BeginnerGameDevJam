@@ -7,23 +7,46 @@ using TMPro;
 public class MenuController : MonoBehaviour
 {
     [Header("MainMenu")]
-    [SerializeField] private GameObject canvasObject;
-    [SerializeField] private GameObject playerObject;
-    [SerializeField] private GameObject camPlayer;
-    [SerializeField] private GameObject mainMenu;
-    [SerializeField] private GameObject otherCanvas;
+    [SerializeField]
+    private GameObject canvasObject;
+
+    [SerializeField]
+    private GameObject playerObject;
+
+    [SerializeField]
+    private GameObject camPlayer;
+
+    [SerializeField]
+    private GameObject mainMenu;
+
+    [SerializeField]
+    private GameObject pauseMenu;
+
+    [SerializeField]
+    private GameObject otherCanvas;
 
     [Header("Other Menus")]
-    [SerializeField] private GameObject optionMenu;
-    [SerializeField] private GameObject graphicsMenu;
-    [SerializeField] private GameObject soundMenu;
-    [SerializeField] private GameObject controlMenu;
+    [SerializeField]
+    private GameObject optionMenu;
+
+    [SerializeField]
+    private GameObject graphicsMenu;
+
+    [SerializeField]
+    private GameObject soundMenu;
+
+    [SerializeField]
+    private GameObject controlMenu;
 
     [Header("Resolution")]
     public List<resItem> resolutions = new List<resItem>();
     private int selectedResolution;
     public TMP_Text resolutionLabel;
     public TMP_Dropdown dropdown;
+
+    [Header("Camera")]
+    [SerializeField]
+    CameraController camControler;
 
     // Method to disable all child objects of the player
     void Start()
@@ -36,18 +59,24 @@ public class MenuController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !IsMenuActive())
         {
-            mainMenu.SetActive(true);
+            pauseMenu.SetActive(true);
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             DisableComponentsOnTarget();
             otherCanvas.SetActive(false);
+            SoundSystem.Instance.PauseAudio();
         }
     }
 
     private bool IsMenuActive()
     {
-        if (optionMenu.activeSelf || graphicsMenu.activeSelf || soundMenu.activeSelf || controlMenu.activeSelf)
+        if (
+            optionMenu.activeSelf
+            || graphicsMenu.activeSelf
+            || soundMenu.activeSelf
+            || controlMenu.activeSelf
+        )
         {
             return true;
         }
@@ -56,17 +85,22 @@ public class MenuController : MonoBehaviour
             return false;
         }
     }
-    
+
     public void DisableComponentsOnTarget()
     {
         // Get all components on the target object
-         // Get all components on the target object and its children
+        // Get all components on the target object and its children
         Component[] components = playerObject.GetComponentsInChildren<Component>();
-
+        camControler.enabled = false;
         // Loop through the components and disable them (except for Transform and GameObject)
         foreach (Component component in components)
         {
-            if (!(component is Transform) && !(component is Camera) && !(component is AudioListener))
+            if (
+                !(component is Transform)
+                && !(component is Camera)
+                && !(component is AudioListener)
+                && !(component is CameraMainMenu)
+            )
             {
                 Behaviour behaviour = component as Behaviour;
                 if (behaviour != null)
@@ -80,9 +114,15 @@ public class MenuController : MonoBehaviour
     public void EnableComponentsOnTarget()
     {
         Component[] components = playerObject.GetComponentsInChildren<Component>();
+        camControler.enabled = true;
         foreach (Component component in components)
         {
-            if (!(component is Transform) && !(component is Camera) && !(component is AudioListener))
+            if (
+                !(component is Transform)
+                && !(component is Camera)
+                && !(component is AudioListener)
+                && !(component is CameraMainMenu)
+            )
             {
                 Behaviour behaviour = component as Behaviour;
                 if (behaviour != null)
@@ -91,6 +131,17 @@ public class MenuController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ContinueBtn()
+    {
+        SoundSystem.Instance.UnPauseAudio();
+        Time.timeScale = 1f;
+        pauseMenu.SetActive(false);
+        otherCanvas.SetActive(true);
+        EnableComponentsOnTarget();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Method to deactivate the canvas
@@ -111,12 +162,16 @@ public class MenuController : MonoBehaviour
 
     public void UpdateResLabel()
     {
-        resolutionLabel.text = resolutions[selectedResolution].horizontal.ToString() + " x " + resolutions[selectedResolution].vertical.ToString();
+        resolutionLabel.text =
+            resolutions[selectedResolution].horizontal.ToString()
+            + " x "
+            + resolutions[selectedResolution].vertical.ToString();
     }
+
     public void ResLeft()
     {
         selectedResolution--;
-        if(selectedResolution < 0)
+        if (selectedResolution < 0)
         {
             selectedResolution = 0;
         }
@@ -133,24 +188,31 @@ public class MenuController : MonoBehaviour
         }
 
         UpdateResLabel();
-        
     }
 
     public void SetBorderlessFullscreen()
     {
-        Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, FullScreenMode.FullScreenWindow);
+        Screen.SetResolution(
+            Screen.currentResolution.width,
+            Screen.currentResolution.height,
+            FullScreenMode.FullScreenWindow
+        );
     }
 
     public void ApplyGraphics()
     {
-        Screen.SetResolution(resolutions[selectedResolution].horizontal, resolutions[selectedResolution].vertical, Screen.fullScreenMode);
+        Screen.SetResolution(
+            resolutions[selectedResolution].horizontal,
+            resolutions[selectedResolution].vertical,
+            Screen.fullScreenMode
+        );
         int selectedOptionIndex = dropdown.value;
         switch (selectedOptionIndex)
         {
-            case 0: 
+            case 0:
                 Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
                 break;
-            case 1: 
+            case 1:
                 Screen.fullScreenMode = FullScreenMode.MaximizedWindow;
                 break;
             case 2:
@@ -164,6 +226,7 @@ public class MenuController : MonoBehaviour
     [System.Serializable]
     public class resItem
     {
-        public int horizontal, vertical;
+        public int horizontal,
+            vertical;
     }
 }
