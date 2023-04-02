@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
+using System;
 
 public class MenuController : MonoBehaviour
 {
@@ -51,6 +53,24 @@ public class MenuController : MonoBehaviour
     [SerializeField]
     CameraController camControler;
 
+    [SerializeField] private InputActionReference escape;
+    
+    private void OnEnable() 
+    {
+        escape.action.performed += EscapePerformed;
+    }
+
+
+    private void OnDisable() 
+    {
+        escape.action.performed -= EscapePerformed;
+    }
+
+    private void EscapePerformed(InputAction.CallbackContext obj)
+    {
+        EscapePressed();
+    }
+
     // Method to disable all child objects of the player
     void Start()
     {
@@ -60,6 +80,11 @@ public class MenuController : MonoBehaviour
     }
 
     void Update()
+    {
+
+    }
+
+    private void EscapePressed()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !IsMenuActive())
         {

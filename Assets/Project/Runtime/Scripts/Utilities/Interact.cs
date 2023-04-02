@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using TMPro;
+using UnityEngine.InputSystem;
+using System;
 
 public class Interact : StaticInstance<Interact>
 {
@@ -37,6 +39,43 @@ public class Interact : StaticInstance<Interact>
     [SerializeField]
     private SliderProgress _progress;
 
+    [SerializeField] private InputActionReference interactKey;
+
+    private void OnEnable() 
+    {
+        interactKey.action.performed += InteractPerformed;
+    }
+    private void OnDisable() 
+    {
+        interactKey.action.performed += InteractPerformed;
+    }
+
+    private void InteractPerformed(InputAction.CallbackContext obj)
+    {
+        foreach (Interactable interact in intractables)
+        {
+            if (interact.interactText.enabled == true) 
+            {
+                Ray ray = new Ray(_camera.transform.position, _camera.transform.forward);
+                RaycastHit hit;
+                
+                if (Physics.Raycast(ray, out hit, _raycastDistance, _layerMask))
+                    {
+                        switch (hit.collider.gameObject.name)
+                        {
+                            case "Monitor":
+                                GameplayHandler.Instance.StartHacking(hit.collider.gameObject);
+                                break;
+                            case "CDReader":
+                                GameplayHandler.Instance.StartDiskUpload(hit.collider.gameObject);
+                                break;
+                        }
+                    }
+            }
+        }
+    }
+    
+
     private void Start()
     {
         foreach (Interactable interact in intractables)
@@ -45,6 +84,7 @@ public class Interact : StaticInstance<Interact>
         }
         _camera = Camera.main;
     }
+
 
     public bool SetInteractable(string name, bool state = false)
     {
@@ -75,22 +115,6 @@ public class Interact : StaticInstance<Interact>
                 {
                     if (interact.interactText.enabled == false)
                         interact.interactText.enabled = true;
-
-                    if (
-                        Input.GetKeyDown(KeyCode.E)
-                        && Physics.Raycast(ray, out hit, _raycastDistance, _layerMask)
-                    )
-                    {
-                        switch (hit.collider.gameObject.name)
-                        {
-                            case "Monitor":
-                                GameplayHandler.Instance.StartHacking(hit.collider.gameObject);
-                                break;
-                            case "CDReader":
-                                GameplayHandler.Instance.StartDiskUpload(hit.collider.gameObject);
-                                break;
-                        }
-                    }
                 }
             }
         }
