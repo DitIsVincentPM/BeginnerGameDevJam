@@ -1638,9 +1638,9 @@ MonoBehaviour:
   friction: 0.175
   slideFriction: 0.2
   jumpForce: 180
-  attackCooldown: 2
+  attackCooldown: 1
   attackDamage: -10
-  attackRange: 2
+  attackRange: 5
 --- !u!114 &8120467353089139008
 MonoBehaviour:
   m_ObjectHideFlags: 0
