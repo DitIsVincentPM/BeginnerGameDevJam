@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class ObjectPickup : MonoBehaviour
+public class HoldObject : MonoBehaviour
 {
     public GameObject player;
     public Transform holdPos;
     public float throwForce = 500f; 
     public float pickUpRange = 10f; 
     private float rotationSensitivity = 1f; 
-    private GameObject heldObj; 
+    public GameObject heldObj; 
     private Rigidbody heldObjRb; 
     private bool canDrop = true; 
     private int LayerNumber; 
