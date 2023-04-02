@@ -12217,6 +12217,7 @@ MonoBehaviour:
   _isObjectActiveOnStart: 0
   animator: {fileID: 999384159}
   compareTag: canPickUp
+  objectPickup: {fileID: 9208497493784701019}
 --- !u!1001 &1005137236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28273,3 +28274,15 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 4207927200181359584}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9208497493784701019 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7027454874989611370, guid: b05580a507acab44d847297c9158ad09,
+    type: 3}
+  m_PrefabInstance: {fileID: 4207927200181359584}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333967990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a21750e6fc8d26a4c9cc9ff02187bb56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

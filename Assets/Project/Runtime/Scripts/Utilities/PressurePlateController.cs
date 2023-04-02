@@ -16,6 +16,8 @@ public class PressurePlateController : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private string compareTag;
 
+    [SerializeField] private ObjectPickup objectPickup;
+
     private void Start()
     {
         if (_objectToActivate != null)
@@ -24,7 +26,7 @@ public class PressurePlateController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag(compareTag))
+        if (other.gameObject.CompareTag(compareTag) && objectPickup.heldObj == null)
         {
             if (_objectToActivate != null)
                 _objectToActivate.SetActive(true);
