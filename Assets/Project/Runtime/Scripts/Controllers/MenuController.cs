@@ -71,7 +71,7 @@ public class MenuController : MonoBehaviour
                 Behaviour behaviour = component as Behaviour;
                 if (behaviour != null)
                 {
-                    behaviour.enabled = false;
+                    if(!behaviour.gameObject.GetComponent<CameraMainMenu>()) behaviour.enabled = false;
                 }
             }
         }

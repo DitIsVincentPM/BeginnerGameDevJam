@@ -71,12 +71,16 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
     [SerializeField]
     DoorController HallwayDoor;
 
+    [SerializeField]
+    CameraMainMenu mainCamScript;
+
     [Space(10)]
     [SerializeField]
     private List<LichtFlasher> _lights;
 
     [SerializeField]
     private List<GameObject> ServersRoom;
+
 
     private RaycastHit oldRaycast = default(RaycastHit);
     private float timer;
@@ -170,6 +174,7 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
 
     public void StartGame()
     {
+        mainCamScript.StartGame();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         // Disable Map Parts that are not visible
