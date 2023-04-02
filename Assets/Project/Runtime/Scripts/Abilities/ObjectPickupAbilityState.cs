@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ObjectPickupAbilityState : AbilityBaseState
 {
-    private GameObject heldObj;
+    public GameObject heldObj;
     private Rigidbody heldObjRb;
     private bool canDrop = true;
     private int LayerNumber;
@@ -25,7 +25,8 @@ public class ObjectPickupAbilityState : AbilityBaseState
             if (heldObj == null)
             {
                 RaycastHit hit;
-                if (Physics.Raycast(Ctx.Camera.position, Ctx.Camera.TransformDirection(Vector3.forward), out hit, Ctx.PickUpRange, ~Ctx.PickupLayerMask))
+                int layerMask = ~(1 << LayerMask.NameToLayer("Player"));
+                if (Physics.Raycast(Ctx.Camera.position, Ctx.Camera.TransformDirection(Vector3.forward), out hit, Ctx.PickUpRange, Ctx.PickupLayerMask))
                 {
                     if (hit.transform.gameObject.CompareTag("canPickUp"))
                     {
@@ -70,7 +71,7 @@ public class ObjectPickupAbilityState : AbilityBaseState
     void DropObject()
     {
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), Ctx.Player.GetComponent<Collider>(), false);
-        heldObj.layer = 0;
+        heldObj.layer = Ctx.PickupLayerMask;
         heldObjRb.isKinematic = false;
         heldObj.transform.parent = null;
         heldObj = null;
@@ -105,7 +106,7 @@ public class ObjectPickupAbilityState : AbilityBaseState
     void ThrowObject()
     {
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), Ctx.Player.GetComponent<Collider>(), false);
-        heldObj.layer = 0;
+        heldObj.layer = Ctx.PickupLayerMask;
         heldObjRb.isKinematic = false;
         heldObj.transform.parent = null;
         heldObj.transform.position = Ctx.Player.transform.position + new Vector3(0f, 3f, 0f); // Set position to player position
