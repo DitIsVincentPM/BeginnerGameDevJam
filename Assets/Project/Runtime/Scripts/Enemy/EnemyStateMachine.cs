@@ -27,6 +27,7 @@ public class EnemyStateMachine : MonoBehaviour
     [SerializeField]
     private float _attackDamage;
     private bool _alreadyAttacked;
+    private AttackHandler _attackHandler;
 
     [SerializeField]
     private float _sightRange,
@@ -106,6 +107,17 @@ public class EnemyStateMachine : MonoBehaviour
         _currentState.EnterState();
     }
 
+    private void OnEnable()
+    {
+        _attackHandler = GetComponentInChildren<AttackHandler>();
+        _attackHandler.OnAttack += Attack;
+    }
+
+    private void OnDisable()
+    {
+        _attackHandler.OnAttack -= Attack;
+    }
+
     private void Start()
     {
         _target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -159,12 +171,22 @@ public class EnemyStateMachine : MonoBehaviour
         _currentState.UpdateState();
     }
 
+    public void Attack()
+    {
+        if (_targetInAttackRange)
+        {
+            _target.GetComponent<PlayerController>().DrainBattery(_attackDamage);
+        }
+        _alreadyAttacked = true;
+        Invoke(nameof(ResetAttack), _attackCooldown);
+    }
+
     public void ResetAttack()
     {
         _alreadyAttacked = false;
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _attackRange);

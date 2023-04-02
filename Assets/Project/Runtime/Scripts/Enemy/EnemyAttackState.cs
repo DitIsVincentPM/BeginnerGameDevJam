@@ -41,10 +41,7 @@ public class EnemyAttackState : EnemyBaseState
 
         if (!Ctx.AlreadyAttacked)
         {
-            Ctx.Target.GetComponent<PlayerController>().DrainBattery(Ctx.AttackDamage);
             Ctx.animator.SetTrigger("punch");
-            Ctx.AlreadyAttacked = true;
-            Ctx.Invoke(nameof(Ctx.ResetAttack), Ctx.AttackCooldown);
         }
     }
 }

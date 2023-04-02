@@ -442,7 +442,7 @@ MonoBehaviour:
   _attackCooldown: 2
   _attackDamage: 10
   _sightRange: 20
-  _attackRange: 2
+  _attackRange: 2.5
   animator: {fileID: 0}
 --- !u!114 &1667331687879896174
 MonoBehaviour:
@@ -942,6 +942,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7779764305634675233}
   - component: {fileID: 7598820058606553604}
+  - component: {fileID: 4211310769716240773}
   m_Layer: 3
   m_Name: metarig
   m_TagString: Untagged
@@ -986,6 +987,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4211310769716240773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5290554422307699137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 710a3564378b12244a737104c049890e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5714814629330219470
 GameObject:
   m_ObjectHideFlags: 0
