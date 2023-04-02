@@ -953,6 +953,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6507502001254056997, guid: 8c0e2fa3d96ce3d47acfb3a8b88fb44e,
+        type: 3}
+      propertyPath: points.Array.data[0]
+      value: 
+      objectReference: {fileID: 341178079}
+    - target: {fileID: 6507502001254056997, guid: 8c0e2fa3d96ce3d47acfb3a8b88fb44e,
+        type: 3}
+      propertyPath: points.Array.data[1]
+      value: 
+      objectReference: {fileID: 1730505837}
     - target: {fileID: 6507502001254056999, guid: 8c0e2fa3d96ce3d47acfb3a8b88fb44e,
         type: 3}
       propertyPath: m_Name
@@ -1208,6 +1218,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4207927200181359584}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &98243600 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1254993584, guid: b05580a507acab44d847297c9158ad09,
+    type: 3}
+  m_PrefabInstance: {fileID: 4207927200181359584}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98243598}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dce6f5193508a746b160cb8da44556c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &98243601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5306,7 +5328,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1924864336}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &470296788
 MonoBehaviour:
@@ -7043,6 +7065,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 636505805}
   m_CullTransparentMesh: 1
+--- !u!114 &642766812 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4204294673315411647, guid: 8c0e2fa3d96ce3d47acfb3a8b88fb44e,
+    type: 3}
+  m_PrefabInstance: {fileID: 57396496}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 491c9b0e6a852c448b46b9bfdfa5a674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &647940086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9572,7 +9606,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1924864336}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &899024700
 MonoBehaviour:
@@ -15193,8 +15227,8 @@ MonoBehaviour:
   CDReader: {fileID: 991438516}
   FirstDoor: {fileID: 1778046141}
   HallwayDoor: {fileID: 2036299544}
-  LiftDoor: {fileID: 0}
-  mainCamScript: {fileID: 0}
+  LiftDoor: {fileID: 642766812}
+  mainCamScript: {fileID: 98243601}
   _lights: []
   ServersRoom:
   - {fileID: 943165997}
@@ -17307,7 +17341,7 @@ MonoBehaviour:
   playerObject: {fileID: 919132147712814172}
   camPlayer: {fileID: 333967990}
   mainMenu: {fileID: 2094995170}
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 1854718533}
   otherCanvas: {fileID: 618667827}
   optionMenu: {fileID: 455743432}
   graphicsMenu: {fileID: 2118897711}
@@ -17324,7 +17358,7 @@ MonoBehaviour:
     vertical: 2160
   resolutionLabel: {fileID: 816859384}
   dropdown: {fileID: 831657259}
-  camControler: {fileID: 0}
+  camControler: {fileID: 98243600}
 --- !u!114 &1383482962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21426,7 +21460,7 @@ Transform:
   - {fileID: 341178079}
   - {fileID: 1730505837}
   m_Father: {fileID: 1924864336}
-  m_RootOrder: 12
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1698864455 stripped
 GameObject:
@@ -21736,7 +21770,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730505836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -29.87, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24251,18 +24285,18 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 57396497}
-  - {fileID: 1974973080}
   - {fileID: 899024699}
+  - {fileID: 1974973080}
+  - {fileID: 470296787}
   - {fileID: 176429117}
   - {fileID: 694442215}
-  - {fileID: 470296787}
   - {fileID: 1360677596}
+  - {fileID: 1695027309}
   - {fileID: 7249844070122279273}
   - {fileID: 1799065917}
   - {fileID: 1472834985}
   - {fileID: 1822756644}
   - {fileID: 1242568861}
-  - {fileID: 1695027309}
   m_Father: {fileID: 537926565}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
