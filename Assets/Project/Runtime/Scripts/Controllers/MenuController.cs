@@ -76,6 +76,7 @@ public class MenuController : MonoBehaviour
             || graphicsMenu.activeSelf
             || soundMenu.activeSelf
             || controlMenu.activeSelf
+            || pauseMenu.activeSelf
         )
         {
             return true;
