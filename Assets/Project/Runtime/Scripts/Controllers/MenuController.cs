@@ -25,6 +25,9 @@ public class MenuController : MonoBehaviour
     [SerializeField]
     private GameObject otherCanvas;
 
+    [SerializeField]
+    private GameObject narratorCanvas;
+
     [Header("Other Menus")]
     [SerializeField]
     private GameObject optionMenu;
@@ -53,6 +56,7 @@ public class MenuController : MonoBehaviour
     {
         DisableComponentsOnTarget();
         otherCanvas.SetActive(false);
+        narratorCanvas.SetActive(false);
     }
 
     void Update()
@@ -65,6 +69,7 @@ public class MenuController : MonoBehaviour
             Cursor.visible = true;
             DisableComponentsOnTarget();
             otherCanvas.SetActive(false);
+            narratorCanvas.SetActive(false);
             SoundSystem.Instance.PauseAudio();
         }
     }
@@ -143,6 +148,7 @@ public class MenuController : MonoBehaviour
         EnableComponentsOnTarget();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        narratorCanvas.SetActive(true);
     }
 
     // Method to deactivate the canvas
@@ -152,6 +158,7 @@ public class MenuController : MonoBehaviour
         mainMenu.SetActive(false);
         otherCanvas.SetActive(true);
         EnableComponentsOnTarget();
+        narratorCanvas.SetActive(true);
 
         GameplayHandler.Instance.StartGame();
     }
@@ -229,5 +236,29 @@ public class MenuController : MonoBehaviour
     {
         public int horizontal,
             vertical;
+    }
+
+    public void ChangeNarratorVolume(Slider slider)
+    {
+        SoundSystem.Instance.NarratorVolume = slider.value;
+        SoundSystem.Instance.ChangeVolume();
+    }
+
+    public void ChangeMusicVolume(Slider slider)
+    {
+        SoundSystem.Instance.MusicVolume = slider.value;
+        SoundSystem.Instance.ChangeVolume();
+    }
+
+    public void ChangeSfxVolume(Slider slider)
+    {
+        SoundSystem.Instance.SfxVolume = slider.value;
+        SoundSystem.Instance.ChangeVolume();
+    }
+
+    public void ChangeMasterVolume(Slider slider)
+    {
+        SoundSystem.Instance.MasterVolume = slider.value;
+        SoundSystem.Instance.ChangeVolume();
     }
 }

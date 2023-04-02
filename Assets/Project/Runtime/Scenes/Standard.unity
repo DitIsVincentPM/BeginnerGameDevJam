@@ -155,11 +155,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 816859383}
-  - {fileID: 845347329}
   - {fileID: 1521340026}
   - {fileID: 1348210082}
   m_Father: {fileID: 2118897712}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1359,7 +1358,7 @@ GameObject:
   - component: {fileID: 120629425}
   - component: {fileID: 120629424}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: SoundEffects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1374,16 +1373,16 @@ RectTransform:
   m_GameObject: {fileID: 120629422}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1943530524}
-  m_RootOrder: 3
+  m_Father: {fileID: 1181942500}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 56, y: 4}
-  m_SizeDelta: {x: 270.0036, y: 40}
+  m_AnchoredPosition: {x: 46.254578, y: -166.32367}
+  m_SizeDelta: {x: 118.854, y: 17.1944}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &120629424
 MonoBehaviour:
@@ -1433,7 +1432,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15.2
+  m_fontSize: 13.6
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1441,7 +1440,7 @@ MonoBehaviour:
   m_fontSizeMax: 15.2
   m_fontStyle: 32
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 4096
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3345,8 +3344,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Options
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 47ad27b2dcc0fd64ea39e35fd6f6d51d, type: 2}
+  m_sharedMaterial: {fileID: 7674247733338589682, guid: 47ad27b2dcc0fd64ea39e35fd6f6d51d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3440,7 +3440,7 @@ PrefabInstance:
     - target: {fileID: 55405220201267502, guid: 2a93a6bafc74f8c438b8f4915dedf6e7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 55405220201267502, guid: 2a93a6bafc74f8c438b8f4915dedf6e7,
         type: 3}
@@ -5529,7 +5529,7 @@ GameObject:
   - component: {fileID: 495657026}
   - component: {fileID: 495657025}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5544,16 +5544,16 @@ RectTransform:
   m_GameObject: {fileID: 495657023}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1379377369}
-  m_RootOrder: 3
+  m_Father: {fileID: 1181942500}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 55.99998, y: 4}
-  m_SizeDelta: {x: 270.0036, y: 40}
+  m_AnchoredPosition: {x: 25.275959, y: -207.80167}
+  m_SizeDelta: {x: 85.0396, y: 16.459}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &495657025
 MonoBehaviour:
@@ -5605,7 +5605,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15.2
+  m_fontSize: 13
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5613,7 +5613,7 @@ MonoBehaviour:
   m_fontSizeMax: 15.2
   m_fontStyle: 32
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 4096
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -6477,7 +6477,7 @@ RectTransform:
   - {fileID: 1933166017}
   - {fileID: 1730771605}
   m_Father: {fileID: 1993955971}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7041,9 +7041,8 @@ RectTransform:
   - {fileID: 1499843977}
   - {fileID: 32050560}
   - {fileID: 1985007406}
-  - {fileID: 904793088}
   m_Father: {fileID: 1181942500}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7100,7 +7099,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1383482961}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: ChangeNarratorVolume
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 691820592}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &691874440
 GameObject:
   m_ObjectHideFlags: 0
@@ -8695,7 +8706,6 @@ RectTransform:
   - {fileID: 759508245}
   - {fileID: 1457355658}
   - {fileID: 344830067}
-  - {fileID: 2039835240}
   m_Father: {fileID: 2118897712}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8814,7 +8824,7 @@ GameObject:
   - component: {fileID: 845347331}
   - component: {fileID: 845347330}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Resolution
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8829,15 +8839,15 @@ RectTransform:
   m_GameObject: {fileID: 845347328}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 11631173}
-  m_RootOrder: 1
+  m_Father: {fileID: 2118897712}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -45.8, y: -6.1}
+  m_AnchoredPosition: {x: -90.999985, y: 58.399994}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &845347330
@@ -8924,7 +8934,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 114.46665, w: 26.090216}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -9542,7 +9552,7 @@ GameObject:
   - component: {fileID: 904793090}
   - component: {fileID: 904793089}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Narrator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9557,16 +9567,16 @@ RectTransform:
   m_GameObject: {fileID: 904793087}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 691820591}
-  m_RootOrder: 3
+  m_Father: {fileID: 1181942500}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 55.99998, y: 4}
-  m_SizeDelta: {x: 270.0036, y: 40}
+  m_AnchoredPosition: {x: 29.19083, y: -247.77551}
+  m_SizeDelta: {x: 91.0628, y: 16.4992}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &904793089
 MonoBehaviour:
@@ -9616,7 +9626,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15.2
+  m_fontSize: 13.05
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9624,7 +9634,7 @@ MonoBehaviour:
   m_fontSizeMax: 15.2
   m_fontStyle: 32
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 4096
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -13487,7 +13497,7 @@ GameObject:
   - component: {fileID: 1123631253}
   - component: {fileID: 1123631252}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: MasterVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13502,16 +13512,16 @@ RectTransform:
   m_GameObject: {fileID: 1123631250}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1743994879}
-  m_RootOrder: 3
+  m_Father: {fileID: 1181942500}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 55.99998, y: 4}
-  m_SizeDelta: {x: 270.0036, y: 40}
+  m_AnchoredPosition: {x: 31.596327, y: -126.27684}
+  m_SizeDelta: {x: 96.303, y: 15.728}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1123631252
 MonoBehaviour:
@@ -13563,7 +13573,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15.2
+  m_fontSize: 12.4
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -13571,7 +13581,7 @@ MonoBehaviour:
   m_fontSizeMax: 15.2
   m_fontStyle: 32
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 4096
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -13877,9 +13887,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1123631251}
   - {fileID: 1743994879}
-  - {fileID: 1379377369}
+  - {fileID: 120629423}
   - {fileID: 1943530524}
+  - {fileID: 495657024}
+  - {fileID: 1379377369}
+  - {fileID: 904793088}
   - {fileID: 691820591}
   m_Father: {fileID: 1383482965}
   m_RootOrder: 4
@@ -14724,8 +14738,8 @@ RectTransform:
   m_Father: {fileID: 654636008}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -15177,8 +15191,8 @@ RectTransform:
   m_Father: {fileID: 965034505}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -15932,7 +15946,7 @@ RectTransform:
   m_Children:
   - {fileID: 2107828913}
   m_Father: {fileID: 11631173}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16697,9 +16711,8 @@ RectTransform:
   - {fileID: 1378679474}
   - {fileID: 791751601}
   - {fileID: 654636008}
-  - {fileID: 495657024}
   m_Father: {fileID: 1181942500}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16753,10 +16766,22 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1383482961}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: ChangeMusicVolume
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1379377370}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1382667921
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16910,6 +16935,7 @@ MonoBehaviour:
   mainMenu: {fileID: 2094995170}
   pauseMenu: {fileID: 1011720713}
   otherCanvas: {fileID: 618667827}
+  narratorCanvas: {fileID: 1866622076}
   optionMenu: {fileID: 455743432}
   graphicsMenu: {fileID: 2118897711}
   soundMenu: {fileID: 1181942499}
@@ -17006,7 +17032,7 @@ RectTransform:
   - {fileID: 1181942500}
   - {fileID: 917543407}
   m_Father: {fileID: 1993955971}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -17279,8 +17305,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -15, y: 0}
-  m_SizeDelta: {x: 20, y: 20}
+  m_AnchoredPosition: {x: -10.9601, y: 0.000071406}
+  m_SizeDelta: {x: 11.9202, y: 12.837}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1457355659
 MonoBehaviour:
@@ -18686,7 +18712,7 @@ RectTransform:
   m_Children:
   - {fileID: 691874441}
   m_Father: {fileID: 11631173}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -21338,9 +21364,8 @@ RectTransform:
   - {fileID: 1323371954}
   - {fileID: 919894419}
   - {fileID: 1367279748}
-  - {fileID: 1123631251}
   m_Father: {fileID: 1181942500}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -21397,7 +21422,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1383482961}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: ChangeMasterVolume
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1743994880}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1744835594
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22436,7 +22473,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -22921,6 +22958,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.020052755, y: 0.019999996, z: 0.019999998}
   m_Center: {x: -0.000026379706, y: 0.000000029802322, z: 0}
+--- !u!1 &1866622076 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 55405220201267506, guid: 2a93a6bafc74f8c438b8f4915dedf6e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 328789931}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1880717516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23375,7 +23418,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -23601,9 +23644,8 @@ RectTransform:
   - {fileID: 1615947548}
   - {fileID: 1891906319}
   - {fileID: 965034505}
-  - {fileID: 120629423}
   m_Father: {fileID: 1181942500}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -23657,10 +23699,22 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1383482961}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: ChangeSfxVolume
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1943530525}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1947694984
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24665,9 +24719,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 794578578}
   - {fileID: 618667831}
   - {fileID: 1383482965}
+  - {fileID: 794578578}
   m_Father: {fileID: 1821763586}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24819,7 +24873,7 @@ RectTransform:
   m_Children:
   - {fileID: 1448876022}
   m_Father: {fileID: 2118897712}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -25037,7 +25091,7 @@ GameObject:
   - component: {fileID: 2039835242}
   - component: {fileID: 2039835241}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Window Mode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25052,16 +25106,16 @@ RectTransform:
   m_GameObject: {fileID: 2039835239}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 831657258}
-  m_RootOrder: 3
+  m_Father: {fileID: 2118897712}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -43.450005, y: -6.399971}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -135.2812, y: 101.481384}
+  m_SizeDelta: {x: 108.0377, y: 25.037}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2039835241
 MonoBehaviour:
@@ -26242,15 +26296,17 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 11631173}
+  - {fileID: 2039835240}
   - {fileID: 831657258}
+  - {fileID: 845347329}
+  - {fileID: 11631173}
   - {fileID: 2021850075}
   m_Father: {fileID: 1383482965}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 158, y: 0.000025431314}
+  m_AnchoredPosition: {x: 167.8, y: 1.1}
   m_SizeDelta: {x: 800, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2128294777
@@ -26305,6 +26361,10 @@ MonoBehaviour:
   _soundSource: {fileID: 8284088235222279635, guid: 79762b64087edd7438e5d3888f934ad1,
     type: 3}
   Robot: {fileID: 8300000, guid: eaa309f7bb27d09429129911c2552125, type: 3}
+  NarratorVolume: 1
+  MusicVolume: 0.5
+  SfxVolume: 0.5
+  MasterVolume: 1
 --- !u!4 &2134324956 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2108493775832610358, guid: f11dc418c17c91e4d85cc7a490c2afdf,
