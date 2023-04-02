@@ -97,12 +97,11 @@ public class MenuController : MonoBehaviour
     public void StartBtn()
     {
         Time.timeScale = 1f;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
         mainMenu.SetActive(false);
         otherCanvas.SetActive(true);
         EnableComponentsOnTarget();
-        
+
+        GameplayHandler.Instance.StartGame();
     }
 
     public void QuitGameBtn()

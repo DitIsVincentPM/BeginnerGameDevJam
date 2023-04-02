@@ -46,6 +46,15 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
 
     [Header("Storage")]
     [SerializeField]
+    private AudioClip MainTheme;
+
+    [SerializeField]
+    private AudioClip HighAlert;
+
+    [SerializeField]
+    private AudioClip Chasing;
+
+    [SerializeField]
     NarratorSystem narratorSystem;
 
     [SerializeField]
@@ -75,18 +84,15 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
         // Disable Map Parts that are not visible
         mapPuzzle2.SetActive(false);
         mapPuzzle3.SetActive(false);
-        currentPuzzle = 0;
-
-        // Give disk to random Server
-        int randomnumber = Random.Range(0, GameObject.FindGameObjectsWithTag("Server").Length);
-        GameObject.FindGameObjectsWithTag("Server")[randomnumber].AddComponent<ServerDiskHandler>();
+        currentPuzzle = -1;
 
         foreach (GameObject source in GameObject.FindGameObjectsWithTag("AlarmSource"))
         {
             _lights.Add(source.transform.GetComponentInChildren<LichtFlasher>());
         }
         DisarmAlarm();
-        narratorSystem.SayVoiceLine(narratorSystem.voiceLines[0]);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     void Update()
@@ -159,6 +165,22 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
     // Gameplay Functions (Volgorde)
     //-------------------------------------------------------------//
 
+    public void StartGame()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        // Disable Map Parts that are not visible
+        mapPuzzle2.SetActive(false);
+        mapPuzzle3.SetActive(false);
+        currentPuzzle = 0;
+
+        // Give disk to random Server
+        int randomnumber = Random.Range(0, GameObject.FindGameObjectsWithTag("Server").Length);
+        GameObject.FindGameObjectsWithTag("Server")[randomnumber].AddComponent<ServerDiskHandler>();
+        DisarmAlarm();
+        narratorSystem.SayVoiceLine(narratorSystem.voiceLines[0]);
+    }
+
     // Activate's when clicking E on Monitor
     public void StartHacking(GameObject objects)
     {
@@ -183,6 +205,7 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
         narratorSystem.SayVoiceLine(narratorSystem.voiceLines[1]);
         FirstDoor.activationState = DoorController.DoorActivation.Proximity;
         ArmAlarm();
+        SoundSystem.Instance.PlayMusic(HighAlert);
         currentPuzzle = 1;
         UISystem.Instance.NotificationSlider.gameObject.SetActive(false);
     }
@@ -237,11 +260,13 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
             .GetComponent<SliderProgress>()
             .SetProgress(objects, 0);
         HallwayDoor.activationState = DoorController.DoorActivation.Proximity;
+        SoundSystem.Instance.PlayMusic(MainTheme);
     }
 
     public void ServersPowerdOn()
     {
-        if(GameplayHandler.Instance.currentPuzzle != 3) return;
+        if (GameplayHandler.Instance.currentPuzzle != 3)
+            return;
         foreach (GameObject server in ServersRoom)
         {
             server.GetComponent<Renderer>().materials[2].color = new Color(0.08220265f, 1f, 0);

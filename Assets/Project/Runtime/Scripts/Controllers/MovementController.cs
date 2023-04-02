@@ -57,22 +57,19 @@ public class MovementController : MonoBehaviour
     void Start()
     {
         playerScale = transform.localScale;
-        LockCursor();
-    }
-
-    void LockCursor()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     void FixedUpdate()
     {
+        if (GameplayHandler.Instance.currentPuzzle < 0)
+            return;
         Movement();
     }
 
     void Update()
     {
+        if (GameplayHandler.Instance.currentPuzzle < 0)
+            return;
         MyInput();
         Look();
     }
@@ -219,7 +216,8 @@ public class MovementController : MonoBehaviour
 
             for (int i = 0; i < hitColliders.Length; i++)
             {
-                if(hitColliders[i].gameObject.CompareTag("Enemy")) {
+                if (hitColliders[i].gameObject.CompareTag("Enemy"))
+                {
                     hitColliders[i].gameObject.GetComponent<Entity>().AddHealth(attackDamage);
                 }
             }
