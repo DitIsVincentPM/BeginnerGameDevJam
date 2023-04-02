@@ -17,7 +17,7 @@ public class SoundSystem : StaticInstance<SoundSystem>
 
     [SerializeField]
     private AudioClip mainTheme;
-    
+
     private void Start()
     {
         foreach (GameObject audioSource in GameObject.FindGameObjectsWithTag("NarratorSource"))
@@ -31,6 +31,15 @@ public class SoundSystem : StaticInstance<SoundSystem>
         }
 
         PlayMusic(mainTheme);
+    }
+
+    public void RefreshNarratorSource()
+    {
+        _narratorSources.Clear();
+        foreach (GameObject audioSource in GameObject.FindGameObjectsWithTag("NarratorSource"))
+        {
+            _narratorSources.Add(audioSource.GetComponent<AudioSource>());
+        }
     }
 
     public void PlaySound(AudioClip clip, Vector3 position, float volume = 1)

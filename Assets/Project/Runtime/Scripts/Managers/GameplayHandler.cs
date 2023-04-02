@@ -31,6 +31,7 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
     [Header("Sound Effects")]
     [SerializeField]
     private AudioClip powerUpGrid;
+
     [SerializeField]
     private AudioClip failSound;
 
@@ -61,6 +62,7 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
     [Space(10)]
     [SerializeField]
     private List<LichtFlasher> _lights;
+
     [SerializeField]
     private List<GameObject> ServersRoom;
 
@@ -70,12 +72,10 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
 
     void Start()
     {
-
         // Disable Map Parts that are not visible
         mapPuzzle2.SetActive(false);
         mapPuzzle3.SetActive(false);
         currentPuzzle = 0;
-
 
         // Give disk to random Server
         int randomnumber = Random.Range(0, GameObject.FindGameObjectsWithTag("Server").Length);
@@ -223,27 +223,35 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
     // Gets called when Disk is uploaded to the disk reader
     public void UploadedDisk(GameObject objects)
     {
+        OpenMapPart("Puzzle2");
+        SoundSystem.Instance.RefreshNarratorSource();
+
         NarratorSystem.Instance.SayVoiceLine(NarratorSystem.Instance.voiceLines[3]);
         GameplayHandler.Instance.DisarmAlarm();
         NotificationSystem.Instance.NotificationCallback(
             NotificationSystem.NotificationType.Upload
         );
+        GameplayHandler.Instance.currentPuzzle = 3;
         NotificationSystem.Instance.uploadDownload.transform
             .GetChild(0)
             .GetComponent<SliderProgress>()
             .SetProgress(objects, 0);
-        mapPuzzle2.SetActive(true);
         HallwayDoor.activationState = DoorController.DoorActivation.Proximity;
     }
 
-    public void ServersPowerdOn() {
-        foreach(GameObject server in ServersRoom) {
-            server.GetComponent<Renderer>().material.color = new Color(0.08220265f, 1f, 0);
+    public void ServersPowerdOn()
+    {
+        if(GameplayHandler.Instance.currentPuzzle != 3) return;
+        foreach (GameObject server in ServersRoom)
+        {
+            server.GetComponent<Renderer>().materials[2].color = new Color(0.08220265f, 1f, 0);
         }
+
         SoundSystem.Instance.PlaySound(
             powerUpGrid,
             FindFirstObjectByType<PlayerController>().gameObject.transform.position
         );
+        GameplayHandler.Instance.currentPuzzle = 4;
         NarratorSystem.Instance.SayVoiceLine(NarratorSystem.Instance.voiceLines[4]);
     }
 
