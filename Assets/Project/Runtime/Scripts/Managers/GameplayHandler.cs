@@ -7,13 +7,13 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
 
     [Header("Map Parts")]
     [SerializeField]
-    GameObject mapPuzzle1;
+    public GameObject mapPuzzle1;
 
     [SerializeField]
-    GameObject mapPuzzle2;
+    public GameObject mapPuzzle2;
 
     [SerializeField]
-    GameObject mapPuzzle3;
+    public GameObject mapPuzzle3;
 
     [Header("Game Value's")]
     [SerializeField]

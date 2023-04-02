@@ -27,6 +27,9 @@ public class ElevatorController : MonoBehaviour
             {
                 canMove = false;
                 doorController.activationState = DoorController.DoorActivation.StayOpen;
+                gameObject.transform.parent = GameplayHandler.Instance.mapPuzzle3.transform;
+                points[0].parent.gameObject.transform.parent = GameplayHandler.Instance.mapPuzzle3.transform;
+                GameplayHandler.Instance.CloseMapPart("Puzzle2");
             }
             else
             {
@@ -38,6 +41,7 @@ public class ElevatorController : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, points[i].position, speed * Time.deltaTime);
             doorController.activationState = DoorController.DoorActivation.StayClosed;
+            GameplayHandler.Instance.OpenMapPart("Puzzle3");
         }
     }
 
