@@ -99,21 +99,15 @@ public class MovementController : MonoBehaviour
     /// </summary>
     void MyInput()
     {
-        inputDirection.x = Input.GetAxisRaw("Horizontal");
-        inputDirection.y = Input.GetAxisRaw("Vertical");
-        inputDirection = move.action.ReadValue<Vector2>();
+        inputDirection.x = move.action.ReadValue<Vector2>().x;
+        inputDirection.y = move.action.ReadValue<Vector2>().y;
 
-        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
-        {
-            animationController.SetBool("movingLeft", false);
-            animationController.SetBool("movingRight", false);
-        }
-        else if (Input.GetKey(KeyCode.A))
+        if (inputDirection.x < 0)
         {
             animationController.SetBool("movingLeft", true);
             animationController.SetBool("movingRight", false);
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (inputDirection.x > 0)
         {
             animationController.SetBool("movingLeft", false);
             animationController.SetBool("movingRight", true);
@@ -123,12 +117,6 @@ public class MovementController : MonoBehaviour
             animationController.SetBool("movingLeft", false);
             animationController.SetBool("movingRight", false);
         }
-
-        //Crouching
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-            StartCrouch();
-        if (Input.GetKeyUp(KeyCode.LeftControl))
-            StopCrouch();
 
         feet.enabled = inputDirection.magnitude == 0 && !crouching;
     }

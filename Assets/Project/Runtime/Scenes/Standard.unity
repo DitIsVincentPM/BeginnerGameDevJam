@@ -28060,8 +28060,23 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 919132147712814175, guid: b05580a507acab44d847297c9158ad09,
         type: 3}
+      propertyPath: playerInput
+      value: 
+      objectReference: {fileID: 919132147712814178}
+    - target: {fileID: 919132147712814175, guid: b05580a507acab44d847297c9158ad09,
+        type: 3}
+      propertyPath: movementAction.m_Id
+      value: b4514753-af82-4e58-93da-698021742672
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132147712814175, guid: b05580a507acab44d847297c9158ad09,
+        type: 3}
       propertyPath: playerControls.m_Id
       value: c3358513-6839-4257-bf10-9f57a4ea400c
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132147712814175, guid: b05580a507acab44d847297c9158ad09,
+        type: 3}
+      propertyPath: movementAction.m_Name
+      value: Movement
       objectReference: {fileID: 0}
     - target: {fileID: 919132147712814175, guid: b05580a507acab44d847297c9158ad09,
         type: 3}
