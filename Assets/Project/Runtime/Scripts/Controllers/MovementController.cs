@@ -51,7 +51,7 @@ public class MovementController : MonoBehaviour
     public int attackRange = 2;
     
     [SerializeField] 
-    private InputActionReference move, jump;
+    private InputActionReference move, jump, fire;
 
     private void OnEnable() 
     {
@@ -212,7 +212,7 @@ public class MovementController : MonoBehaviour
         }
 
         // Handle Attack
-        if (canAttack && grounded && Input.GetKey(KeyCode.Mouse0))
+        if (canAttack && grounded && fire.action.triggered)
         {
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
             canAttack = false;
