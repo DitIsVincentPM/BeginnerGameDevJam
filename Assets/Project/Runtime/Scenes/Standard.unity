@@ -31931,6 +31931,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5295926878242952197, guid: b05580a507acab44d847297c9158ad09,
         type: 3}
+      propertyPath: _fire
+      value: 
+      objectReference: {fileID: 7564384088960850169, guid: 0cd111647ef61ac429eff1da5bbe5eb2,
+        type: 3}
+    - target: {fileID: 5295926878242952197, guid: b05580a507acab44d847297c9158ad09,
+        type: 3}
+      propertyPath: alpha1
+      value: 
+      objectReference: {fileID: -577326655111972414, guid: 0cd111647ef61ac429eff1da5bbe5eb2,
+        type: 3}
+    - target: {fileID: 5295926878242952197, guid: b05580a507acab44d847297c9158ad09,
+        type: 3}
+      propertyPath: alpha2
+      value: 
+      objectReference: {fileID: 4139487496292584318, guid: 0cd111647ef61ac429eff1da5bbe5eb2,
+        type: 3}
+    - target: {fileID: 5295926878242952197, guid: b05580a507acab44d847297c9158ad09,
+        type: 3}
+      propertyPath: _alpha1
+      value: 
+      objectReference: {fileID: -577326655111972414, guid: 0cd111647ef61ac429eff1da5bbe5eb2,
+        type: 3}
+    - target: {fileID: 5295926878242952197, guid: b05580a507acab44d847297c9158ad09,
+        type: 3}
+      propertyPath: _alpha2
+      value: 
+      objectReference: {fileID: 4139487496292584318, guid: 0cd111647ef61ac429eff1da5bbe5eb2,
+        type: 3}
+    - target: {fileID: 5295926878242952197, guid: b05580a507acab44d847297c9158ad09,
+        type: 3}
       propertyPath: _camera
       value: 
       objectReference: {fileID: 98243602}
@@ -31941,9 +31971,21 @@ PrefabInstance:
       objectReference: {fileID: 825051276}
     - target: {fileID: 5295926878242952197, guid: b05580a507acab44d847297c9158ad09,
         type: 3}
+      propertyPath: _rotate
+      value: 
+      objectReference: {fileID: 4207377495353172991, guid: 0cd111647ef61ac429eff1da5bbe5eb2,
+        type: 3}
+    - target: {fileID: 5295926878242952197, guid: b05580a507acab44d847297c9158ad09,
+        type: 3}
       propertyPath: _holdPos
       value: 
       objectReference: {fileID: 4207927200181359586}
+    - target: {fileID: 5295926878242952197, guid: b05580a507acab44d847297c9158ad09,
+        type: 3}
+      propertyPath: _interact
+      value: 
+      objectReference: {fileID: 3191642533840483811, guid: 0cd111647ef61ac429eff1da5bbe5eb2,
+        type: 3}
     - target: {fileID: 5295926878242952197, guid: b05580a507acab44d847297c9158ad09,
         type: 3}
       propertyPath: _pickupLayer

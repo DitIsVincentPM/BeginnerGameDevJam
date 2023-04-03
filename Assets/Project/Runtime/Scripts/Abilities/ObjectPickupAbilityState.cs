@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ObjectPickupAbilityState : AbilityBaseState
 {
@@ -19,7 +20,7 @@ public class ObjectPickupAbilityState : AbilityBaseState
 
     public override void UpdateState()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Ctx.Interact.action.triggered)
         {
             if (heldObj == null)
             {
@@ -46,7 +47,7 @@ public class ObjectPickupAbilityState : AbilityBaseState
         {
             MoveObject();
             RotateObject();
-            if (Input.GetKeyDown(KeyCode.Mouse0) && canDrop == true)
+            if (Ctx.Fire.action.triggered && canDrop == true)
             {
                 StopClipping();
                 ThrowObject();
@@ -84,7 +85,7 @@ public class ObjectPickupAbilityState : AbilityBaseState
 
     void RotateObject()
     {
-        if (Input.GetKey(KeyCode.R))
+        if (Ctx.Rotate.action.triggered)
         {
             canDrop = false;
 
