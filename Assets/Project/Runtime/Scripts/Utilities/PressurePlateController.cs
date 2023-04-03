@@ -16,7 +16,7 @@ public class PressurePlateController : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private string compareTag;
 
-    [SerializeField] private ObjectPickup objectPickup;
+    [SerializeField] private ObjectPickupAbilityState objectPickup;
 
     private void Start()
     {
