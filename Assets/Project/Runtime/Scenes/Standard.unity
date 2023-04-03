@@ -19279,7 +19279,7 @@ MonoBehaviour:
   resolutionLabel: {fileID: 816859384}
   dropdown: {fileID: 831657259}
   camControler: {fileID: 98243600}
-  escape: {fileID: 1196489640817453510, guid: 0cd111647ef61ac429eff1da5bbe5eb2, type: 3}
+  escape: {fileID: 6392958072925218528, guid: 0cd111647ef61ac429eff1da5bbe5eb2, type: 3}
 --- !u!114 &1383482962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31668,6 +31668,12 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 919132147712814175, guid: b05580a507acab44d847297c9158ad09,
+        type: 3}
+      propertyPath: fire
+      value: 
+      objectReference: {fileID: 7564384088960850169, guid: 0cd111647ef61ac429eff1da5bbe5eb2,
+        type: 3}
     - target: {fileID: 919132147712814175, guid: b05580a507acab44d847297c9158ad09,
         type: 3}
       propertyPath: jump
