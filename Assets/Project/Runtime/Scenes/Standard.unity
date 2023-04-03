@@ -16956,7 +16956,8 @@ MonoBehaviour:
   - {fileID: 1462859361}
   - {fileID: 1462859360}
   - {fileID: 1462859359}
-  _interact: {fileID: 0}
+  _interact: {fileID: 3191642533840483811, guid: 0cd111647ef61ac429eff1da5bbe5eb2,
+    type: 3}
 --- !u!4 &1270483841
 Transform:
   m_ObjectHideFlags: 0
