@@ -31946,6 +31946,16 @@ PrefabInstance:
       objectReference: {fileID: 4207927200181359586}
     - target: {fileID: 5295926878242952197, guid: b05580a507acab44d847297c9158ad09,
         type: 3}
+      propertyPath: _pickupLayer
+      value: holdLayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295926878242952197, guid: b05580a507acab44d847297c9158ad09,
+        type: 3}
+      propertyPath: _playerLayer
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295926878242952197, guid: b05580a507acab44d847297c9158ad09,
+        type: 3}
       propertyPath: _pickupLayerMask.m_Bits
       value: 0
       objectReference: {fileID: 0}
