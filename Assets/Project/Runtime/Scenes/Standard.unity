@@ -29209,6 +29209,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 1.9834621
       objectReference: {fileID: 0}
+    - target: {fileID: 7489105329115018744, guid: 342c5db34ee565242870d3e937143164,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489105329115018744, guid: 342c5db34ee565242870d3e937143164,
+        type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7561939103261830000, guid: 342c5db34ee565242870d3e937143164,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -30665,7 +30675,7 @@ PrefabInstance:
     - target: {fileID: 6611870019661646250, guid: 8563fe05d9f5f92409d9368ce586cbf7,
         type: 3}
       propertyPath: m_Intensity
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6611870019661646250, guid: 8563fe05d9f5f92409d9368ce586cbf7,
         type: 3}
