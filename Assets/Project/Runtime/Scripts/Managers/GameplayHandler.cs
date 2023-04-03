@@ -91,49 +91,8 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
     private float timerTime;
 
     [Header("InputSystem")]
-    [SerializeField] private InputActionReference interectKey;
+    [SerializeField] private InputActionReference _interact;
 
-    private void OnEnable() 
-    {
-        interectKey.action.performed += InteractPerformed;
-    }
-    private void OnDisable() 
-    {
-        interectKey.action.performed -= InteractPerformed;
-    }
-
-    private void InteractPerformed(InputAction.CallbackContext obj)
-    {
-        RaycastHit hit = raycastController.GetRaycastHit(10f, _layerMask);
-        if (hit.collider == null)
-                return;
-        if (hit.collider.gameObject.tag == "Server")
-        {
-            if (hit.collider.gameObject.GetComponent<ServerDiskHandler>() != null)
-            {
-                NotificationSystem.Instance.uploadDownload.transform
-                    .GetChild(0)
-                    .GetComponent<SliderProgress>()
-                    .SetProgress(hit.collider.gameObject, 1);
-                NotificationSystem.Instance.Notification(
-                    NotificationSystem.NotificationType.Download,
-                    "Disk Content"
-                );
-            }
-            else
-            {
-                SoundSystem.Instance.PlaySound(
-                    failSound,
-                    hit.collider.gameObject.transform.position,
-                    0.3f
-                );
-                NotificationSystem.Instance.Notification(
-                    NotificationSystem.NotificationType.Error,
-                    " 404\r\nNo disk found in server"
-                );
-            }
-        }
-    }
 
     void Start()
     {
@@ -185,6 +144,32 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
                 {
                     var outline = hit.collider.gameObject.GetComponent<Outline>();
                     outline.enabled = true;
+                }
+                if (_interact.action.triggered)
+                {
+                    if (hit.collider.gameObject.GetComponent<ServerDiskHandler>() != null)
+                    {
+                        NotificationSystem.Instance.uploadDownload.transform
+                            .GetChild(0)
+                            .GetComponent<SliderProgress>()
+                            .SetProgress(hit.collider.gameObject, 1);
+                        NotificationSystem.Instance.Notification(
+                            NotificationSystem.NotificationType.Download,
+                            "Disk Content"
+                        );
+                    }
+                    else
+                    {
+                        SoundSystem.Instance.PlaySound(
+                            failSound,
+                            hit.collider.gameObject.transform.position,
+                            0.3f
+                        );
+                        NotificationSystem.Instance.Notification(
+                            NotificationSystem.NotificationType.Error,
+                            " 404\r\nNo disk found in server"
+                        );
+                    }
                 }
             }
             oldRaycast = hit;
