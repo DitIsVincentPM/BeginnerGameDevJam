@@ -17,7 +17,8 @@ public class AbilityStateMachine : MonoBehaviour
     [SerializeField] private GameObject _player;
     [SerializeField] private Transform _camera;
     [SerializeField] private Transform _holdPos;
-    [SerializeField] private LayerMask _pickupLayerMask;
+    [SerializeField] private string _pickupLayer;
+    [SerializeField] private string _playerLayer;
 
     [SerializeField] private float _throwForce = 500f;
     [SerializeField] private float _pickUpRange = 10f;
@@ -26,7 +27,8 @@ public class AbilityStateMachine : MonoBehaviour
     public GameObject Player { get { return _player; } }
     public Transform Camera { get { return _camera; } }
     public Transform HoldPos { get { return _holdPos; } }
-    public LayerMask PickupLayerMask { get { return _pickupLayerMask; } }
+    public string PickupLayer { get { return _pickupLayer; } }
+    public string PlayerLayer { get { return _playerLayer; } }
 
     public float ThrowForce { get { return _throwForce; } }
     public float PickUpRange { get { return _pickUpRange; } }
@@ -37,7 +39,7 @@ public class AbilityStateMachine : MonoBehaviour
     {
         _states = new AbilityStateFactory(this);
 
-        PopulateAbilityList();
+        _abilities.Add(_states.Default());
         _maxAbility = _abilities.Count - 1;
         _currentAbility = 0;
 
@@ -51,40 +53,46 @@ public class AbilityStateMachine : MonoBehaviour
         _currentState.UpdateState();
     }
 
-    private void PopulateAbilityList()
+    public void UnlockAbility(AbilityBaseState ability)
     {
-        _abilities.Add(_states.ObjectPickup());
+        if (!_abilities.Contains(ability))
+        {
+            _abilities.Add(ability);
+        }
     }
 
     private void SwitchAbilitySystem()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (_abilities.Count != 0)
         {
-            if (_currentAbility != 0)
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                _currentAbility--;
-            }
-            else
-            {
-                _currentAbility = _maxAbility;
-            }
+                if (_currentAbility != 0)
+                {
+                    _currentAbility--;
+                }
+                else
+                {
+                    _currentAbility = _maxAbility;
+                }
 
-            _currentState.SwitchState(_abilities[_currentAbility]);
-            Debug.Log(_currentState);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            if (_currentAbility < _maxAbility)
-            {
-                _currentAbility++;
+                _currentState.SwitchState(_abilities[_currentAbility]);
+                Debug.Log(_currentState);
             }
-            else if (_currentAbility == _maxAbility)
+            else if (Input.GetKeyDown(KeyCode.Alpha4))
             {
-                _currentAbility = 0;
-            }
+                if (_currentAbility < _maxAbility)
+                {
+                    _currentAbility++;
+                }
+                else if (_currentAbility == _maxAbility)
+                {
+                    _currentAbility = 0;
+                }
 
-            _currentState.SwitchState(_abilities[_currentAbility]);
-            Debug.Log(_currentState);
+                _currentState.SwitchState(_abilities[_currentAbility]);
+                Debug.Log(_currentState);
+            }
         }
     }
 }

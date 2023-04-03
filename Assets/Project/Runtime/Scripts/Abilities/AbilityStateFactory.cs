@@ -9,6 +9,11 @@ public class AbilityStateFactory
         _context = currentContext;
     }
 
+    public AbilityBaseState Default()
+    {
+        return new DefaultAbilityState(_context, this);
+    }
+
     public AbilityBaseState ObjectPickup()
     {
         return new ObjectPickupAbilityState(_context, this);
