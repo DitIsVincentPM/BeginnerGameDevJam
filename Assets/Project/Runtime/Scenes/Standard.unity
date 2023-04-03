@@ -27445,6 +27445,10 @@ PrefabInstance:
       propertyPath: intractables.Array.data[1].interactText
       value: 
       objectReference: {fileID: 75374055}
+    - target: {fileID: 1254993582, guid: b05580a507acab44d847297c9158ad09, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1254993584, guid: b05580a507acab44d847297c9158ad09, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -27483,6 +27487,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _pickupLayerMask.m_Bits
       value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 5886358745075125525, guid: b05580a507acab44d847297c9158ad09,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8289524372157120493, guid: b05580a507acab44d847297c9158ad09,
         type: 3}

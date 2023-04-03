@@ -40,6 +40,7 @@ public class AbilityStateMachine : MonoBehaviour
         _states = new AbilityStateFactory(this);
 
         _abilities.Add(_states.Default());
+        _abilities.Add(_states.ObjectPickup());
         _maxAbility = _abilities.Count - 1;
         _currentAbility = 0;
 

@@ -13,7 +13,6 @@ public class ObjectPickupAbilityState : AbilityBaseState
     public override void EnterState()
     {
         LayerNumber = LayerMask.NameToLayer("holdLayer");
-        Debug.Log("Test");
     }
 
     public override void ExitState() { }
@@ -25,8 +24,8 @@ public class ObjectPickupAbilityState : AbilityBaseState
             if (heldObj == null)
             {
                 RaycastHit hit;
-                int layerMask = ~(1 << LayerMask.NameToLayer("Player"));
-                if (Physics.Raycast(Ctx.Camera.position, Ctx.Camera.TransformDirection(Vector3.forward), out hit, Ctx.PickUpRange, ~LayerMask.NameToLayer(Ctx.PlayerLayer)))
+                int layerMask = ~(1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer(Ctx.PlayerLayer));
+                if (Physics.Raycast(Ctx.Camera.position, Ctx.Camera.TransformDirection(Vector3.forward), out hit, Ctx.PickUpRange, layerMask))
                 {
                     if (hit.transform.gameObject.CompareTag("canPickUp"))
                     {
