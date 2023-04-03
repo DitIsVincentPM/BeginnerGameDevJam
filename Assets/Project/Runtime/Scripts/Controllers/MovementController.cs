@@ -180,7 +180,7 @@ public class MovementController : MonoBehaviour
             if (Vector3.Dot(transform.forward, Vector3.Normalize(rigidBody.velocity)) > 0)
             {
                 animationController.SetBool("isMoving", true);
-                if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
+                if (inputDirection.x < 0)
                     animationController.SetFloat(
                         "walkingSpeed",
                         (rigidBody.velocity.magnitude / 5)
