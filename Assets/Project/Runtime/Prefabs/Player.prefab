@@ -298,6 +298,7 @@ MonoBehaviour:
   holdPos: {fileID: 5886358745075125524}
   throwForce: 500
   pickUpRange: 10
+  heldObj: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -1557,6 +1558,7 @@ GameObject:
   - component: {fileID: 919132147712814174}
   - component: {fileID: 7019115800466494450}
   - component: {fileID: 919132147712814175}
+  - component: {fileID: 5295926878242952197}
   - component: {fileID: 8120467353089139008}
   - component: {fileID: 3526423805934387954}
   m_Layer: 8
@@ -1641,6 +1643,21 @@ MonoBehaviour:
   attackCooldown: 1
   attackDamage: -10
   attackRange: 5
+--- !u!114 &5295926878242952197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8289524372157120493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e4f8fcdd4879cc4585746901099c79d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _throwForce: 500
+  _pickUpRange: 10
+  _rotationSensitivity: 1
 --- !u!114 &8120467353089139008
 MonoBehaviour:
   m_ObjectHideFlags: 0
