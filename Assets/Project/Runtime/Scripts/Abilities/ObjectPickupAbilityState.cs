@@ -13,7 +13,6 @@ public class ObjectPickupAbilityState : AbilityBaseState
     public override void EnterState()
     {
         LayerNumber = LayerMask.NameToLayer("holdLayer");
-        Debug.Log("Test");
     }
 
     public override void ExitState() { }
@@ -25,8 +24,8 @@ public class ObjectPickupAbilityState : AbilityBaseState
             if (heldObj == null)
             {
                 RaycastHit hit;
-                int layerMask = ~(1 << LayerMask.NameToLayer("Player"));
-                if (Physics.Raycast(Ctx.Camera.position, Ctx.Camera.TransformDirection(Vector3.forward), out hit, Ctx.PickUpRange, Ctx.PickupLayerMask))
+                int layerMask = ~(1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer(Ctx.PlayerLayer));
+                if (Physics.Raycast(Ctx.Camera.position, Ctx.Camera.TransformDirection(Vector3.forward), out hit, Ctx.PickUpRange, layerMask))
                 {
                     if (hit.transform.gameObject.CompareTag("canPickUp"))
                     {
@@ -71,7 +70,8 @@ public class ObjectPickupAbilityState : AbilityBaseState
     void DropObject()
     {
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), Ctx.Player.GetComponent<Collider>(), false);
-        heldObj.layer = Ctx.PickupLayerMask;
+
+        heldObj.layer = LayerMask.NameToLayer(Ctx.PickupLayer);
         heldObjRb.isKinematic = false;
         heldObj.transform.parent = null;
         heldObj = null;
@@ -106,7 +106,7 @@ public class ObjectPickupAbilityState : AbilityBaseState
     void ThrowObject()
     {
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), Ctx.Player.GetComponent<Collider>(), false);
-        heldObj.layer = Ctx.PickupLayerMask;
+        heldObj.layer = LayerMask.NameToLayer(Ctx.PickupLayer);
         heldObjRb.isKinematic = false;
         heldObj.transform.parent = null;
         heldObj.transform.position = Ctx.Player.transform.position + new Vector3(0f, 3f, 0f); // Set position to player position

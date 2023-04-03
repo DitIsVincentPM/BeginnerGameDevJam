@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class AbilityStateFactory
@@ -7,6 +8,11 @@ public class AbilityStateFactory
     public AbilityStateFactory(AbilityStateMachine currentContext)
     {
         _context = currentContext;
+    }
+
+    public AbilityBaseState Default()
+    {
+        return new DefaultAbilityState(_context, this);
     }
 
     public AbilityBaseState ObjectPickup()
