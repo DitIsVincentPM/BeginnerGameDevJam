@@ -42,18 +42,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Escaped",
+                    "name": "Interact",
                     "type": "Button",
-                    "id": "42297af9-5b63-49f3-9f17-749ee162f5ad",
+                    "id": "490bc77c-9b20-4e71-8366-7dd046bbe38d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Interact",
+                    "name": "Escape",
                     "type": "Button",
-                    "id": "490bc77c-9b20-4e71-8366-7dd046bbe38d",
+                    "id": "3621ada7-4f7b-4108-97fc-5817c6e50c4d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -294,23 +294,23 @@
                 },
                 {
                     "name": "",
-                    "id": "10d3044d-bf10-4775-9b07-ca4b9b123f72",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Escaped",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "ccc2c471-e27a-4814-9c53-188cbaa5ac9e",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "390bcdf3-9ec9-4373-b32b-465b5dd800cd",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Escape",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

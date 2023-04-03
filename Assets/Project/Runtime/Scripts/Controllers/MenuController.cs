@@ -86,7 +86,7 @@ public class MenuController : MonoBehaviour
 
     private void EscapePressed()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !IsMenuActive())
+        if (!IsMenuActive())
         {
             pauseMenu.SetActive(true);
             Time.timeScale = 0f;

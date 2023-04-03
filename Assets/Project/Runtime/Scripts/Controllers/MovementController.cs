@@ -51,7 +51,7 @@ public class MovementController : MonoBehaviour
     public int attackRange = 2;
     
     [SerializeField] 
-    private InputActionReference move, jump;
+    private InputActionReference move, jump, fire;
 
     private void OnEnable() 
     {
@@ -99,21 +99,15 @@ public class MovementController : MonoBehaviour
     /// </summary>
     void MyInput()
     {
-        inputDirection.x = Input.GetAxisRaw("Horizontal");
-        inputDirection.y = Input.GetAxisRaw("Vertical");
-        inputDirection = move.action.ReadValue<Vector2>();
+        inputDirection.x = move.action.ReadValue<Vector2>().x;
+        inputDirection.y = move.action.ReadValue<Vector2>().y;
 
-        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
-        {
-            animationController.SetBool("movingLeft", false);
-            animationController.SetBool("movingRight", false);
-        }
-        else if (Input.GetKey(KeyCode.A))
+        if (inputDirection.x < 0)
         {
             animationController.SetBool("movingLeft", true);
             animationController.SetBool("movingRight", false);
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (inputDirection.x > 0)
         {
             animationController.SetBool("movingLeft", false);
             animationController.SetBool("movingRight", true);
@@ -123,12 +117,6 @@ public class MovementController : MonoBehaviour
             animationController.SetBool("movingLeft", false);
             animationController.SetBool("movingRight", false);
         }
-
-        //Crouching
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-            StartCrouch();
-        if (Input.GetKeyUp(KeyCode.LeftControl))
-            StopCrouch();
 
         feet.enabled = inputDirection.magnitude == 0 && !crouching;
     }
@@ -192,7 +180,7 @@ public class MovementController : MonoBehaviour
             if (Vector3.Dot(transform.forward, Vector3.Normalize(rigidBody.velocity)) > 0)
             {
                 animationController.SetBool("isMoving", true);
-                if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
+                if (inputDirection.x < 0)
                     animationController.SetFloat(
                         "walkingSpeed",
                         (rigidBody.velocity.magnitude / 5)
@@ -224,7 +212,7 @@ public class MovementController : MonoBehaviour
         }
 
         // Handle Attack
-        if (canAttack && grounded && Input.GetKey(KeyCode.Mouse0))
+        if (canAttack && grounded && fire.action.triggered)
         {
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
             canAttack = false;
