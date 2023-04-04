@@ -26,7 +26,7 @@ public class PressurePlateController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag(compareTag) && objectPickup.heldObj == null)
+        if (other.gameObject.CompareTag(compareTag))
         {
             if (_objectToActivate != null)
                 _objectToActivate.SetActive(true);
