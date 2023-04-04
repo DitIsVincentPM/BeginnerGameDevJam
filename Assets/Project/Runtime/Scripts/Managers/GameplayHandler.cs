@@ -341,7 +341,7 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
             light.GetComponentInChildren<Light>().color = new Color(1, 1, 1);
             light.endColor = new Color(1, 1, 1);
             light.startColor = new Color(1, 1, 1);
-            light.transform.GetComponentInChildren<Light>().intensity = 12;
+            light.transform.GetComponentInChildren<Light>().intensity = 4;
         }
         SoundSystem.Instance.StopAlarm();
     }
@@ -352,7 +352,7 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
         {
             light.endColor = Color.red;
             light.startColor = new Color(0.78f, 0.1945087f, 0.1993889f);
-            light.transform.GetComponentInChildren<Light>().intensity = 25;
+            light.transform.GetComponentInChildren<Light>().intensity = 5;
         }
         SoundSystem.Instance.PlayAlarm(alarm, 0.1f);
     }

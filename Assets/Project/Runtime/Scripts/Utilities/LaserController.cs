@@ -15,7 +15,7 @@ public class LaserController : MonoBehaviour
     public Transform[] points;
 
     [SerializeField]
-    bool isActive;
+    public bool isActive;
     int currentPoint;
     int rndPoint;
 

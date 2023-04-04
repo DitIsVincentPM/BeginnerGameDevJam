@@ -14,9 +14,11 @@ public class PressurePlateController : MonoBehaviour
     public Animator animator;
 
     [Header("Settings")]
-    [SerializeField] private string compareTag;
+    [SerializeField]
+    private string compareTag;
 
-    [SerializeField] private ObjectPickupAbilityState objectPickup;
+    [SerializeField]
+    private ObjectPickupAbilityState objectPickup;
 
     private void Start()
     {
@@ -31,7 +33,13 @@ public class PressurePlateController : MonoBehaviour
             if (_objectToActivate != null)
                 _objectToActivate.SetActive(true);
 
-            GameplayHandler.Instance.ServersPowerdOn();
+            if (GetComponent<PressurePlateLaser>()) { 
+                GetComponent<PressurePlateLaser>().DeactiveLasers();
+            }
+            else
+            {
+                GameplayHandler.Instance.ServersPowerdOn();
+            }
             animator.SetBool("pressed", true);
         }
     }
