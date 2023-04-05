@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.ProBuilder.MeshOperations;
 
 public class GameplayHandler : StaticInstance<GameplayHandler>
 {
@@ -9,6 +10,8 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
     [Header("Map Parts")]
     [SerializeField]
     public GameObject mapPuzzle1;
+    [SerializeField]
+    private GameObject serverText;
 
     [SerializeField]
     public GameObject mapPuzzle2;
@@ -132,6 +135,7 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
         // Check Server Disk, Outline
         if (currentPuzzle == 1)
         {
+            serverText.SetActive(true);
             RaycastHit hit = raycastController.GetRaycastHit(10f, _layerMask);
             if (hit.collider == null)
                 return;
@@ -176,6 +180,10 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
                 }
             }
             oldRaycast = hit;
+        }
+        else
+        {
+            serverText.SetActive(false);
         }
     }
 
