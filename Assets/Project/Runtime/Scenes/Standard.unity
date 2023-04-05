@@ -4920,10 +4920,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Thanks for playing, Write us a review! :) \n\nPlaytesting by PienKAMVS,
-    Bekir\n\nMade with Love by\nQuinver, DitIsVincent & Sv3r\n\nUI by \nQuinver\n\nAI
-    by \nSv3r\n\nSound Design, Level Design and Moddeling By\nDitIsVincent\n\nScripts
-    By \nSv3r, Quinver & DitIsVincent\n\nEnd Game\n"
+  m_text: "Thanks for playing, Write us a review! :) \n\nPlaytesting by PienKAMVS\n\nMade
+    with Love by\nQuinver, DitIsVincent & Sv3r\n\nUI by \nQuinver\n\nAI by \nSv3r\n\nSound
+    Design, Level Design and Moddeling By\nDitIsVincent\n\nScripts By \nSv3r, Quinver
+    & DitIsVincent\n\nEnd Game\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -38689,7 +38689,7 @@ MonoBehaviour:
   - audio: {fileID: 8300000, guid: 674cc97ebbcdb3841bf1b4891dfe6f2e, type: 3}
     text: You have downloaded the disk's contents, Now go to the labratory and insert
       it into the disk reader.
-  - audio: {fileID: 8300000, guid: e17541994bf1726409e931b2e8cfad0a, type: 3}
+  - audio: {fileID: 8300000, guid: d2170e1b5d7cebd48b70b4b20394386e, type: 3}
     text: Good Job! The alarm is disarmed. Try to turn on the servers in the Server
       Room to open the next area.. You also unlocked the abiltiy to use telekinesis
       to move objects, click rightmousebutton to toggle it
