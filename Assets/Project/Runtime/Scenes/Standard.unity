@@ -29306,10 +29306,10 @@ RectTransform:
   m_Father: {fileID: 618667831}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 647.9, y: -336}
-  m_SizeDelta: {x: 114.3, y: 100}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 7.8999023, y: 24}
+  m_SizeDelta: {x: 114.29999, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1364303746
 GameObject:
@@ -33764,7 +33764,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -1.2700043, y: 11.5}
+  m_AnchoredPosition: {x: -1.2700195, y: 11.5}
   m_SizeDelta: {x: 8.54, y: 12.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1545769711
@@ -37355,9 +37355,9 @@ RectTransform:
   m_Father: {fileID: 618667831}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -171, y: -285}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 469, y: 75}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1730771606
@@ -38316,10 +38316,10 @@ MonoBehaviour:
   - audio: {fileID: 8300000, guid: 674cc97ebbcdb3841bf1b4891dfe6f2e, type: 3}
     text: You have downloaded the disk's contents, Now go to the labratory and insert
       it into the disk reader.
-  - audio: {fileID: 8300000, guid: ea5a326b9884d034b831d44486248f20, type: 3}
-    text: You uploaded the disk's content to the disk reader, It disarmed the alarm
-      and opened the door to the Hallway. Try to turn on the servers in the Server
-      Room to open the next area.
+  - audio: {fileID: 8300000, guid: e17541994bf1726409e931b2e8cfad0a, type: 3}
+    text: Good Job! The alarm is disarmed. Try to turn on the servers in the Server
+      Room to open the next area.. You also unlocked the abiltiy to use telekinesis
+      to move objects, click leftmousebutton to toggle it
   - audio: {fileID: 8300000, guid: f6109a3de954a2b4f881ed6c0e5bc41b, type: 3}
     text: Good job! The servers turned on the Elevator, use it to go to the second
       floor.
@@ -40651,10 +40651,10 @@ RectTransform:
   m_Father: {fileID: 618667831}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -449.98, y: -305.01}
-  m_SizeDelta: {x: 275.34, y: 21.99}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 190.02002, y: 54.98999}
+  m_SizeDelta: {x: 275.34, y: 21.98999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1895022121
 MonoBehaviour:
@@ -41142,9 +41142,9 @@ RectTransform:
   m_Father: {fileID: 618667831}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 639.9999, y: 360}
   m_SizeDelta: {x: 1280, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1933166018
@@ -48085,6 +48085,11 @@ PrefabInstance:
       propertyPath: playerInput
       value: 
       objectReference: {fileID: 919132147712814178}
+    - target: {fileID: 919132147712814175, guid: b05580a507acab44d847297c9158ad09,
+        type: 3}
+      propertyPath: attackDamage
+      value: -25
+      objectReference: {fileID: 0}
     - target: {fileID: 919132147712814175, guid: b05580a507acab44d847297c9158ad09,
         type: 3}
       propertyPath: movementAction.m_Id
