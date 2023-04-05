@@ -16,6 +16,9 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
     [SerializeField]
     public GameObject mapPuzzle3;
 
+    [SerializeField]
+    public GameObject mapPuzzle4;
+
     [Header("Game Value's")]
     [SerializeField]
     public int currentPuzzle = 0;
@@ -315,6 +318,9 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
             case "Puzzle3":
                 mapPuzzle3.SetActive(false);
                 break;
+            case "Puzzle4":
+                mapPuzzle4.SetActive(false);
+                break;
         }
     }
 
@@ -330,6 +336,9 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
                 break;
             case "Puzzle3":
                 mapPuzzle3.SetActive(true);
+                break;
+            case "Puzzle4":
+                mapPuzzle4.SetActive(true);
                 break;
         }
     }
