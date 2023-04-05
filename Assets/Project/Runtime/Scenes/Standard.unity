@@ -48035,6 +48035,18 @@ PrefabInstance:
       propertyPath: intractables.Array.data[8].interactText
       value: 
       objectReference: {fileID: 2046293064}
+    - target: {fileID: 1105237362, guid: b05580a507acab44d847297c9158ad09, type: 3}
+      propertyPath: m_Height
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105237362, guid: b05580a507acab44d847297c9158ad09, type: 3}
+      propertyPath: m_Radius
+      value: 0.026
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105237362, guid: b05580a507acab44d847297c9158ad09, type: 3}
+      propertyPath: m_Center.z
+      value: 0.0055
+      objectReference: {fileID: 0}
     - target: {fileID: 1254993584, guid: b05580a507acab44d847297c9158ad09, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -48405,6 +48417,11 @@ PrefabInstance:
     - target: {fileID: 8289524372157120493, guid: b05580a507acab44d847297c9158ad09,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8417361360109786260, guid: b05580a507acab44d847297c9158ad09,
+        type: 3}
+      propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8665381790299350359, guid: b05580a507acab44d847297c9158ad09,

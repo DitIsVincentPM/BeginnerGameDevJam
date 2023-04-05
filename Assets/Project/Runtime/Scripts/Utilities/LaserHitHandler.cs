@@ -8,11 +8,11 @@ public class LaserHitHandler : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.transform.GetComponentInParent<Entity>().AddHealth(-5f);
+            other.gameObject.transform.parent.GetComponentInParent<Entity>().AddHealth(-5f);
         }
         else if (other.gameObject.CompareTag("Enemy"))
         {
-            other.gameObject.transform.GetComponentInParent<Entity>().AddHealth(-15f);
+            other.gameObject.transform.parent.GetComponentInParent<Entity>().AddHealth(-15f);
         }
     }
 }
