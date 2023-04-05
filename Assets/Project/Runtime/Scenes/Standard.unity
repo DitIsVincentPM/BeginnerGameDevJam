@@ -49254,6 +49254,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132147712814175, guid: b05580a507acab44d847297c9158ad09,
         type: 3}
+      propertyPath: attackRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132147712814175, guid: b05580a507acab44d847297c9158ad09,
+        type: 3}
       propertyPath: playerInput
       value: 
       objectReference: {fileID: 919132147712814178}
@@ -49261,6 +49266,11 @@ PrefabInstance:
         type: 3}
       propertyPath: attackDamage
       value: -25
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132147712814175, guid: b05580a507acab44d847297c9158ad09,
+        type: 3}
+      propertyPath: attackCooldown
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 919132147712814175, guid: b05580a507acab44d847297c9158ad09,
         type: 3}
