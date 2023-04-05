@@ -14,6 +14,7 @@ public class SoundSystem : StaticInstance<SoundSystem>
 
     [SerializeField]
     private AudioSource _soundSource;
+    public AudioClip Punch;
 
     [SerializeField]
     private AudioClip Robot;
