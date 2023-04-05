@@ -12,6 +12,7 @@ public class NotificationSystem : StaticInstance<NotificationSystem>
         Upload,
         Download,
         Error,
+        Hack,
         Warning,
         Complete,
     }
@@ -32,7 +33,8 @@ public class NotificationSystem : StaticInstance<NotificationSystem>
         if (waitTime > 0)
         {
             timer += Time.deltaTime;
-            if(timer > waitTime) {
+            if (timer > waitTime)
+            {
                 NotificationCallback(NotificationType.Error);
                 timer = 0;
                 waitTime = 0;
@@ -69,7 +71,38 @@ public class NotificationSystem : StaticInstance<NotificationSystem>
                 uploadDownload.GetComponentInChildren<TMP_Text>().text =
                     value != null ? "\r\nError " + value : "Error";
                 uploadDownload.transform.GetChild(0).gameObject.SetActive(false);
-                uploadDownload.GetComponent<Image>().color = new Color(0.8773585f, 0, 0, 0.4039216f);
+                uploadDownload.GetComponent<Image>().color = new Color(
+                    0.8773585f,
+                    0,
+                    0,
+                    0.4039216f
+                );
+                animator.SetFloat("animSpeed", 5);
+                animator.SetFloat("notification", 1);
+                waitTime = 0.2f;
+                break;
+            case NotificationType.Hack:
+                uploadDownload.GetComponentInChildren<TMP_Text>().text =
+                    value != null ? "\r\nHacked " + value : "\r\nFailed Hack";
+                uploadDownload.transform.GetChild(0).gameObject.SetActive(false);
+                if (value == null)
+                {
+                    uploadDownload.GetComponent<Image>().color = new Color(
+                        0.8773585f,
+                        0,
+                        0,
+                        0.4039216f
+                    );
+                }
+                else
+                {
+                    uploadDownload.GetComponent<Image>().color = new Color(
+                        0.002803495f,
+                        0.5943396f,
+                        0.182557f,
+                        0.4039216f
+                    );
+                }
                 animator.SetFloat("animSpeed", 5);
                 animator.SetFloat("notification", 1);
                 waitTime = 0.2f;

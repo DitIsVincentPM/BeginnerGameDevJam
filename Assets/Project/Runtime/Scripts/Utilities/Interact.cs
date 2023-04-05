@@ -39,13 +39,15 @@ public class Interact : StaticInstance<Interact>
     [SerializeField]
     private SliderProgress _progress;
 
-    [SerializeField] private InputActionReference interactKey;
+    [SerializeField]
+    private InputActionReference interactKey;
 
-    private void OnEnable() 
+    private void OnEnable()
     {
         interactKey.action.performed += InteractPerformed;
     }
-    private void OnDisable() 
+
+    private void OnDisable()
     {
         interactKey.action.performed += InteractPerformed;
     }
@@ -54,27 +56,47 @@ public class Interact : StaticInstance<Interact>
     {
         foreach (Interactable interact in intractables)
         {
-            if (interact.interactText.enabled == true) 
+            if (interact.interactText.enabled == true)
             {
                 Ray ray = new Ray(_camera.transform.position, _camera.transform.forward);
                 RaycastHit hit;
-                
+
                 if (Physics.Raycast(ray, out hit, _raycastDistance, _layerMask))
+                {
+                    switch (hit.collider.gameObject.name)
                     {
-                        switch (hit.collider.gameObject.name)
-                        {
-                            case "Monitor":
-                                GameplayHandler.Instance.StartHacking(hit.collider.gameObject);
-                                break;
-                            case "CDReader":
-                                GameplayHandler.Instance.StartDiskUpload(hit.collider.gameObject);
-                                break;
-                        }
+                        case "Monitor":
+                            GameplayHandler.Instance.StartHacking(hit.collider.gameObject);
+                            break;
+                        case "CDReader":
+                            GameplayHandler.Instance.StartDiskUpload(hit.collider.gameObject);
+                            break;
+                        case "Button":
+                            PuzzleHandler.Instance.ButtonPress();
+                            break;
+                        case "Screen1":
+                            PuzzleHandler.Instance.Hacked(1);
+                            break;
+                        case "Screen2":
+                            PuzzleHandler.Instance.Hacked(2);
+                            break;
+                        case "Screen3":
+                            PuzzleHandler.Instance.Hacked(3);
+                            break;
+                        case "Screen4":
+                            PuzzleHandler.Instance.Hacked(4);
+                            break;
+                        case "Screen5":
+                            PuzzleHandler.Instance.Hacked(5);
+                            break;
+                        case "Screen6":
+                            PuzzleHandler.Instance.Hacked(6);
+                            break;
                     }
+                }
             }
         }
     }
-    
 
     private void Start()
     {
@@ -84,7 +106,6 @@ public class Interact : StaticInstance<Interact>
         }
         _camera = Camera.main;
     }
-
 
     public bool SetInteractable(string name, bool state = false)
     {

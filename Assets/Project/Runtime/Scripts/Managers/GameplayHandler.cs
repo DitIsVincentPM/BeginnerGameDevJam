@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class GameplayHandler : StaticInstance<GameplayHandler>
 {
-
     [Header("Map Parts")]
     [SerializeField]
     public GameObject mapPuzzle1;
@@ -94,8 +93,8 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
     private float timerTime;
 
     [Header("InputSystem")]
-    [SerializeField] private InputActionReference _interact;
-
+    [SerializeField]
+    private InputActionReference _interact;
 
     void Start()
     {
@@ -266,7 +265,6 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
     public void UploadedDisk(GameObject objects)
     {
         OpenMapPart("Puzzle2");
-        SoundSystem.Instance.RefreshNarratorSource();
 
         NarratorSystem.Instance.SayVoiceLine(NarratorSystem.Instance.voiceLines[3]);
         GameplayHandler.Instance.DisarmAlarm();
@@ -311,15 +309,23 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
                 HallwayDoor.transform.parent = mapPuzzle2.transform;
                 HallwayDoor.activationState = DoorController.DoorActivation.StayClosed;
                 mapPuzzle1.SetActive(false);
+                SoundSystem.Instance.RefreshNarratorSource();
+
                 break;
             case "Puzzle2":
                 mapPuzzle2.SetActive(false);
+                SoundSystem.Instance.RefreshNarratorSource();
+
                 break;
             case "Puzzle3":
                 mapPuzzle3.SetActive(false);
+                SoundSystem.Instance.RefreshNarratorSource();
+
                 break;
             case "Puzzle4":
                 mapPuzzle4.SetActive(false);
+                SoundSystem.Instance.RefreshNarratorSource();
+
                 break;
         }
     }
@@ -330,15 +336,23 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
         {
             case "Puzzle1":
                 mapPuzzle1.SetActive(true);
+                SoundSystem.Instance.RefreshNarratorSource();
+
                 break;
             case "Puzzle2":
                 mapPuzzle2.SetActive(true);
+                SoundSystem.Instance.RefreshNarratorSource();
+
                 break;
             case "Puzzle3":
                 mapPuzzle3.SetActive(true);
+                SoundSystem.Instance.RefreshNarratorSource();
+
                 break;
             case "Puzzle4":
                 mapPuzzle4.SetActive(true);
+                SoundSystem.Instance.RefreshNarratorSource();
+
                 break;
         }
     }
