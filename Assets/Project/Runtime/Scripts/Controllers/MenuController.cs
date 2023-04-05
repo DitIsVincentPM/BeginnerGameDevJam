@@ -1,11 +1,11 @@
-using UnityEngine;
-using System.Collections.Generic;
-using System.Collections;
-using UnityEngine.UI;
-using TMPro;
-using UnityEngine.InputSystem;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
@@ -67,13 +67,13 @@ public class MenuController : MonoBehaviour
         gameOver.SetActive(true);
     }
 
-    private void OnEnable() 
+    private void OnEnable()
     {
         escape.action.performed += EscapePerformed;
     }
 
 
-    private void OnDisable() 
+    private void OnDisable()
     {
         escape.action.performed -= EscapePerformed;
     }
@@ -204,6 +204,10 @@ public class MenuController : MonoBehaviour
     {
         Scene thisScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(thisScene.name);
+
+        otherCanvas.SetActive(false);
+        pauseMenu.SetActive(false);
+        mainMenu.SetActive(true);
     }
 
     public void QuitGameBtn()
