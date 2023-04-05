@@ -39,6 +39,8 @@ public class EnemyStateMachine : MonoBehaviour
     [SerializeField]
     public Animator animator;
 
+    private bool _isDead = false;
+
     public Transform Target
     {
         get { return _target; }
@@ -96,6 +98,11 @@ public class EnemyStateMachine : MonoBehaviour
         set { _currentState = value; }
     }
 
+    public bool IsDead
+    {
+        get { return _isDead; }
+    }
+
     private void Awake()
     {
         animator = transform.GetChild(1).GetComponent<Animator>();
@@ -111,11 +118,13 @@ public class EnemyStateMachine : MonoBehaviour
     {
         _attackHandler = GetComponentInChildren<AttackHandler>();
         _attackHandler.OnAttack += Attack;
+        _enemyEntity.OnDeath += OnDeath;
     }
 
     private void OnDisable()
     {
         _attackHandler.OnAttack -= Attack;
+        _enemyEntity.OnDeath -= OnDeath;
     }
 
     private void Start()
@@ -179,6 +188,11 @@ public class EnemyStateMachine : MonoBehaviour
         }
         _alreadyAttacked = true;
         Invoke(nameof(ResetAttack), _attackCooldown);
+    }
+
+    public void OnDeath()
+    {
+        _isDead = true;
     }
 
     public void ResetAttack()

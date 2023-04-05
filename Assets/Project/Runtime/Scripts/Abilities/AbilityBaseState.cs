@@ -1,3 +1,6 @@
+using UnityEngine.UI;
+using UnityEngine.UIElements;
+
 public abstract class AbilityBaseState
 {
     private AbilityStateMachine _ctx;
@@ -12,6 +15,7 @@ public abstract class AbilityBaseState
         _factory = abilityStateFactory;
     }
 
+    public abstract string GetName();
     public abstract void EnterState();
     public abstract void UpdateState();
     public abstract void ExitState();
@@ -22,5 +26,6 @@ public abstract class AbilityBaseState
         newState.EnterState();
 
         _ctx.CurrentState = newState;
+        _ctx.AbilityIconDisplay.GetComponent<RawImage>().texture = _ctx.AbilityIcons[newState.GetName()];
     }
 }
