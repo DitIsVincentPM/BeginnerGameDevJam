@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     public List<string> inInventory;
     private Entity _playerEntity;
 
+    [Header("DeathMenu")]
+    [SerializeField] private MenuController menuController;
+
     private void Awake()
     {
         _playerEntity = GetComponent<Entity>();
@@ -25,7 +28,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnDeath()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        menuController.DisableComponentsOnTarget();
 
+        if (menuController != null)
+        {
+            menuController.EnableRestartMenu();
+        }
     }
 
     public float GetBattery()
