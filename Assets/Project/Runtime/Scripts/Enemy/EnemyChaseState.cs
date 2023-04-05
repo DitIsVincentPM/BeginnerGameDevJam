@@ -10,6 +10,10 @@ public class EnemyChaseState : EnemyBaseState
 
     public override void CheckSwitchStates()
     {
+        if (Ctx.IsDead)
+        {
+            SwitchState(Factory.Death());
+        }
         if (!Ctx.TargetInSightRange && !Ctx.TargetInAttackRange)
         {
             SwitchState(Factory.Patrolling());

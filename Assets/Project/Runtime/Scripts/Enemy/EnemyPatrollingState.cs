@@ -10,6 +10,10 @@ public class EnemyPatrollingState : EnemyBaseState
 
     public override void CheckSwitchStates()
     {
+        if (Ctx.IsDead)
+        {
+            SwitchState(Factory.Death());
+        }
         if (Ctx.TargetInSightRange && !Ctx.TargetInAttackRange)
         {
             SwitchState(Factory.Chase());
@@ -25,7 +29,8 @@ public class EnemyPatrollingState : EnemyBaseState
         Ctx.animator.SetBool("walking", true);
     }
 
-    public override void ExitState() { 
+    public override void ExitState()
+    {
         Ctx.animator.SetBool("walking", false);
     }
 

@@ -39,6 +39,8 @@ public class EnemyStateMachine : MonoBehaviour
     [SerializeField]
     public Animator animator;
 
+    private bool _isDead = false;
+
     public Transform Target
     {
         get { return _target; }
@@ -94,6 +96,11 @@ public class EnemyStateMachine : MonoBehaviour
     {
         get { return _currentState; }
         set { _currentState = value; }
+    }
+
+    public bool IsDead
+    {
+        get { return _isDead; }
     }
 
     private void Awake()
@@ -185,7 +192,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     public void OnDeath()
     {
-        Destroy(this.gameObject);
+        _isDead = true;
     }
 
     public void ResetAttack()
