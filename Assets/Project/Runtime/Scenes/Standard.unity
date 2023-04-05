@@ -51401,7 +51401,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Throw/Punch
+  m_Text: Interact
 --- !u!1 &6365705377044411925
 GameObject:
   m_ObjectHideFlags: 0
