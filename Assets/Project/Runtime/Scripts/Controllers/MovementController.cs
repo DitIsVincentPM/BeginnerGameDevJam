@@ -117,8 +117,6 @@ public class MovementController : MonoBehaviour
             animationController.SetBool("movingLeft", false);
             animationController.SetBool("movingRight", false);
         }
-
-        feet.enabled = inputDirection.magnitude == 0 && !crouching;
     }
 
     void StartCrouch()
