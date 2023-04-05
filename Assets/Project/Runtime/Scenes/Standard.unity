@@ -38610,7 +38610,7 @@ MonoBehaviour:
   - audio: {fileID: 8300000, guid: e17541994bf1726409e931b2e8cfad0a, type: 3}
     text: Good Job! The alarm is disarmed. Try to turn on the servers in the Server
       Room to open the next area.. You also unlocked the abiltiy to use telekinesis
-      to move objects, click leftmousebutton to toggle it
+      to move objects, click rightmousebutton to toggle it
   - audio: {fileID: 8300000, guid: f6109a3de954a2b4f881ed6c0e5bc41b, type: 3}
     text: Good job! The servers turned on the Elevator, use it to go to the second
       floor.
@@ -50753,7 +50753,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: W
+  m_Text: Z
 --- !u!114 &5891706284154796187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50787,7 +50787,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A
+  m_Text: Q
 --- !u!114 &5891706284629947881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51582,7 +51582,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Space
+  m_Text: Espace
 --- !u!222 &6365705376742892841
 CanvasRenderer:
   m_ObjectHideFlags: 0
