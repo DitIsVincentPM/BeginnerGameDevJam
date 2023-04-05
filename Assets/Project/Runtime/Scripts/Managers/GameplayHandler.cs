@@ -9,8 +9,6 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
     [Header("Map Parts")]
     [SerializeField]
     public GameObject mapPuzzle1;
-    [SerializeField]
-    private GameObject serverText;
 
     [SerializeField]
     public GameObject mapPuzzle2;
@@ -52,6 +50,9 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
     private AudioClip alarm;
 
     [Header("Storage")]
+    [SerializeField]
+    private GameObject serverText;
+
     [SerializeField]
     Animator UIanim;
 
@@ -310,7 +311,8 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
         LiftDoor.activationState = DoorController.DoorActivation.Proximity;
     }
 
-    public void EndGame() {
+    public void EndGame()
+    {
         UIanim.SetBool("EndGame", true);
     }
 

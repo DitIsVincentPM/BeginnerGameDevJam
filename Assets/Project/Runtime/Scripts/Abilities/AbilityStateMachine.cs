@@ -102,7 +102,6 @@ public class AbilityStateMachine : MonoBehaviour
                 }
 
                 _currentState.SwitchState(_abilities[_currentAbility]);
-                Debug.Log(_currentState);
             }
             else if (_alpha2.action.triggered)
             {
@@ -116,7 +115,6 @@ public class AbilityStateMachine : MonoBehaviour
                 }
 
                 _currentState.SwitchState(_abilities[_currentAbility]);
-                Debug.Log(_currentState);
             }
         }
     }
