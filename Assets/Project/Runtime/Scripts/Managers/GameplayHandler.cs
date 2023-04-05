@@ -314,6 +314,8 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
     public void EndGame()
     {
         UIanim.SetBool("EndGame", true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     //-------------------------------------------------------------//

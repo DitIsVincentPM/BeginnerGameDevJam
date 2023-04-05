@@ -7,6 +7,9 @@ public class AttackHandler : MonoBehaviour
 
     public void Attack()
     {
-        OnAttack?.Invoke();
+        if (OnAttack != null)
+        {
+            OnAttack.Invoke();
+        }
     }
 }

@@ -108,7 +108,7 @@ public class EnemyStateMachine : MonoBehaviour
         animator = transform.GetChild(1).GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
         _enemyEntity = GetComponent<Entity>();
-
+        _target = GameObject.FindGameObjectWithTag("Player").transform;
         _states = new EnemyStateFactory(this);
         _currentState = _states.Patrolling();
         _currentState.EnterState();
