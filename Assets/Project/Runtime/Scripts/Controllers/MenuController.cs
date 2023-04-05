@@ -49,6 +49,9 @@ public class MenuController : MonoBehaviour
     public TMP_Text resolutionLabel;
     public TMP_Dropdown dropdown;
 
+    [Header("Graphic Tier")]
+    public TMP_Dropdown dropdown2;
+
     [Header("Camera")]
     [SerializeField]
     CameraController camControler;
@@ -250,6 +253,22 @@ public class MenuController : MonoBehaviour
                 break;
             case 2:
                 Screen.fullScreenMode = FullScreenMode.Windowed;
+                break;
+            default:
+                break;
+        }
+
+        int selectedOptionIndex2 = dropdown2.value;
+        switch (selectedOptionIndex2)
+        {
+            case 0:
+                QualitySettings.SetQualityLevel(2, true);
+                break;
+            case 1:
+                QualitySettings.SetQualityLevel(1, true);
+                break;
+            case 2:
+                QualitySettings.SetQualityLevel(0, true);
                 break;
             default:
                 break;
