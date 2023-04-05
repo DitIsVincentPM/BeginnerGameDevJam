@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Systems : PersistentSingleton<Systems>
+public class Systems : Singleton<Systems>
 {
 
 }
