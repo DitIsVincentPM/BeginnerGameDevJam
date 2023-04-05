@@ -1,11 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class AbilityStateMachine : MonoBehaviour
 {
     private AbilityBaseState _currentState;
     private AbilityStateFactory _states;
+
+    [SerializeField] private GameObject _abilityIconDisplay;
+    [SerializeField] private Texture2D _defaultAbilityIcon;
+    [SerializeField] private Texture2D _objectPickupAbilityIcon;
+    private Dictionary<string, Texture2D> _abilityIcons;
 
     private List<AbilityBaseState> _abilities = new List<AbilityBaseState>();
     private int _currentAbility;
@@ -27,6 +34,9 @@ public class AbilityStateMachine : MonoBehaviour
 
     [SerializeField] InputActionReference _interact, _alpha1, _alpha2, _fire, _rotate;
 
+    public GameObject AbilityIconDisplay { get { return _abilityIconDisplay; } }
+    public Dictionary<string, Texture2D> AbilityIcons { get { return _abilityIcons; } }
+
     public GameObject Player { get { return _player; } }
     public Transform Camera { get { return _camera; } }
     public Transform HoldPos { get { return _holdPos; } }
@@ -46,6 +56,12 @@ public class AbilityStateMachine : MonoBehaviour
     {
         _states = new AbilityStateFactory(this);
 
+        _abilityIcons = new Dictionary<string, Texture2D>()
+        {
+            {_states.Default().GetName(), _defaultAbilityIcon},
+            {_states.ObjectPickup().GetName(), _objectPickupAbilityIcon}
+        };
+
         _abilities.Add(_states.Default());
         _abilities.Add(_states.ObjectPickup());
         _maxAbility = _abilities.Count - 1;
@@ -53,6 +69,7 @@ public class AbilityStateMachine : MonoBehaviour
 
         _currentState = _abilities[_currentAbility];
         _currentState.EnterState();
+        AbilityIconDisplay.GetComponent<RawImage>().texture = AbilityIcons[_currentState.GetName()];
     }
 
     private void Update()

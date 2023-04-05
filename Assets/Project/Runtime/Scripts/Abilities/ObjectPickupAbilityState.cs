@@ -11,6 +11,11 @@ public class ObjectPickupAbilityState : AbilityBaseState
     public ObjectPickupAbilityState(AbilityStateMachine currentContext, AbilityStateFactory abilityStateFactory)
     : base(currentContext, abilityStateFactory) { }
 
+    public override string GetName()
+    {
+        return "ObjectPickupAbility";
+    }
+
     public override void EnterState()
     {
         LayerNumber = LayerMask.NameToLayer("holdLayer");
