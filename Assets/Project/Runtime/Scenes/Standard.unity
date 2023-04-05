@@ -6564,6 +6564,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Narrator
       objectReference: {fileID: 0}
+    - target: {fileID: 55405220201267506, guid: 2a93a6bafc74f8c438b8f4915dedf6e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a93a6bafc74f8c438b8f4915dedf6e7, type: 3}
 --- !u!114 &328789932 stripped
