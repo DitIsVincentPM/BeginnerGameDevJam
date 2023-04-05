@@ -16,7 +16,7 @@ public class EnemyDeathState : EnemyBaseState
 
     public override void EnterState()
     {
-        deathCouritine = InitializeDeath(2.0f);
+        deathCouritine = InitializeDeath(4.0f);
         Ctx.animator.SetBool("death", true);
         Ctx.StartCoroutine(deathCouritine);
     }
