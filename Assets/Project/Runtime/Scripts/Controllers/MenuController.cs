@@ -56,11 +56,18 @@ public class MenuController : MonoBehaviour
     [Header("Graphic Tier")]
     public TMP_Dropdown dropdown2;
 
+    [Header("Sound Settings")]
+    public Slider MasterSlider;
+    public Slider SfxSlider;
+    public Slider MusicSlider;
+    public Slider NarratorSlider;
+
     [Header("Camera")]
     [SerializeField]
     CameraController camControler;
 
-    [SerializeField] private InputActionReference escape;
+    [SerializeField]
+    private InputActionReference escape;
 
     public void EnableRestartMenu()
     {
@@ -71,7 +78,6 @@ public class MenuController : MonoBehaviour
     {
         escape.action.performed += EscapePerformed;
     }
-
 
     private void OnDisable()
     {
@@ -86,15 +92,59 @@ public class MenuController : MonoBehaviour
     // Method to disable all child objects of the player
     void Start()
     {
+        selectedResolution = StoreSettings.Instance.Resolution;
+        dropdown.value = StoreSettings.Instance.Window;
+        dropdown2.value = StoreSettings.Instance.Graphics;
+        SfxSlider.value = StoreSettings.Instance.SfxVolume;
+        SoundSystem.Instance.SfxVolume = StoreSettings.Instance.SfxVolume;
+        MusicSlider.value = StoreSettings.Instance.MusicVolume;
+        SoundSystem.Instance.MusicVolume = StoreSettings.Instance.MusicVolume;
+        MasterSlider.value = StoreSettings.Instance.MasterVolume;
+        SoundSystem.Instance.MasterVolume = StoreSettings.Instance.MasterVolume;
+        NarratorSlider.value = StoreSettings.Instance.NarratorVolume;
+        SoundSystem.Instance.NarratorVolume = StoreSettings.Instance.NarratorVolume;
+
+        Screen.SetResolution(
+            resolutions[StoreSettings.Instance.Resolution].horizontal,
+            resolutions[StoreSettings.Instance.Resolution].vertical,
+            Screen.fullScreenMode
+        );
+
+        switch (StoreSettings.Instance.Window)
+        {
+            case 0:
+                Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+                break;
+            case 1:
+                Screen.fullScreenMode = FullScreenMode.MaximizedWindow;
+                break;
+            case 2:
+                Screen.fullScreenMode = FullScreenMode.Windowed;
+                break;
+            default:
+                break;
+        }
+
+        switch (StoreSettings.Instance.Graphics)
+        {
+            case 0:
+                QualitySettings.SetQualityLevel(2, true);
+                break;
+            case 1:
+                QualitySettings.SetQualityLevel(1, true);
+                break;
+            case 2:
+                QualitySettings.SetQualityLevel(0, true);
+                break;
+            default:
+                break;
+        }
         DisableComponentsOnTarget();
         otherCanvas.SetActive(false);
         narratorCanvas.SetActive(false);
     }
 
-    void Update()
-    {
-
-    }
+    void Update() { }
 
     private void EscapePressed()
     {
@@ -256,11 +306,13 @@ public class MenuController : MonoBehaviour
 
     public void ApplyGraphics()
     {
+        StoreSettings.Instance.Resolution = selectedResolution;
         Screen.SetResolution(
             resolutions[selectedResolution].horizontal,
             resolutions[selectedResolution].vertical,
             Screen.fullScreenMode
         );
+        StoreSettings.Instance.Window = dropdown.value;
         int selectedOptionIndex = dropdown.value;
         switch (selectedOptionIndex)
         {
@@ -277,6 +329,7 @@ public class MenuController : MonoBehaviour
                 break;
         }
 
+        StoreSettings.Instance.Graphics = dropdown2.value;
         int selectedOptionIndex2 = dropdown2.value;
         switch (selectedOptionIndex2)
         {
@@ -303,24 +356,28 @@ public class MenuController : MonoBehaviour
 
     public void ChangeNarratorVolume(Slider slider)
     {
+        StoreSettings.Instance.NarratorVolume = slider.value;
         SoundSystem.Instance.NarratorVolume = slider.value;
         SoundSystem.Instance.ChangeVolume();
     }
 
     public void ChangeMusicVolume(Slider slider)
     {
+        StoreSettings.Instance.MusicVolume = slider.value;
         SoundSystem.Instance.MusicVolume = slider.value;
         SoundSystem.Instance.ChangeVolume();
     }
 
     public void ChangeSfxVolume(Slider slider)
     {
+        StoreSettings.Instance.SfxVolume = slider.value;
         SoundSystem.Instance.SfxVolume = slider.value;
         SoundSystem.Instance.ChangeVolume();
     }
 
     public void ChangeMasterVolume(Slider slider)
     {
+        StoreSettings.Instance.MasterVolume = slider.value;
         SoundSystem.Instance.MasterVolume = slider.value;
         SoundSystem.Instance.ChangeVolume();
     }
