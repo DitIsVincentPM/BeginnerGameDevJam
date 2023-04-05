@@ -111,11 +111,13 @@ public class EnemyStateMachine : MonoBehaviour
     {
         _attackHandler = GetComponentInChildren<AttackHandler>();
         _attackHandler.OnAttack += Attack;
+        _enemyEntity.OnDeath += OnDeath;
     }
 
     private void OnDisable()
     {
         _attackHandler.OnAttack -= Attack;
+        _enemyEntity.OnDeath -= OnDeath;
     }
 
     private void Start()
@@ -179,6 +181,11 @@ public class EnemyStateMachine : MonoBehaviour
         }
         _alreadyAttacked = true;
         Invoke(nameof(ResetAttack), _attackCooldown);
+    }
+
+    public void OnDeath()
+    {
+        Destroy(this.gameObject);
     }
 
     public void ResetAttack()

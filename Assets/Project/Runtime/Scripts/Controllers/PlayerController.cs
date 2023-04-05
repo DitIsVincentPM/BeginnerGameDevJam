@@ -13,6 +13,21 @@ public class PlayerController : MonoBehaviour
         _playerEntity = GetComponent<Entity>();
     }
 
+    private void OnEnable()
+    {
+        _playerEntity.OnDeath += OnDeath;
+    }
+
+    private void OnDisable()
+    {
+        _playerEntity.OnDeath -= OnDeath;
+    }
+
+    private void OnDeath()
+    {
+
+    }
+
     public float GetBattery()
     {
         return _playerEntity.Health;

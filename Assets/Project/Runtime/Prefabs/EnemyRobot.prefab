@@ -440,7 +440,7 @@ MonoBehaviour:
   _target: {fileID: 0}
   _walkPointRange: 20
   _attackCooldown: 2
-  _attackDamage: 10
+  _attackDamage: 5
   _sightRange: 20
   _attackRange: 2.5
   animator: {fileID: 0}

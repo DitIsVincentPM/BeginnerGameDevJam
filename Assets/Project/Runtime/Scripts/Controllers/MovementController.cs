@@ -49,18 +49,18 @@ public class MovementController : MonoBehaviour
     float attackCooldownTimer;
     public float attackDamage = -10f;
     public int attackRange = 2;
-    
-    [SerializeField] 
+
+    [SerializeField]
     private InputActionReference move, jump, fire;
 
-    private void OnEnable() 
+    private void OnEnable()
     {
-        jump.action.performed += JumpPerformed;  
+        jump.action.performed += JumpPerformed;
     }
 
-    private void OnDisable() 
+    private void OnDisable()
     {
-        jump.action.performed -= JumpPerformed;  
+        jump.action.performed -= JumpPerformed;
     }
 
     private void JumpPerformed(InputAction.CallbackContext obj)
