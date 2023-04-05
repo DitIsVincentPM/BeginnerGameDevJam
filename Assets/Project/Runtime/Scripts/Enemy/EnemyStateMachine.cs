@@ -184,6 +184,7 @@ public class EnemyStateMachine : MonoBehaviour
     {
         if (_targetInAttackRange)
         {
+            SoundSystem.Instance.PlaySound(SoundSystem.Instance.Punch, transform.position);
             _target.GetComponent<PlayerController>().DrainBattery(_attackDamage);
         }
         _alreadyAttacked = true;

@@ -17,12 +17,12 @@ public class EnemyDeathState : EnemyBaseState
     public override void EnterState()
     {
         deathCouritine = InitializeDeath(2.0f);
+        Ctx.animator.SetBool("death", true);
         Ctx.StartCoroutine(deathCouritine);
     }
 
     private IEnumerator InitializeDeath(float waitTime)
     {
-        Debug.Log("Death animation");
         yield return new WaitForSeconds(waitTime);
         GameObject.Destroy(Ctx.gameObject);
     }

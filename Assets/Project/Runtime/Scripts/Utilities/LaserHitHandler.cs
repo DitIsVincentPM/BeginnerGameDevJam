@@ -8,7 +8,7 @@ public class LaserHitHandler : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.transform.parent.GetComponentInParent<Entity>().AddHealth(-5f);
+            other.gameObject.transform.parent.GetComponentInParent<PlayerController>().DrainBattery(20f);
         }
         else if (other.gameObject.CompareTag("Enemy"))
         {

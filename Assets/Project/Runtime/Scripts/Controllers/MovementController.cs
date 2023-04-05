@@ -51,7 +51,9 @@ public class MovementController : MonoBehaviour
     public int attackRange = 2;
 
     [SerializeField]
-    private InputActionReference move, jump, fire;
+    private InputActionReference move,
+        jump,
+        fire;
 
     private void OnEnable()
     {
@@ -220,6 +222,7 @@ public class MovementController : MonoBehaviour
             {
                 if (hitColliders[i].gameObject.CompareTag("Enemy"))
                 {
+                    SoundSystem.Instance.PlaySound(SoundSystem.Instance.Punch, transform.position);
                     hitColliders[i].gameObject.GetComponent<Entity>().AddHealth(attackDamage);
                 }
             }
