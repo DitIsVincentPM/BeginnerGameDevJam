@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
 using System;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
@@ -43,6 +44,9 @@ public class MenuController : MonoBehaviour
     [SerializeField]
     private GameObject controlMenu;
 
+    [SerializeField]
+    private GameObject gameOver;
+
     [Header("Resolution")]
     public List<resItem> resolutions = new List<resItem>();
     private int selectedResolution;
@@ -58,6 +62,10 @@ public class MenuController : MonoBehaviour
 
     [SerializeField] private InputActionReference escape;
 
+    public void EnableRestartMenu()
+    {
+        gameOver.SetActive(true);
+    }
 
     private void OnEnable() 
     {
@@ -190,6 +198,12 @@ public class MenuController : MonoBehaviour
         narratorCanvas.SetActive(true);
 
         GameplayHandler.Instance.StartGame();
+    }
+
+    public void RestartBtn()
+    {
+        Scene thisScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(thisScene.name);
     }
 
     public void QuitGameBtn()
