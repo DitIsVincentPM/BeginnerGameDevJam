@@ -1389,7 +1389,7 @@ PrefabInstance:
     - target: {fileID: 6507502001254056997, guid: 8c0e2fa3d96ce3d47acfb3a8b88fb44e,
         type: 3}
       propertyPath: speed
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6507502001254056997, guid: 8c0e2fa3d96ce3d47acfb3a8b88fb44e,
         type: 3}
@@ -50642,7 +50642,7 @@ PrefabInstance:
     - target: {fileID: 8378740547901272280, guid: b05580a507acab44d847297c9158ad09,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: PlayerFix
       objectReference: {fileID: 0}
     - target: {fileID: 8417361360109786260, guid: b05580a507acab44d847297c9158ad09,
         type: 3}

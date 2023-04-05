@@ -26,7 +26,6 @@ public class LaserController : MonoBehaviour
         LaserCollider = gameObject.transform.GetChild(0).GetComponent<Collider>();
 
         rndPoint = Random.Range(1,3)-1;
-        Debug.Log(rndPoint);
         currentPoint = rndPoint;
         LaserTrigger.transform.position = points[rndPoint].transform.position;
     }
