@@ -66,10 +66,14 @@ public class ElevatorController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        canMove = true;
-        if (endGame == true)
+        Debug.Log(other.gameObject.name);
+        if (other.gameObject.CompareTag("PlayerFix"))
         {
-            GameplayHandler.Instance.EndGame();
+            canMove = true;
+            if (endGame == true)
+            {
+                GameplayHandler.Instance.EndGame();
+            }
         }
     }
 }

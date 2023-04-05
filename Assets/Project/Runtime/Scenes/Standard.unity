@@ -1454,7 +1454,7 @@ PrefabInstance:
     - target: {fileID: 6507502003059013804, guid: 8c0e2fa3d96ce3d47acfb3a8b88fb44e,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c0e2fa3d96ce3d47acfb3a8b88fb44e, type: 3}
@@ -35218,8 +35218,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.020954102, y: 0.02, z: 0.0014413468}
-  m_Center: {x: -0.00047703687, y: -0.00000001498631, z: -0.010686964}
+  m_Size: {x: 0.020954102, y: 0.02, z: 0.0013347999}
+  m_Center: {x: -0.00047703687, y: -0.00000001498631, z: -0.0107402485}
 --- !u!1 &1615947547
 GameObject:
   m_ObjectHideFlags: 0
