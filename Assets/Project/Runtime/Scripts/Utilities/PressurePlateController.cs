@@ -22,6 +22,7 @@ public class PressurePlateController : MonoBehaviour
 
     [SerializeField]
     public DoorController openDoor;
+    public GameObject remove;
 
     private void Start()
     {
@@ -39,7 +40,10 @@ public class PressurePlateController : MonoBehaviour
             if (GetComponent<PressurePlateLaser>()) { 
                 GetComponent<PressurePlateLaser>().DeactiveLasers();
                 if(openDoor != null) {
+                    if(remove != null) Destroy(remove);
+                    
                     GameplayHandler.Instance.OpenMapPart("Puzzle4");
+
                     openDoor.activationState = DoorController.DoorActivation.StayOpen;
                 }
             }

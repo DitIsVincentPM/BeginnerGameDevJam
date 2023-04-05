@@ -50,6 +50,9 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
 
     [Header("Storage")]
     [SerializeField]
+    Animator UIanim;
+
+    [SerializeField]
     private AudioClip MainTheme;
 
     [SerializeField]
@@ -101,6 +104,7 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
         // Disable Map Parts that are not visible
         mapPuzzle2.SetActive(false);
         mapPuzzle3.SetActive(false);
+        mapPuzzle4.SetActive(false);
         currentPuzzle = -1;
 
         foreach (GameObject source in GameObject.FindGameObjectsWithTag("AlarmSource"))
@@ -296,6 +300,10 @@ public class GameplayHandler : StaticInstance<GameplayHandler>
         GameplayHandler.Instance.currentPuzzle = 4;
         NarratorSystem.Instance.SayVoiceLine(NarratorSystem.Instance.voiceLines[4]);
         LiftDoor.activationState = DoorController.DoorActivation.Proximity;
+    }
+
+    public void EndGame() {
+        UIanim.SetBool("EndGame", true);
     }
 
     //-------------------------------------------------------------//

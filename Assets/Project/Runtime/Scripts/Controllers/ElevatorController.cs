@@ -11,6 +11,7 @@ public class ElevatorController : MonoBehaviour
     [SerializeField] private Transform[] points;
     private int i;
     private bool lastPointReached;
+    [SerializeField] bool endGame;
 
     private void Awake() 
     {
@@ -51,6 +52,9 @@ public class ElevatorController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             canMove = true;
+            if(endGame == true) {
+                GameplayHandler.Instance.EndGame();
+            }
         }
     }
 }
