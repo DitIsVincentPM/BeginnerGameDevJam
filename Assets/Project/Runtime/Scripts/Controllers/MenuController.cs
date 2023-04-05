@@ -57,7 +57,8 @@ public class MenuController : MonoBehaviour
     CameraController camControler;
 
     [SerializeField] private InputActionReference escape;
-    
+
+
     private void OnEnable() 
     {
         escape.action.performed += EscapePerformed;
