@@ -69,15 +69,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Alpha2",
-                    "type": "Button",
-                    "id": "d1398492-d471-4cd9-a5dc-048a6344963b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Rotate",
                     "type": "Button",
                     "id": "6d7b3f06-d26a-4a16-8870-f8e13e170115",
@@ -344,22 +335,11 @@
                 {
                     "name": "",
                     "id": "2415d3ff-faf4-4ea9-b477-3312e9566f05",
-                    "path": "<Keyboard>/1",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Alpha1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0a7c847e-25d4-44de-b59b-3d1726f204ff",
-                    "path": "<Keyboard>/4",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Alpha2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

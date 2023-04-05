@@ -32,7 +32,7 @@ public class AbilityStateMachine : MonoBehaviour
     [SerializeField] private float _pickUpRange = 10f;
     [SerializeField, Range(1f, 10f)] private float _rotationSensitivity = 1f;
 
-    [SerializeField] InputActionReference _interact, _alpha1, _alpha2, _fire, _rotate;
+    [SerializeField] InputActionReference _interact, _alpha1, _fire, _rotate;
 
     public GameObject AbilityIconDisplay { get { return _abilityIconDisplay; } }
     public Dictionary<string, Texture2D> AbilityIcons { get { return _abilityIcons; } }
@@ -99,19 +99,6 @@ public class AbilityStateMachine : MonoBehaviour
                 else
                 {
                     _currentAbility = _maxAbility;
-                }
-
-                _currentState.SwitchState(_abilities[_currentAbility]);
-            }
-            else if (_alpha2.action.triggered)
-            {
-                if (_currentAbility < _maxAbility)
-                {
-                    _currentAbility++;
-                }
-                else if (_currentAbility == _maxAbility)
-                {
-                    _currentAbility = 0;
                 }
 
                 _currentState.SwitchState(_abilities[_currentAbility]);
