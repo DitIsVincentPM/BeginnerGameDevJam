@@ -3,18 +3,28 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - NarratorSource
+  - Systems
+  - HackingProgress
+  - AlarmSource
+  - Server
+  - PressureBox
+  - canPickUp
+  - Enemy
+  - SoundSource
+  - PlayerFix
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Interact
+  - Button
+  - Player
+  - holdLayer
   - 
   - 
   - 

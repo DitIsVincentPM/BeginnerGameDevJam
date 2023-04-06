@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 5e4f8fcdd4879cc4585746901099c79d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _player: {instanceID: 0}
+  - _camera: {instanceID: 0}
+  - _holdPos: {instanceID: 0}
+  - alpha1: {fileID: -577326655111972414, guid: 0cd111647ef61ac429eff1da5bbe5eb2,
+      type: 3}
+  - alpha2: {fileID: 4139487496292584318, guid: 0cd111647ef61ac429eff1da5bbe5eb2,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
